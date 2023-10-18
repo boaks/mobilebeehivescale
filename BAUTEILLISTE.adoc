@@ -1,0 +1,126 @@
+// Mobile-Bienenstock-Waage, Version 2.0, Oktober 2023
+
+:imagesdir: pictures
+
+= Mobile-Bienenstock-Waage, Bauteilliste
+Achim Kraus <achim.kraus@cloudcoap.net>
+v0.1, 2023-10-18
+
+== Bauteilliste, Waage 
+
+[cols="3*"]
+|===
+|Bauteil|Bezugsquelle|Preis (Herbst 2023)
+
+|Adafruit NAU7802 24-BIT ADC, I2C
+a|link:https://www.digikey.de/en/products/detail/adafruit-industries-llc/4538/16584123[Adafruit NAU7802, digikey.de]
+|6,71 Euro
+
+|AT24HC04B-PU EEPROM, I2C
+a|link:https://www.digikey.de/en/products/detail/microchip-technology/AT24HC04B-PU/1886137[AT24HC04B, digikey.de]
+|0,63 Euro
+
+|Folien-Kondensator, 100nF
+a|link:https://www.reichelt.de/mks2-pet-kondensator-100-nf-10-63-vdc-rm-5-mks2-63-100n-p12349.html[Folien-Kondensator, reichelt.de]
+|0,29 Euro
+
+|Kabel, 2m, 12mm Buchse - offenes Ende
+a|link:https://www.reichelt.de/sensorleitung-m12-4-pol-ku-offenes-ende-2-m-lut-1200-004-2-p222963.html[Kabel, reichelt.de]
+|7,99 Euro
+
+|Wägezelle 4x 50kg (einfache Waagenausführung)
+a|link:https://www.amazon.de/dp/B07HBP1167[Wägezelle, amazon.de]
+|9,99 Euro (10 Stück)
+
+|Siebdruckplatten 45x55cm
+|Baumarkt
+|35 Euro (2 Stück)
+
+3+a|
+
+'''
+
+|Gesamtsumme je Waage
+|Einfache Ausführung
+a|*55 Euro*
+|===
+
+Der mechanische Aufbau kann sich stark unterscheiden. Je nach Ausführung werden andere Wägezelle benötigt, auch mit ganz anderer Bauart wie z.B. Plattform Wägezelle, link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[CZL601 100kg]. Die Sensorhalter aus dem 3D-Drucker wurden mit link:halterung_fuer_waegezellen.stl[Halterung für Wägezellen] erstellt. Der Halter passt nicht nur für die Sensoren in der Bestellliste, sondern auch für link:https://www.kern-sohn.com/shop/de/produkte/messinstrumente/CK-50-Y4/[Kern CK 50-Y4]. Die Sensoren werden durch den Abstandshalter etwas von der Siebdruckplatten weg gehalten, was die Erwärmung durch Sonne über diese Platten verringert. Die Seite des Abstandshalters mit der Lücke ist für das Kabel vom `Kern CK 50-Y4` Sensor.  
+ 
+== Bauteilliste, Sendebox
+
+[cols="3*"]
+|===
+|Bauteil|Bezugsquelle|Preis (Herbst 2023)
+
+1.2+a|image::https://docs.jaredwolff.com/img/nrf9160-feather-v4-nobg.jpg[nRF9160 Feather]  
+a|link:https://www.circuitdojo.com/products/nrf9160-feather[nRF9160 feather, www.circuitdojo.com]
+|99 $ + Importkosten.
+
+a|Alternativ link:https://www.digikey.de/en/products/detail/circuit-dojo/PASSY-NRF9160-FEATHER/13668137[nRF9160 feather, digikey.de]
+|111,74 Euro
+
+1.2+a|image::https://www.circuitdojo.com/base/api/files/products/66q7eer7s16dkqd/h2_b4_mh1_f2_f0100_kHIDRMa9Cl.jpg[LTE Antenne]
+a|link:https://www.circuitdojo.com/products/nrf9160-feather[LTE Antenne, www.circuitdojo.com]
+|5$ + Importkosten.
+
+a|Alternativ link:https://www.digikey.de/en/products/detail/unictron-technologies-corporation/H2B4MH1F2F0100/9921462[LTE Antenne, digikey.de]
+|5,10 Euro
+
+|Einbaustecker, 50cm, 12mm Stecker
+a|link:https://www.reichelt.de/einbausteckverbinder-m12-4-pol-stecker-schwarz-lut-1230-04-100-p347094.html[Einbaustecker, reichelt.de]
+|4,70 Euro (2x ?)
+
+|Gehäuse
+a|link:https://www.reichelt.de/industriegehaeuse-160-x-80-x-55-mm-ip66-lichtgrau-5u320000-p324381.html[Gehäuse, reichelt.de]
+|8,80 Euro
+
+|Laborkarte 3-Loch-Lötinseln
+a|link:https://www.reichelt.de/laborkarte-cem3-rm-2-54-mm-3-loch-loetinseln-re-310-s1-p105479.html[Gehäuse, reichelt.de]
+|5,99 Euro
+
+|Batteriehalter 3xAA mit Deckel
+a|link:https://www.reichelt.de/batteriehalter-fuer-3-mignon-aa-geschlossen-halter-3xaa-p44631.html[Batteriehalter, reichelt.de]
+|1,35 Euro
+
+|Pfostenstecker, 10 pol.
+a|link:https://www.reichelt.de/wannenstecker-10-polig-gerade-wsl-10g-p22816.html[Pfostenstecker, reichelt.de]
+|0,15 Euro
+
+|Pfostenbuchse, 10 pol.
+a|link:https://www.reichelt.de/pfostenbuchse-10-polig-mit-zugentlastung-pfl-10-p14571.html[Pfostenbuchse, reichelt.de]
+|0,11 Euro
+
+|Flachbandkabel, 10 pol.
+a|link:https://www.reichelt.de/flachbandkabel-awg28-10-pol-grau-3m-ring-awg-28-10g-3m-p47637.html[Flachbandkabel 3m, reichelt.de]
+|3,59 Euro (es werden nur 15cm benutzt)
+
+|Taster
+a|link:https://www.voelkner.de/products/73350/TRU-Components-701802-GQ16F-10-J-N-Vandalismusgeschuetzter-Drucktaster-48-V-DC-2A-1-x-Aus-Ein-tastend-IP65-1St..html[Taster, voelkner.de]
+|4,79 Euro
+
+|RGB LED
+a|link:https://www.voelkner.de/products/1028434/HuiYuan-5039R2G3B2C-ESB-LED-bedrahtet-Rot-Gruen-Blau-Rund-5mm-1900-mcd-2350-mcd-1850-mcd-45-20mA.html[RGB LED, voelkner.de]
+|0,74 Euro
+
+|LED Fassung
+a|link:https://www.voelkner.de/products/29240/Signal-Construct-SML1089-SML1089-LED-Fassung-Metall-Passend-fuer-LEDs-LED-5mm-Schraubbefestigung.html[LED Fassung, voelkner.de]
+|3,99 Euro
+
+|Akkus und Ladegerät, NiMh 2000mAh
+a|link:https://www.amazon.de/Panasonic-eneloop-LED-Anzeigen-Sicherheitsfunktionen-Mignon-Akkus-blue/dp/B0B5X4PKW1[Akkus, amazon.de]
+|29,99 Euro (es werden nur 3 Stück benutzt)
+
+|SIM-Karte für LTE-M und NB-IoT
+|Viele Quellen mit unterschiedlichen Leistungen
+|10-30 Euro (reichen 3-10 Jahre)
+
+3+a|
+
+'''
+
+|Gesamtsumme
+|
+a|*200 Euro*
+|===
+

@@ -1,0 +1,320 @@
+// Mobile-Bienenstock-Waage, Version 2.0, Oktober 2023
+
+:imagesdir: pictures
+
+= Mobile-Bienenstock-Waage
+Achim Kraus <achim.kraus@cloudcoap.net>
+v0.1, 2023-10-18
+
+Willkommen auf meiner Bastelanleitung für eine Mobile-Bienenstock-Waage.
+
+Ich bin einer der IoT-Enthusiasten, der gerne echte Dinge baut, die auch funktionieren. 2022 habe ich angefangen, einen link:https://github.com/boaks/zephyr-coaps-client[Modem-Client] zu implementieren, mit dem man zeigen kann was in link:https://cloudcoap.net[UDP] steckt. In Kombination mit link:https://github.com/boaks/californium/tree/add_s3_proxy/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] demonstriert dieses Beispiel, dass man auch von Batterie ein paar Monate jede Stunde Daten austauschen kann.   
+
+Anfang 2023 habe ich dann basierend auf diesem Modem-Client meinen erste Bienenstock-Waage gebaut und bei einem befreundeten Imker in Betrieb genommen. Das Ergebnis des halbjährigen Testlaufs ist einfach: 
+
+* mobiler Datenaustausch funktioniert von Batterie sehr gut
+* die Waage selber hat aber viel Verbesserungspotential
+
+Das hat dann zur einer neuen Bauart geführt. Ich möchte gleich hier einräumen, dass es genauere Waagen gibt. Mein Schwerpunkt liegt auf dem mobilen Einsatz. 
+
+* ADC aus der Sendebox unter die Waage. Kurze Kabel zu den Dehnmesstreifen sind wichtig für eine geringere Temperaturabhängigkeit.
+* Kalibrierungsdaten müssen ebenfalls in die Waage. Sonst ist es sehr fehleranfällig, wenn die Waagen umziehen oder man denkt, neu Kalibrieren zu müssen.
+
+Die neue Bauart berücksichtig beides zusammen und läuft nun seit ein paar Wochen. Daher möchte ich hier dieses Ergebnis präsentieren, vielleicht hat ja der eine oder andere Interesse, diese Mobile-Bienenstock-Waage nachzubauen.
+
+== Bausteine
+
+image::1_bausteine.png[Bausteine]
+
+Die Mobile-Bienenstock-Waage besteht aus einer `Sendbox` und der `Waage` selbst. 
+
+In der `Sendbox` sind das LTE-M/NB-IoT Modem, der Mikrocontroller und die Batterien untergebracht. Ich benutze ein link:https://www.nordicsemi.com/products/nrf9160[nRF9160] als link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather]. Dieses Modem hat als Besonderheit bereits eine Mikrocontroller auf dem Modul, ein ARM Cortec M33 mit 1 mByte Flash und 256 kByte RAM. Als Batterien benutze ich gerne NiMh mit geringer Selbstentladung.
+
+Die `Waage` besteht dann aus einem `ADC`, einem `Speicher für die Kalibrierdaten`, den `Dehnmessstreifen` (in Form eins fertigen Sensors) und dem mechanischen Aufbau.
+
+== Der I2C ADC Wandler mit EEPROM
+
+[cols="2*"]
+|===
+a|image::2_ADC_oben.png[ADC von oben] 
+a|image::3_ADC_unten.png[ADC von unten]
+|===
+
+Um sowohl den `ADC` als auch den `Kalibrierspeicher` unter die `Waage` zu packen, sollten beide die gleiche Schnittstelle haben. Daher habe ich den geläufigen HX711 gegen einen link:https://www.nuvoton.com/products/smart-home-audio/audio-converters/precision-adc-series/nau7802kgi/[NAU7802] mit link:https://de.wikipedia.org/wiki/I%C2%B2C[I2C] getauscht und ein kleines link:https://www.microchip.com/en-us/product/at24hc04b[AT24HC04B EEPROM], ebenfalls mit I2C, hinzugepackt.
+
+Um den NAU7802 nicht selber auf eine Platine packen zu müssen, habe ich ein link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[fertiges Modul von Adafruit] benutzt. Das muss dann zusammen mit dem EEPROM auf eine zusätzliche kleine Platine, bei mir passt das auf 6x3cm. Die Verkabelung ist sehr einfach, man muss die Stromversorgung an beide ICs anlegen und die beide I2C Leitungen, SDA und SCL jeweils mit dem anderen IC verbinden. Als Kabel zur Sendebox habe ich ein 4 poliges Kabel, 2m, mit einem 12mm Stecker (eigentlich Buchse) und einem offenen Kabelende genommen, z.B. link:https://www.lutronic.biz/de/konnektivitaet/produkt/1200+...+0[Lutronic M12].
+
+Das link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[NAU7802 von Adafruit] hat eine LED die anzeigt, dass die Stromversorgung anliegt. Da sowohl der NAU7802 als auch das EEPROM aber einen sehr geringen Ruhestrom haben, schalte ich den Strom nicht ab. Ich habe daher die LED entfernt, damit diese nicht unnötig den Ruhestrom vergrößert.  
+
+|===
+|Beschreibung|NAU7802|AT24HC04B|Kabel Lutronic
+
+|Vcc
+|Vin
+|Vcc, PIN 8
+|Braun
+
+|GND
+|GND
+|GND, PIN 4
+|Schwarz
+
+|SDA
+|SDA
+|SDA, PIN 5
+|Blau
+
+|SCL
+|SCL
+|SCl, PIN 6
+|Weiß
+|===
+
+Der Anschluß `AV` (Analog Vin) des NAU7802 wird nicht benutzt, wir benutzen den internen Spannungsregler des NAU7802.
+
+Beim EEPROM bleiben `WP` (Write Protect, PIN 7) soweit `A1` und `A2` (PIN 2 und PIN 3) unbeschaltet bzw. diese können mit `GND` verbunden werden.
+Für das EEPROM habe ich den üblichen 0,100 µF Folienkondensator zwischen `GND` und `Vcc` zur Entkopplung benutzt. 
+
+Der DMS Sensor muss dann noch entsprechend mit ``E+``/``E-``/``A+``/``A-`` des NAU7802 verbunden werden. Man kann dazu entweder die beim Adafruit mitgelieferten Schraubklemmen benutzen oder die Leitungen anlöten. Die genau Verdrahtung ist weiter unten in <<die-waage>> beschrieben. Wenn alles gelötet ist sorgfälltig alle Flußmittelreste mit einem Reiniger entfernen.
+
+Der interne Spannungsregler des NAU7802 liefert gemäß dem Datenblatt maximal 10mA. Das passt für viele Sensoren, nicht aber wenn zwei Balkensensoren verbaut werden. Die brauchen je 6-8mA zusammen also mehr als 10mA. Aktuell betreibe ich solche Waagen außerhalb der Spezifikation des NAU7802. Vielleicht funktioniert es ja, wenn man nur alle Stunde für ein paar Sekunden anschaltet. Wenn nicht, braucht man für diesen Fall einen weiteren Spanungsregler mit `ENable` Eingang, z.B. link:https://www.ti.com/lit/ds/symlink/lp2980-n.pdf[LP2980-N]. `E+` muss dann dort mit den `ENable` (On/OFF PIN 3) verbunden werden und `E+` der Sensoren mit dem Ausgang des Spannungsreglers. Man muss auch die Empfehlungen für zusätzlich Kondensatoren beachten, meist 1µF low ESR und 0,1µF Folienkondensator. Und man muss auch auf eine "low drop" Version achten. `Vcc` beträgt nur 3,3V und am Sensor sollte man 2,7-3,0V haben. 
+
+== Die Platine der Sendebox
+
+[cols="2*"]
+|===
+a|image::4_sendbox_oben.png[Sendbox-Platine von oben] 
+a|image::5_sendbox_unten.png[Sendbox-Platine von unten]
+|===
+
+Die zwei Hauptkomponenten, die auf die Platine müssen, sind die link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather] und das Batterienfach, hier 3x AA. Die Verkabelung der Batterei ist trivial, die der link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather] relativ einfach. Sie besteht aus der Stromversorgung von der Batterie, der Stromversorgung und I2C Bus zu den ADC Platinen, und einer RGB LED sowie einem Taster. Die Platine unterstützt bis zu zwei Waagen, jede an einem eigenen I2C Bus (das ist beim NAU7802 leider notwendig). Die beiden I2C sind auf zwei 4 pol. Platinenstecker gelegt. Der Taster und die RGB LED auf einen 10 pol. Pfostenstecker. Die Aussparung in der Platine braucht man, um diese in der Box an der RGB LED und dem Taster vorbei aus- und einbauen zu können.  
+
+|===
+|Beschreibung|nRF9160 feather|Komponente
+
+3+a|*Stromversorgung*
+
+|Vin
+|BAT, J2 / PIN 1 
+|+ Batterie
+
+|GND
+|GND, J3 / PIN 4
+|- Batterie
+
+3+a|*I2C Schnitstelle zu ADC-1 über 4 pol. Platinenstecker*
+
+|Vcc
+|+3V3, J3 / PIN 2
+|ADC 1, Vin, PIN 4
+
+|GND
+|GND, J3 / PIN 4
+|ADC 1, GND, PIN 3
+
+|SDA 1
+|SDA 1, J2 / PIN 12
+|ADC 1, PIN 1
+
+|SCL 1
+|SCL 1, J2 / PIN 11
+|ADC 1, PIN 2
+
+3+a|*I2C Schnitstelle zu ADC-2 über 4 pol. Platinenstecker*
+
+|Vcc
+|+3V3, J3 / PIN 2
+|ADC 2, Vin, PIN 4
+
+|GND
+|GND, J3 / PIN 4
+|ADC 2, GND, PIN 3
+
+|SDA 2
+|SDA 2, J2 / PIN 7
+|ADC 2, PIN 1
+
+|SCL 2
+|SCL 2, J2 / PIN 6
+|ADC 2, PIN 2
+
+3+a|*10 pol. Pfostenstecker*
+
+|GND
+|GND, J3 / PIN 4
+|Pfostenstecker, PIN 1,3,5,7,9
+
+|Vcc
+|+3V3, J3 / PIN 2
+|Pfostenstecker, PIN 4
+
+|Taster
+|P0.17, J3 / PIN 9
+|Pfostenstecker, PIN 2
+
+|LED Rot
+|P0.19, J3 / PIN 11
+|Pfostenstecker, PIN 6, 380 Ohm
+
+|LED Blau
+|P0.21, J3 / PIN 12
+|Pfostenstecker, PIN 8, 380 Ohm
+
+|LED Grün
+|P0.22, J3 / PIN 13
+|Pfostenstecker, PIN 10, 380 Ohm
+|===
+
+Wenn man eine link:https://www.reichelt.de/laborkarte-cem3-rm-2-54-mm-3-loch-loetinseln-re-310-s1-p105479.html[3-Loch-Lötinseln] Platine nimmt, dann ist der Aufbau meist mit einfachen Drahtbrücken zwischen den Lötinseln machbar.
+
+[cols="2,1,1,1"]
+|===
+|"Löten nach Farben"|Beschreibung|Farbe|Bemerkung
+
+1.7+a|image::6_verbindungen.png[Sendbox-Platine von unten, Verbindungen]
+|Vin
+|Lila
+|
+
+|GND
+|Schwarz
+|Auch Oberseite
+
+|Vcc
+|Rot
+|Auch Oberseite
+
+|SDA
+|Blau
+|
+
+|SCL
+|Gelb
+|
+
+|Taster
+|Grün
+|
+
+|RGB LED
+|Orange
+|380 Ohm
+|===
+
+Die I2C Signalleitungen sind einfache Drahtbrücken zwischen 4 pol. Platinenstecker und Feather. Ebenso die Verbindung für den Taster zum 10 pol. Pfostenstecker. Die Verbindung für die LEDs zum 10 pol. Pfostenstecker und Feather macht man am einfachsten mit den 380 Ohm Vorwiderständen. Die Kabel des Batterienhalter kann auch man einfach mit der Feather verbinden. Mit `Vcc` und `GND` ist es nicht ganz so einfach, da müssen die Inseln auch auf der Oberseite der Platine entsprechend verbunden werden. Ich habe dazu meist farbige Kabellitzen benutzt. Nur für `GND` zum 10 pol. Pfostenstecker auf der Unterseite habe ich auch Draht genommen. 
+
+Die RGB LED und der Taster werden dann über ein Flachkabel angelötet und über eine Pfostenbuchse angesteckt. Dabei wird der Taster mit `GND` und `PIN 2` verbunden. Die gemeinsame Anode (+) der RGB LED wird mit `PIN 4` verbunden, die jeweiligen Farb-Kathoden mit `PIN 6`, `PIN 8` und `PIN 10`. Das fertige Kabel kann man weiter unten bei <<die-sendebox>> sehen.
+
+== Die Waage
+
+[cols="3*"]
+|===
+a|image::7_waage_unten.png[Waage von unten] 
+a|image::8_verkabelung.png[Waage Verkabelung] 
+a|image::9_ADC_verkabelung.png[ADC Verkabelung]
+|===
+
+Die abgebildete Waage ist ein einfacher Aufbau mit 4x Wägezellen für je 50Kg. Diese müssen zu einer link:https://de.wikipedia.org/wiki/Wheatstonesche_Messbr%C3%BCcke[Wheatstone-Brücke] verbunden werden. Dazu verbindet man jeweils die Schwarzen und Weißen Drähte. Über die Roten werden dann ``E+``/``E-``/``A+``/``A-`` des NAU7802 verbunden, siehe Abbildung oben. Wichtig ist, das jeweils die Sensoren für ``E+`` und ``E-`` so wie ``A+`` und ``A-`` gegenüber liegen. Liegen diese nebeneinander, dann funktioniert es nicht. Verwechselt man nur ``+`` und ``-`` dann sieht man das daran, dass bei Belastung der angezeigte Wert abnimmt. Dann einach eines der ``+`` und ``-`` Paare tauschen und dann funktioniert es.
+
+Wenn man Balkensensoren nimmt, dann ist auf der Rückseite der NAU7802/Adafruit Platine angegeben, wie man die Farben jeweils anschließt. Das Bild oben rechts zeigt die Rückseite der NAU7802/Adafruit Platine. 
+
+Aktuell ist die Waage ein Prototyp. Die Sensoren werden mit Kunststoffgehäusen aus dem 3D Drucker gehalten, die Kabel mit Klebebänder fixiert. Das wird sich noch ändern, wenn die Waagen sich mehr bewähren. Die ADC Platine muss auch in ein Gehäuse, sonst wird es bei Regen schnell kritisch.
+
+Was ich beim Basteln als besondere Herausforderung empfunden habe ist das Kalibrieren. Der eigentlich Vorgang ist im nächsten Abschnitt erläutert. Das Problem ist, dass man ein 10 kg Gewicht für eine sogenannte 2-Punkt Kalibrierung benötigt. Punkt 1 ist dann 0 kg und Punkt 2 10 kg. Wenn das absolute Gewicht nicht so wichtig ist, kann man natürlich auch einfach etwas nehmen, was in etwa 10 kg hat. Durch Temperaturschwankungen und die Dauerbelastung ist das absolute Gewicht ohnehin eher sehr relativ (da liegt man schnell 1 kg daneben) aber der Verlauf über mehrere Tage hinweg ist gut sichtbar.  
+
+== Das Modem
+
+[cols="2*"]
+|===
+a|image::10_modem_unten.png[Modem von unten] 
+a|image::11_modem_oben.png[Modem von oben] 
+|===
+
+Wie eingangs schon erwähnt, die Besonderheit dieses link:https://www.nordicsemi.com/products/nrf9160[nRF9160 Modems] ist, dass es bereits eine Mikrocontroller enthält. Damit spart man sich viel Bastelarbeit. Und als link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather] geht das Basteln leicht von der Hand. Für den Mobilfunk benötigt man dann ein SIM-Karte. Normale SIM-Karten sind nicht für LTE-M oder NB-IoT freigeschalten, man muss entsprechende IoT SIM-Karten benutzen. Leider sind diese oft nur für Gewerbebetreibende erhältlich. Die Kosten reichen von 1 Euro pro Jahr über 70 Cent pro Monat bis auch 5 Euro pro Monat. Das hängt ganz vom Anbieter ab. Die Waage mit link:https://www.rfc-editor.org/rfc/rfc7252.html[CoAP] / link:https://www.rfc-editor.org/rfc/rfc6347.html[DTLS 1.2] link:https://www.rfc-editor.org/rfc/rfc9146.html[CID] benötigt sehr wenig Datenvolumen. Wenn man das Gewicht von 2 Waagen alle Stunde sendet sind das ca. 700 kByte im Monat. Viel der Karten bieten 50 MByte pro jahr an und kommen dann damit locker hin. Die 3 AA 2000mAh Akkus halten 6-12 Monate. Das hängt von vielen Faktoren ab, auch wie die SIM-Karten vom Provider konfiguriert sind und welche Netze erlaubt sind.
+
+Das Modem unterstützt auch andere Protokolle, z.B. `HTTP(S)` oder `MQTT(S)`. Je nach Sende-Strategy benötigen diese deutlich mehr Energie oder übertragen die Daten sehr viel seltener (z.B. 1x Täglich nicht 1x Stündlich). Ich benutze diese daher nicht. Wer selber programmieren kann, kann das aber sehr gerne ausprobieren. 
+
+Man kann die Daten auch weiterleiten, das link:https://github.com/boaks/californium/tree/add_s3_proxy/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] leited diese z.B in einen `S3` Cloudservice weiter. Die aktuelle Web-Browser App liest die Daten dann dort aus und stellt diese als Chart dar.
+
+image::12_chart.png[Chart im Web-Browser]  
+
+Man muss klar erwähnen, dass es auch bei LTE-M und NB-IoT Funklöcher gibt, also Orte, wo der Empfang schlecht ist oder kein Empfang möglich ist. Wenn man sich die Enttäuschung die Waage vergeblich aufzustellen sparen will, kann mit einem link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91[Thingy:91] und einem Android Smart Phone auch vorab testen, ob man Empfang hat und welche Signalstärke man bekommt.
+ 
+Der Applikations Mikrocontroller des nRF9160 wird in C programmmiert. Das Embedded Betriebssystem ist link:https://www.zephyrproject.org/[Zephyr]. Die Applikation für die Waage findet man in meinem link:https://github.com/boaks/zephyr-coaps-client[Zephyr - CoAPs Demo Client]. Näheres zur Konfiguration kann man dann dort in link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/MOBILEBEEHIVESCALE.md/[Mobile-Beehive-Scale]. Die Applikation ist bzgl. der Waage eher eine Entwicklungsversion als eine stabile Release.
+
+Die Bedienung und Anzeige ist relativ einfach.
+
+|===
+|Aktion|Funktion 
+
+2+a|*Normalbetrieb*
+
+|Taster kurz drücken und loslassen ( < 5s)
+|Gewichte der Waagen ermitteln und senden. +
+Die LED wird blau und dann hellblau. Sobald sie grün wird hat das Modem Empfang. Blinkt es danach rot, trat ein Fehler auf. Blinkt es lila sucht das Modem ein Funknetzwerk. 
+
+|Taster lang drücken ( > 5s)
+|Setupbetrieb
+
+2+a|*Setupbetrieb*
+2+|Die Farbe wechselt alle 5s zwischen Grün und Blau
+
+|Taste bei Grün kurz drücken ( < 5s)
+|Kalibrierbetrieb
+
+|Taste bei Blau kurz drücken ( < 5s)
+|Sendbox neu starten
+
+|Taste lange drücken ( > 5s)
+|Setupbetrieb verlassen, in den Normalbetrieb wechseln 
+
+2+a|*Kalibrierbetrieb*
+2+|Die Kalibrierung erfolgt in 6 Schritten.
+|LED blink grün|Vorbereitung beide Waage für die 0kg-Punkt Kalibrierung
+|LED grün|Beide Waage kalibrieren den 0kg-Punkt
+|LED blink blau|Vorbereitung Waage 1 für die 10kg Kalibrierung
+|LED blau|Waage 1 kalibriert 10kg
+|LED blink hellblau|Vorbereitung Waage 2 für die 10kg Kalibrierung
+|LED hellblau|Waage 2 kalibriert 10kg
+
+2+|In den Vorbereitungsschritten mit blinkender LED wartet die
+Applikation auf einen Tastendruck um dann die jeweilige Kalibrierung durchzuführen.
+
+|Taste kurz drücken ( < 5s)
+|Kalibrierung duchführen. +
+Wechsel zum nächsten Vorbereitungschritt. Am Ende speichern und in den Normalbetrieb wechseln 
+
+|Taste lang drücken ( > 5s)
+|Kalibrierung abbrechen, speichern und in den Normalbetrieb wechseln 
+|===
+
+== Die Sendebox
+
+[cols="3*"]
+|===
+a|image::13_box.png[Sendebox leer] 
+a|image::14_sendbox_zusammengebaut.png[Sendbox zusammengebaut]
+a|image::15_sendbox_mit_waagen.png[Sendbox mit Waagen]
+|===
+
+Das erste Bild zeigt die leere Sendebox mit den 2 Kabeln für die ADCs/I2C und dem entsprechenden Einbaustecker für die 12mm Kabel. Das Flachbandkabel für die RGB-LED und den Taster sieht man ebenso. Im zweiten Bild sieht man, wie es aussieht, wenn die Platine, das Modem und die Sendbox zusammengebaut sind. Beim Battereienach ist es besser eines mit Deckel zu nehmen. Den muss man dann noch schließen bevor man den Deckel der Box ebenfalls schließt. Das letzte Bild zeigt dann, wie zwei Waagen angeschloßen werden.
+
+== Arbeitszeit
+
+Das hängt natürlich stark von der Bastel-Erfahrung ab. Ich denke, man sollte:
+
+* 1 Nachmittag für Bestellen und Besorgen
+* 1 Nachmittag für Wagge und ADC Platine
+* 1 Nachmittag für Sendbox, Platine und Gehäusebearbeitung
+* 1 Nachmittag für Fehlersuche :-)
+
+einplanen.
+ 
+== Bauteilliste
+
+Eine Liste mit Vorschlägen für die verwendeten Bauteilen und deren Bezugsquellen habe ich auch erstellt.
+Es gibt bei den einzelnen Bauteilen Alternativen und alternative Bezugsquellen.
+
+link:BAUTEILLISTE.adoc[Bauteilliste]
+
+
