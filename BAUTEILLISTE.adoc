@@ -24,6 +24,10 @@ a|link:https://www.digikey.de/en/products/detail/microchip-technology/AT24HC04B-
 a|link:https://www.reichelt.de/mks2-pet-kondensator-100-nf-10-63-vdc-rm-5-mks2-63-100n-p12349.html[Folien-Kondensator, reichelt.de]
 |0,29 Euro
 
+|Gehäuse, ca 50x50x15mm
+a|link:https://www.digikey.de/de/products/detail/bud-industries/CU-18421-B/5291576[Gehäuse, digikey.de]
+|3,37 Euro
+
 |Kabel, 2m, 12mm Buchse - offenes Ende
 a|link:https://www.reichelt.de/sensorleitung-m12-4-pol-ku-offenes-ende-2-m-lut-1200-004-2-p222963.html[Kabel, reichelt.de]
 |7,99 Euro
@@ -42,10 +46,10 @@ a|link:https://www.amazon.de/dp/B07HBP1167[Wägezelle, amazon.de]
 
 |Gesamtsumme je Waage
 |Einfache Ausführung
-a|*55 Euro*
+a|*60 Euro*
 |===
 
-Der mechanische Aufbau kann sich stark unterscheiden. Je nach Ausführung werden andere Wägezelle benötigt, auch mit ganz anderer Bauart wie z.B. Plattform Wägezelle, link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[CZL601 100kg]. Die Sensorhalter aus dem 3D-Drucker wurden mit link:halterung_fuer_waegezellen.stl[Halterung für Wägezellen] erstellt. Der Halter passt nicht nur für die Sensoren in der Bestellliste, sondern auch für link:https://www.kern-sohn.com/shop/de/produkte/messinstrumente/CK-50-Y4/[Kern CK 50-Y4]. Die Sensoren werden durch den Abstandshalter etwas von der Siebdruckplatten weg gehalten, was die Erwärmung durch Sonne über diese Platten verringert. Die Seite des Abstandshalters mit der Lücke ist für das Kabel vom `Kern CK 50-Y4` Sensor.  
+Der mechanische Aufbau kann sich stark unterscheiden. Je nach Ausführung werden andere Wägezelle benötigt, auch mit ganz anderer Bauart wie z.B. Plattform Wägezelle, link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[CZL601 100kg]. Die Sensorhalter aus dem 3D-Drucker wurden mit link:halterung_fuer_waegezellen.stl[Halterung für Wägezellen] erstellt. Der Halter passt nicht nur für die Sensoren in der Bestellliste, sondern auch für link:https://www.kern-sohn.com/shop/de/produkte/messinstrumente/CK-50-Y4/[Kern CK 50-Y4]. Die Sensoren werden durch den Abstandshalter etwas von der Siebdruckplatten weg gehalten, was die Erwärmung durch Sonne über diese Platten verringert. Die Seite des Abstandshalters mit der Lücke ist für das Kabel vom `Kern CK 50-Y4` Sensor.
  
 == Bauteilliste, Sendebox
 
@@ -71,7 +75,19 @@ a|Alternativ link:https://www.digikey.de/en/products/detail/unictron-technologie
 a|link:https://www.reichelt.de/einbausteckverbinder-m12-4-pol-stecker-schwarz-lut-1230-04-100-p347094.html[Einbaustecker, reichelt.de]
 |4,70 Euro (2x ?)
 
-|Gehäuse
+|Platinenstecker/Stiftleiste 4pol.
+a|link:https://www.reichelt.de/jst-stiftleiste-gerade-1x4-polig-xh-jst-xh4p-st-p185075.html[Platinenstecker, reichelt.de]
+|0,23 (2x)
+
+|Platinenstecker/Buchsengehäuse 4pol.
+a|link:https://www.reichelt.de/jst-buchsengehaeuse-1x4-polig-xh-jst-xh4p-bu-p185087.html[Buchsengehäuse, reichelt.de]
+|0,09 (2x)
+
+|Platinenstecker/Buchse
+a|link:https://www.reichelt.de/jst-crimpkontakt-buchse-xh-jst-xh-ckb-p185091.html[Buchse, reichelt.de]
+|0,15 (8x)
+
+|Gehäuse, 160x80x55mm
 a|link:https://www.reichelt.de/industriegehaeuse-160-x-80-x-55-mm-ip66-lichtgrau-5u320000-p324381.html[Gehäuse, reichelt.de]
 |8,80 Euro
 
