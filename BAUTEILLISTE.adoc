@@ -2,7 +2,7 @@
 
 :imagesdir: pictures
 
-= Mobile-Bienenstock-Waage, Bauteilliste
+= Mobile-Bienenstock-Waage, Bauteilliste, Herbst 2023
 Achim Kraus <achim.kraus@cloudcoap.net>
 v0.1, 2023-10-18
 
@@ -32,13 +32,21 @@ a|link:https://www.digikey.de/de/products/detail/bud-industries/CU-18421-B/52915
 a|link:https://www.reichelt.de/sensorleitung-m12-4-pol-ku-offenes-ende-2-m-lut-1200-004-2-p222963.html[Kabel, reichelt.de]
 |7,99 Euro
 
-|Wägezelle 4x 50kg (einfache Waagenausführung)
+|Personen Wägezelle 4x 50kg (einfache Waagenausführung)
 a|link:https://www.amazon.de/dp/B07HBP1167[Wägezelle, amazon.de]
-|9,99 Euro (10 Stück)
+|9,99 Euro (für 10 Stück, es werden nur 4 benötigt.)
+
+|Plattform Wägezelle 2x 100kg (alternativ, aufwendigere Waagenausführung)
+a|link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[Wägezelle, Tinkerforge]
+|14,00 Euro (2x)
+
+|Plattform Wägezelle 150kg (alternativ, aufwendigere Waagenausführung)
+a|link:https://www.bosche.eu/waagenkomponenten/waegezellen/plattform-waegezellen/plattform-waegezellen-h40a[Wägezelle, Bosche]
+|67,00 Euro
 
 |Siebdruckplatten 45x55cm
 |Baumarkt
-|35 Euro (2 Stück)
+|17 Euro (2x)
 
 3+a|
 
@@ -49,7 +57,11 @@ a|link:https://www.amazon.de/dp/B07HBP1167[Wägezelle, amazon.de]
 a|*60 Euro*
 |===
 
-Der mechanische Aufbau kann sich stark unterscheiden. Je nach Ausführung werden andere Wägezelle benötigt, auch mit ganz anderer Bauart wie z.B. Plattform Wägezelle, link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[CZL601 100kg]. Die Sensorhalter aus dem 3D-Drucker wurden mit link:halterung_fuer_waegezellen.stl[Halterung für Wägezellen] erstellt. Der Halter passt nicht nur für die Sensoren in der Bestellliste, sondern auch für link:https://www.kern-sohn.com/shop/de/produkte/messinstrumente/CK-50-Y4/[Kern CK 50-Y4]. Die Sensoren werden durch den Abstandshalter etwas von der Siebdruckplatten weg gehalten, was die Erwärmung durch Sonne über diese Platten verringert. Die Seite des Abstandshalters mit der Lücke ist für das Kabel vom `Kern CK 50-Y4` Sensor.
+Der mechanische Aufbau kann sich stark unterscheiden. Für den Aufbau mit den einfachen Personenwaagen Sensoren kann man sich Sensorhalter mit einem 3D-Drucker und link:halterung_fuer_waegezellen.stl[Halterung für Wägezellen] erstellen. Der Halter passt für die Sensoren in der Bestellliste und auch für link:https://www.kern-sohn.com/shop/de/produkte/messinstrumente/CK-50-Y4/[Kern CK 50-Y4]. Die Sensoren werden durch den Abstandshalter etwas von der Siebdruckplatten weg gehalten, was die Erwärmung durch Sonne über diese Platten verringert. Die Seite des Abstandshalters mit der Lücke ist für das Kabel vom `Kern CK 50-Y4` Sensor.
+
+Je nach Ausführung werden andere Wägezelle benötigt, auch in ganz anderer Bauart wie z.B. Plattform Wägezelle, link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[CZL601 100kg]. Mit solchen Plattform Wägezellen kann man entweder eine Standard-Plattform Aufbau nehmen, oder zwei solche Zelle für einen besonders robusten Aufbau nehmen. Man muss aber auf jeden Fall die maximale Belastung beachten, sonst gehen die Sensoren leicht kaputt (link:https://www.bosche.eu/media/pdf/03/f0/32/Hilfe-bei-der-Auswahl-von-Wa-gezellen-TIPP.pdf[Wägezellen Auswahl]).
+
+Mein Fokus liegt auf der Elektronik, daher führe ich diese unterschiedlichen Bauarten hier nicht auf. Man findet diese aber leicht im Web.
  
 == Bauteilliste, Sendebox
 
