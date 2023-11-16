@@ -1,10 +1,10 @@
-// Mobile-Bienenstock-Waage, Version 2.0, Oktober 2023
+// Mobile-Bienenstock-Waage, Version 2.0, November 2023
 
 :imagesdir: pictures
 
 = Mobile-Bienenstock-Waage
 Achim Kraus <achim.kraus@cloudcoap.net>
-v0.1, 2023-10-18
+v0.2, 2023-11-16
 
 Willkommen auf meiner Bastelanleitung für eine Mobile-Bienenstock-Waage.
 
@@ -15,7 +15,7 @@ Anfang 2023 habe ich dann basierend auf diesem Modem-Client meinen erste Bienens
 * mobiler Datenaustausch funktioniert von Batterie sehr gut
 * die Waage selber hat aber viel Verbesserungspotential
 
-Das hat dann zur einer neuen Bauart der Elektronik geführt. Ich möchte gleich hier einräumen, dass es genauere Waagen gibt. Mein Schwerpunkt liegt auf dem mobilen Einsatz.
+Das hat dann zur einer neuen Bauart der Elektronik geführt. Ich möchte gleich hier einräumen, dass es genauere Waagen gibt. Mein Schwerpunkt liegt auf dem mobilen Einsatz und dem Aufbau der Elektronik.
 
 * ADC wandert aus der Sendebox unter die Waage. Kurze Kabel zu den Dehnmesstreifen sind wichtig für eine geringere Temperaturabhängigkeit.
 * Kalibrierungsdaten müssen ebenfalls in die Waage. Sonst ist es sehr fehleranfällig, wenn die Waagen umziehen und vertauscht werden. Neu Kalibrieren ist auch einfacher, da man das dann mit jeder Sendbox durchführen kann und nicht die nehmen muss, mit der man dann die Waage im Feld wirklich betreibt.
@@ -32,7 +32,7 @@ Die Mobile-Bienenstock-Waage besteht aus einer `Sendbox` und der `Waage` selbst.
 
 In der `Sendbox` sind das LTE-M/NB-IoT Modem, der Mikrocontroller und die Batterien untergebracht. Ich benutze ein link:https://www.nordicsemi.com/products/nrf9160[nRF9160] als link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather]. Dieses Modem hat als Besonderheit bereits eine Mikrocontroller auf dem Modul, ein ARM Cortec M33 mit 1 mByte Flash und 256 kByte RAM. Als Batterien benutze ich gerne NiMh mit geringer Selbstentladung.
 
-Die `Waage` besteht dann aus einem `ADC`, einem `Speicher für die Kalibrierdaten`, den `Dehnmessstreifen` (in Form eins fertigen Sensors) und dem mechanischen Aufbau.
+Die Elektronik der `Waage` besteht dann aus einem `ADC`, einem `Speicher für die Kalibrierdaten`, den `Dehnmessstreifen` (als fertige Sensoren). Und natürlich dem mechanischen Aufbau, der aber wie eingangs schon erwähnt, nicht der Schwerpunkt dieser Bastelanleitung ist.
 
 == Der I2C ADC Wandler mit EEPROM
 
@@ -77,13 +77,13 @@ Der Anschluß `AV` (Analog Vin) des NAU7802 wird nicht benutzt, wir benutzen den
 Beim EEPROM bleiben `WP` (Write Protect, PIN 7) soweit `A1` und `A2` (PIN 2 und PIN 3) unbeschaltet bzw. diese können mit `GND` verbunden werden.
 Für das EEPROM habe ich den üblichen 0,100 µF Folienkondensator zwischen `GND` und `Vcc` zur Entkopplung benutzt. 
 
-Der DMS Sensor muss dann noch entsprechend mit ``E+``/``E-``/``A+``/``A-`` des NAU7802 verbunden werden. Man kann dazu entweder die beim Adafruit mitgelieferten Schraubklemmen benutzen oder die Leitungen anlöten. Die genau Verdrahtung ist weiter unten in <<die-waage>> beschrieben. Wenn alles gelötet ist sorgfälltig alle Flußmittelreste mit einem Reiniger entfernen.
+Der DMS Sensor muss dann noch entsprechend mit ``E+``/``E-``/``A+``/``A-`` des NAU7802 verbunden werden. Man kann dazu entweder die beim Adafruit mitgelieferten Schraubklemmen benutzen oder die Leitungen anlöten. Die genau Verdrahtung ist weiter unten in <<die-waage>> beschrieben. Wenn alles gelötet ist sorgfälltig alle Flußmittelreste mit einem Reiniger entfernen. Wenn ich Platinen im Freien nutze, versehe ich diese mit einem Schutzlack. Auch wenn diese natürlich in ein Gehäuse kommt.
 
 Der interne Spannungsregler des NAU7802 liefert gemäß dem Datenblatt maximal 10mA. Das passt für viele Sensoren, nicht aber wenn zwei Balkensensoren verbaut werden. Die brauchen je 6-8mA zusammen also mehr als 10mA. Aktuell betreibe ich solche Waagen außerhalb der Spezifikation des NAU7802. Vielleicht funktioniert es ja, wenn man nur alle Stunde für ein paar Sekunden anschaltet. 
 
 Wenn nicht, braucht man für diesen Fall einen externen Spanungsregler mit `ENable` Eingang, z.B. link:https://www.ti.com/lit/ds/symlink/lp2980-n.pdf[LP2980-N]. `E+` muss dann dort mit den `ENable` (On/OFF PIN 3) verbunden werden und `E+` der Sensoren mit dem Ausgang des Spannungsreglers. Man muss auch die Empfehlungen für zusätzlich Kondensatoren beachten, meist 1µF low ESR und 0,1µF Folienkondensator. Und man muss auch auf eine "low drop" Version achten. `Vcc` beträgt nur 3,3V und am Sensor sollte man 2,7-3,0V haben. Leider ist bei der Adafruit Version der Eingang für `REFP` nicht nutzbar, damit geht dann die ratiometrische Beschaltung des ADC-Boards verloren, wenn man den externen Spanungsregler über `E+` schalten möchte. Die ratiometrische Beschaltung sorgt sonst dafür, dass langsame Abweichungen in der analogen Spannung das Messergebnis nicht beeinflußen.
 
-Die 3,3V Versorgungsspannung ist ein Kompromis. Wenn man auf 5V hoch geht, dann sind die Messergebnisse genauer. Aber dazu muss man aus den Batterien diese zweite 5V Spannung ableiten. Und das mit möglichst geringem Ruhestrom. Oder schaltbar. Daher habe ich mich für die einfache Variante mit 3,3V entschieden.
+Die 3,3V Versorgungsspannung ist ein Kompromis. Wenn man auf 5V hoch geht, dann sind die Messergebnisse genauer. Aber dazu muss man aus den Batterien diese zweite 5V Spannung ableiten, und das mit möglichst geringem Ruhestrom. Oder 4 anstatt 3 AA Batterien nehmen. Ich habe mich erst einmal für die einfache Variante mit 3,3V entschieden.
 
 == Die Platine der Sendebox
 
@@ -222,15 +222,44 @@ a|image::8_verkabelung.png[Waage Verkabelung]
 a|image::9_ADC_verkabelung.png[ADC Verkabelung]
 |===
 
-Die abgebildete Waage ist ein einfacher Aufbau mit 4x Wägezellen für je 50Kg. Diese müssen zu einer link:https://de.wikipedia.org/wiki/Wheatstonesche_Messbr%C3%BCcke[Wheatstone-Brücke] verbunden werden. Dazu verbindet man jeweils die Schwarzen und Weißen Drähte. Über die Roten werden dann ``E+``/``E-``/``A+``/``A-`` des NAU7802 verbunden, siehe Abbildung oben. Wichtig ist, das jeweils die Sensoren für ``E+`` und ``E-`` so wie ``A+`` und ``A-`` gegenüber liegen. Liegen diese nebeneinander, dann funktioniert es nicht. Verwechselt man nur ``+`` und ``-`` dann sieht man das daran, dass bei Belastung der angezeigte Wert abnimmt. Dann einach eines der ``+`` und ``-`` Paare tauschen und dann funktioniert es.
+Die abgebildete Waage ist ein einfacher Aufbau mit 4x Halbbrücken Wägezellen für je 50Kg. Diese Wägezellen werden normalerweise für Personenwaagen benutzt.
+
+Diese Halbbrücken Wägezellen müssen zu einer link:https://de.wikipedia.org/wiki/Wheatstonesche_Messbr%C3%BCcke[Wheatstone-Brücke] verbunden werden. Dazu verbindet man jeweils die Schwarzen und Weißen Drähte. Über die Roten werden dann ``E+``/``E-``/``A+``/``A-`` des NAU7802 verbunden, siehe Abbildung oben. Wichtig ist, das jeweils die Sensoren für ``E+`` und ``E-`` so wie ``A+`` und ``A-`` gegenüber liegen. Liegen diese nebeneinander, dann funktioniert es nicht. Verwechselt man nur ``+`` und ``-`` dann sieht man das daran, dass bei Belastung der angezeigte Wert abnimmt. Dann einach eines der ``+`` und ``-`` Paare tauschen und dann funktioniert es.
 
 Aktuell ist die Waage ein Prototyp. Die Sensoren werden mit Kunststoffgehäusen aus dem 3D Drucker gehalten, die Kabel mit Klebebänder fixiert. Das wird sich noch ändern, wenn die Waagen sich mehr bewähren. Die ADC Platine muss auch in ein Gehäuse, sonst wird es bei Regen schnell kritisch.
 
-Diese einfachen Sensoren sind für Personenwaagen ausgelegt, bei Dauerbelastung im Freien kommt es vor, dass man öfter die Sensore als die Batterien tauschen muss. Besonders bei sehr schweren Bienenstöcken (>> 50kg) oder wenn mit Nageschäden (Mäuse) gerechnet werden muss, funktionieren diese Sensoren eher kurz und nicht über viele Monate oder gar Jahre. Die Sensorhalter aus dem 3D-Drucker wurden mit link:halterung_fuer_waegezellen.stl[Halterung für Wägezellen] erstellt. Die Sensoren werden durch den Abstandshalter etwas von der Siebdruckplatten weg gehalten, was die Erwärmung durch Sonneeinstrahlung über diese Platten verringert. Trotzdem muss man bauartbedingt mit größeren Abweichungen rechnen (\+/- 1kg), wenn die Waage in der Sonne steht. Berücksichtigt man dann eine stellenweise Erwärmung (50° in der Sonne aber 25° im Schatten), dann kann diese temperaturbedingt Abweichungen nicht kompensiert werden.
+Diese einfachen Sensoren sind für Personenwaagen ausgelegt, bei Dauerbelastung im Freien kommt es vor, dass man öfter die Sensore als die Batterien tauschen muss. Besonders bei sehr schweren Bienenstöcken (>> 50kg) oder wenn mit Nageschäden (Mäuse) gerechnet werden muss, funktionieren diese Sensoren eher kurz und nicht über viele Monate oder gar Jahre. Auch die Abdichtung der einfachen Sensore gegen Regen hält nicht ewig. Die Sensorhalter aus dem 3D-Drucker wurden mit link:halterung_fuer_waegezellen.stl[Halterung für Wägezellen] erstellt. Die Sensoren werden durch den Abstandshalter etwas von der Siebdruckplatten weg gehalten, was die Erwärmung durch Sonneeinstrahlung über diese Platten verringert. Trotzdem muss man bauartbedingt mit größeren Abweichungen rechnen (\+/- 1kg), wenn die Waage in der Sonne steht. Berücksichtigt man dann eine stellenweise Erwärmung (50° in der Sonne aber 25° im Schatten), dann kann diese temperaturbedingt Abweichungen nicht kompensiert werden.
 
-Für mich hat diese Aufbau denoch seine Berechtigung. Er ist einfach und als erster Einstieg meiner Ansicht nach geeignet. Wer dann präzisere Waagen oder haltbarere Waagen möchte, tauscht die Sensoren aus. Die ADC Platine und die Sendbox bleiben die selben. Wenn man z.B. Balkensensoren nimmt, dann ist auf der Rückseite der NAU7802/Adafruit Platine angegeben, wie man die Farben jeweils anschließt. Das Bild oben rechts zeigt die Rückseite der NAU7802/Adafruit Platine. 
+Für mich hat diese Aufbau denoch seine Berechtigung. Er ist einfach und als erster Einstieg meiner Ansicht nach geeignet. Wer dann präzisere Waagen oder haltbarere Waagen möchte, kann den Aufbau der Waage später noch anpassen und die Sensoren ersetzen. Die ADC Platine, die Sendbox und die Platten der Waage bleiben die selben. Wenn man z.B. einen <<waagenaufbau-mit-2-plattform-wägezellen>> nimmt, dann bekommt man eine besser Genauigkeit und Haltbarkeit. Aber das hat auch seinen höheren Preis. Auf der Rückseite der NAU7802/Adafruit Platine ist übrigens angegeben, wie man die Farben der Leitungen eines Plattform Wägezelle jeweils anschließt. Das Bild oben rechts zeigt die Rückseite der NAU7802/Adafruit Platine. 
 
 Was ich beim Basteln als besondere Herausforderung empfunden habe ist das Kalibrieren. Der eigentlich Vorgang ist im nächsten Abschnitt erläutert. Das Problem ist, dass man ein 10 kg Gewicht für eine sogenannte 2-Punkt Kalibrierung benötigt. Punkt 1 ist dann 0 kg und Punkt 2 10 kg. Wenn das absolute Gewicht nicht so wichtig ist, kann man natürlich auch einfach etwas nehmen, was in etwa 10 kg hat. Durch Temperaturschwankungen und die Dauerbelastung ist das absolute Gewicht ohnehin eher sehr relativ (da liegt man schnell 1 kg daneben) aber der Verlauf über mehrere Tage hinweg ist gut sichtbar.  
+
+== Waagenaufbau mit 2 Plattform Wägezellen
+
+[cols="2*"]
+|===
+a|image::16_waage_2.png[Untere Platte mit Aluwinkel 5mm und Wägezellen] 
+a|image::17_waage_2.png[Untere Platte mit Aluwinkel 5mm und Wägezellen montiert] 
+
+a|image::18_waage_2.png[Obere Platte mit Aluwinkel 2mm] 
+a|image::19_waage_2.png[Zusammengesetzte Waage] 
+|===
+
+Ein sehr ähnliche Bauform wird oft mit dem Name "Double" bezeichnet. 
+
+Die Waage besteht aus 2 Plattform Wägezellen, die der Waage ein besondere Stabilität und Unempfindlichkeit beim Aufsetzen von Lasten gibt. Wichtig ist, dass die Wägezellen sehr schlüssig und stabil mit den Aluwinkeln (5mm) verschraubt werden, sonst bekommt man anstatt einer Waage eine Wippe. Die obere Platte wird mit kleineren Winkeln (2mm) gegen verrutschen gesichert. Hier muss man darauf achten, dass diese Haltewinkel (2mm) nur an den oberen Waagenwinkeln anstoßt, sonst verfälscht die Reibung das gemessene Gewicht. Daher sind zwei der Winkel 50cm und die anderen zwei mit 49cm etwas kürzer. Die kleineren Winkel (2mm) für die untere Platte schließen den Kasten ab. Wer das nicht benötigt, kann diese Winkel auch weg lassen.  
+
+Für die Schraubenköpfe, die die stabilen Aluwinkel mit der Wägezelle verbinden, muss man in die Platten jeweils Aussparungen bohren.  
+
+[cols="1*"]
+|===
+a|.Anordung der Winkel, Distanzplatten und Wägezelle 
+image::20_waage_2.svg[Anordnung, 200]
+|===
+
+Die Anordnung der Winkel, der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die 5mm Aluwinkel gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen der Wägezelle (bei meiner 22mm), den Distanzplatten (oben 2mm, unten 3mmm, benötigt man, damit die Wägezelle auslenken kann), und der Innenhöhe des Aluwinkel (25mm bei einem 30x50x5mm Winkel). Bei mir ergeben also die 22+3+2mm := 27mm und somit mit dem 25mm des Winkels eine Begrenzung der Auslenkung auf 2mm.
+
+Vielleicht findet der eine oder andere die Anordnung der Winkel seltsam. Ich erreiche damit zum einen nach außen (links) eine möglichst geschlossen Form zu bilden und zum anderen nach innen (rechts) offen zu sein für das Kabel, das aus der Wägezelle kommt und mit der ADC-Platine verbunden werden muss.
 
 == Das Modem
 
