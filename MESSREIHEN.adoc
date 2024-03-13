@@ -12,7 +12,7 @@ Waagen bauen stellt sich dann doch als nicht so einfach raus. Viele Komponenten 
   
 Der erste Faktor, die Abweichung bei Dauerbelastung wird `Creep` genannt. Die Temperaturanweichung wird in eine 0-Punktverschieben und eine Faktorveränderung angegeben.
 
-[cols="3*"]
+[cols="4*"]
 |===
 |Wägezelle|Creep|Temp. 0-Punkt|Temp. Faktor
 
@@ -40,7 +40,7 @@ Auch die Präzision des ADC hängt von einigen Faktoren ab. Die gängigen ADC f�
 
 ## Messreihen
 
-Vor ein paar Monaten hatte ich den Plan, hier diverse Messreichen aufzuführen. Aber zumindest bei meinen Tests stellte sich raus, dass man sich da ganz schön einfach selber täuschen kann. Siehe meine Beiträge in link:https://community.hiveeyes.org/t/diskussion-zum-nuvoton-nau7802-24bit-2ch-adc/3237/29[Hiveeyes - Diskussion zum Nuvoton NAU7802 24bit 2ch ADC].
+Vor ein paar Monaten hatte ich den Plan, hier diverse Messreichen aufzuführen. Aber zumindest bei meinen Tests stellte sich raus, dass man sich da ganz schön einfach selber täuschen kann. Siehe meine Beiträge in link:https://community.hiveeyes.org/t/diskussion-zum-nuvoton-nau7802-24bit-2ch-adc/3237/25[Hiveeyes - Diskussion zum Nuvoton NAU7802 24bit 2ch ADC].
 
 Ich plane inzwischen auch keine Temperatur-Kompensation mehr. Bei den Waagen (2xE120A 100kg pro Waage), die ich zu Tests auf meinem Rasen vor dem Haus betreibe, schwankt das gemeldet Gewicht mehr in Abhängigkeit vom Regen, als von der Temperatur. Wenn sich im Sommer eine Trockenperiode zeigt, dann möchte ich eine Messreihe erstellen, damit man die Temperaturabweichung bei ca. 487 kg Belastung ermitteln kann. 
 
