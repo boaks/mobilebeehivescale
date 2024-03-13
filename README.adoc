@@ -85,6 +85,10 @@ Wenn nicht, braucht man für diesen Fall einen externen Spanungsregler mit `ENab
 
 Die 3,3V Versorgungsspannung ist ein Kompromis. Wenn man auf 5V hoch geht, dann sind die Messergebnisse genauer. Aber dazu muss man aus den Batterien diese zweite 5V Spannung ableiten, und das mit möglichst geringem Ruhestrom. Oder 4 anstatt 3 AA Batterien nehmen. Ich habe mich erst einmal für die einfache Variante mit 3,3V entschieden.
 
+Anmerkung: leider stellte sich raus, dass das link:https://www.microchip.com/en-us/product/at24hc04b[AT24HC04B EEPROM] einen I2C Adress-Konflikt mit dem auf der link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather] verbauten Uhrenchip hat. Wenn man die oberen 256 Bytes des EEPROM anspricht, dann wird aus der 0x50 I2C Adresse des EEPROM die 0x51 was aber die des link:https://www.nxp.com/products/analog-and-mixed-signal/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-and-ic-bus:PCF85063A[PCF85063A I2C clock] ist. Daher werden nun nur die unteren 256 Bytes genutzt.
+
+Ich empfehle, die Kabellänge auch nicht länger als 2m (eher kürzer) zu wählen. Ansonsten empfiehlt es sich, die 10k Ohm I2C Pull-up Widerstände des link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[NAU7802 Modul von Adafruit] mit zusätzlichen 4,7k Ohm Widerständen auf der Platine zu verringern. Aber auch damit kann man keine 5m betreiben.
+
 == Die Platine der Sendebox
 
 [cols="2*"]
@@ -247,7 +251,7 @@ a|image::19_waage_2.png[Zusammengesetzte Waage]
 
 Ein sehr ähnliche Bauform wird oft mit dem Name "Double" bezeichnet. 
 
-Die Waage besteht aus 2 Plattform Wägezellen, die der Waage ein besondere Stabilität und Unempfindlichkeit beim Aufsetzen von Lasten gibt. Wichtig ist, dass die Wägezellen sehr schlüssig und stabil mit den Aluwinkeln (5mm) verschraubt werden, sonst bekommt man anstatt einer Waage eine Wippe. Die obere Platte wird mit kleineren Winkeln (2mm) gegen verrutschen gesichert. Hier muss man darauf achten, dass diese Haltewinkel (2mm) nur an den oberen Waagenwinkeln anstoßt, sonst verfälscht die Reibung das gemessene Gewicht. Daher sind zwei der Winkel 50cm und die anderen zwei mit 49cm etwas kürzer. Die kleineren Winkel (2mm) für die untere Platte schließen den Kasten ab. Wer das nicht benötigt, kann diese Winkel auch weg lassen.  
+Die Waage besteht aus 2 Plattform Wägezellen, die der Waage ein besondere Stabilität und Unempfindlichkeit beim Aufsetzen von Lasten geben. Wichtig ist, dass die Wägezellen sehr schlüssig und stabil mit den Aluwinkeln (5mm) verschraubt werden, sonst bekommt man anstatt einer Waage eine Wippe. Die obere Platte wird mit kleineren Winkeln (2mm) gegen verrutschen gesichert. Hier muss man darauf achten, dass diese Haltewinkel (2mm) nur an den oberen Waagenwinkeln anstoßt, sonst verfälscht die Reibung das gemessene Gewicht. Daher sind zwei der Winkel 50cm und die anderen zwei mit 49cm etwas kürzer. Die kleineren Winkel (2mm) für die untere Platte schließen den Kasten ab. Wer das nicht benötigt, kann diese Winkel auch weg lassen.  
 
 Für die Schraubenköpfe, die die stabilen Aluwinkel mit der Wägezelle verbinden, muss man in die Platten jeweils Aussparungen bohren.  
 
@@ -257,7 +261,7 @@ a|.Anordung der Winkel, Distanzplatten und Wägezelle
 image::20_waage_2.svg[Anordnung, 200]
 |===
 
-Die Anordnung der Winkel, der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die 5mm Aluwinkel gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen der Wägezelle (bei meiner 22mm), den Distanzplatten (oben 2mm, unten 3mmm, benötigt man, damit die Wägezelle auslenken kann), und der Innenhöhe des Aluwinkel (25mm bei einem 30x50x5mm Winkel). Bei mir ergeben also die 22+3+2mm := 27mm und somit mit dem 25mm des Winkels eine Begrenzung der Auslenkung auf 2mm.
+Die Anordnung der Winkel, der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die 5mm Aluwinkel selbst gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen der Wägezelle (bei meiner 22mm), den Distanzplatten (oben 2mm, unten 3mmm, benötigt man, damit die Wägezelle auslenken kann), und der Innenhöhe des Aluwinkel (25mm bei einem 30x50x5mm Winkel). Bei mir ergeben also die 22+3+2mm := 27mm und somit mit dem 25mm des Winkels eine Begrenzung der Auslenkung auf 2mm.
 
 Vielleicht findet der eine oder andere die Anordnung der Winkel seltsam. Ich erreiche damit zum einen nach außen (links) eine möglichst geschlossen Form zu bilden und zum anderen nach innen (rechts) offen zu sein für das Kabel, das aus der Wägezelle kommt und mit der ADC-Platine verbunden werden muss.
 
