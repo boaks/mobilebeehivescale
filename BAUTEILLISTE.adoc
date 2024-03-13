@@ -48,12 +48,20 @@ a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
 |9 Euro (zzgl. Versand)
 
-|Plattform Wägezelle 2x 100kg (alternativ, aufwendigere Waagenausführung)
-a|link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[Wägezelle, Tinkerforge]
+|Plattform Wägezelle CZL601 2x 100kg (alternativ, aufwendigere Waagenausführung)
+a|link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[Wägezelle, Tinkerforge, Temperaturkompenstaion schlecht]
 |14,00 Euro (2x)
 
-|Plattform Wägezelle 150kg (alternativ, aufwendigere Waagenausführung)
-a|link:https://www.bosche.eu/waagenkomponenten/waegezellen/plattform-waegezellen/plattform-waegezellen-h40a[Wägezelle, Bosche]
+|Plattform Wägezelle E110A 2x 100kg (alternativ, aufwendigere Waagenausführung)
+a|link:https://www.vechta-waagen.com/shop/produkt/single-point-waegezelle-e110a/[Wägezelle, Vechta-Waagen, Temperaturkompenstaion]
+|24,00 Euro (2x)
+
+|Plattform Wägezelle E120A 2x 100kg (alternativ, aufwendigere Waagenausführung)
+a|link:https://www.vechta-waagen.com/shop/produkt/single-point-waegezelle-e120a/[Wägezelle, Vechta-Waagen, Test steht aus]
+|24,00 Euro (2x)
+
+|Plattform Wägezelle H40A 150kg (alternativ, aufwendigere Waagenausführung)
+a|link:https://www.bosche.eu/waagenkomponenten/waegezellen/plattform-waegezellen/plattform-waegezellen-h40a[Wägezelle, Bosche, Test steht aus]
 |67,00 Euro
 
 3+a|
