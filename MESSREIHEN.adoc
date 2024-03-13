@@ -1,0 +1,46 @@
+// Mobile-Bienenstock-Waage, Version 2.0, März 2024
+
+:imagesdir: pictures
+
+= Mobile-Bienenstock-Waage, Messreihen
+Achim Kraus <achim.kraus@cloudcoap.net>
+v0.1, 2023-12-05
+
+Waagen bauen stellt sich dann doch als nicht so einfach raus. Viele Komponenten sind für andere Anwendungen gedacht. Normale Waage, z.B. Personen-Waagen werden meist nur für eine kurzen Zeitraum zum wiegen benutzt. Und meist bei sehr ähnlichen Temperaturen. Eine Bienenstockwaage wird aber über lange Zeit belastet und im Freien sind die Temperaturschwankungen erheblich.
+  
+## Wägezellen
+  
+Der erste Faktor, die Abweichung bei Dauerbelastung wird `Creep` genannt. Die Temperaturanweichung wird in eine 0-Punktverschieben und eine Faktorveränderung angegeben.
+
+[cols="3*"]
+|===
+|Wägezelle|Creep|Temp. 0-Punkt|Temp. Faktor
+
+||%F.S/30min|%F.S/10°C|%F.S/10°C
+
+|CK-50-Y4 4x50kg|0,05|0,05|0,05
+
+|CZL601 100kg|0,019|0,019|0,016
+
+|E120A 100kg|0,015|0,017|0,016
+
+|E30A 200kg|0,016|0,018|0,018
+|===
+
+`%F.S` steht dabei für "Full-Scale" also Vollausschlag. z.B. bei 100kg und 0,05% ergibt das 50g.
+
+Gemäß dem Datenblättern sind die Plattform Wägezelle besser und geeignet und liegen dicht beieinander.
+Das spiegelt letztlich den Anwendungsfall und die Kostenoptimierung wieder. Wenn eine Personenwaage kurz vor dem Wiegen auf 0 gestellt wird, dann fallen Creep und die 0-Punktverschiebeung nicht ins "Gewicht". Bei einer Bienenstockwaage bedeutet dies dann, dass man das Gewicht mit dem des Vortages bei in etwas selber Temperatur vergleichen kann und so eine Entwicklung ablesen kann. Für mehr braucht es dann eben die besser geeigneten Plattformsensoren.
+
+Außer diesen Faktoren spielt auch noch die Erregerspannung eine Rolle. Die Ausgangsspannung, mit der man dann das Gewicht bestimmen kann, hängt eben von dieser Erregerspannung ab. Deshalb ist es gannz wichtig, dass diese Erregerspannung auch die Referenzspannung des ADC ist, sonst bekommt man hier schnell Fehler. Bleibt, dass man mit einer höheren Erregerspannung im Allgemeinen eine genauere Auflösung bekommt.
+
+## ADC
+
+Auch die Präzision des ADC hängt von einigen Faktoren ab. Die gängigen ADC für Waagen bieten meist eine Auflösung von bis zu 24 Bit an. Wenn man aber die Referenzspannung und den gewählten Verstärkungsfaktor hinzunimmt, dann geht diese Auflösung rasch runter. Bei dem benutzten NAU7802 kann man das der Tabelle 1.5.2 auf Seite 10 des Datenblatt entnehmen. Bei 3,3V und Verstärkungsfaktor (gain) 64 bleiben 17 Bit. Aussagen zur Temperaturstabilität konnte ich nicht finden. Der NAU7802 verfügt aber über eigene Temperatursensoren und ermöglich somit ein etwaige Kompensation.
+
+## Messreihen
+
+Vor ein paar Monaten hatte ich den Plan, hier diverse Messreichen aufzuführen. Aber zumindest bei meinen Tests stellte sich raus, dass man sich da ganz schön einfach selber täuschen kann. Siehe meine Beiträge in link:https://community.hiveeyes.org/t/diskussion-zum-nuvoton-nau7802-24bit-2ch-adc/3237/29[Hiveeyes - Diskussion zum Nuvoton NAU7802 24bit 2ch ADC].
+
+Ich plane inzwischen auch keine Temperatur-Kompensation mehr. Bei den Waagen (2xE120A 100kg pro Waage), die ich zu Tests auf meinem Rasen vor dem Haus betreibe, schwankt das gemeldet Gewicht mehr in Abhängigkeit vom Regen, als von der Temperatur. Wenn sich im Sommer eine Trockenperiode zeigt, dann möchte ich eine Messreihe erstellen, damit man die Temperaturabweichung bei ca. 487 kg Belastung ermitteln kann. 
+
