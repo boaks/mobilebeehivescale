@@ -261,7 +261,7 @@ a|.Anordung der Winkel, Distanzplatten und Wägezelle
 image::20_waage_2.svg[Anordnung, 200]
 |===
 
-Die Anordnung der Winkel, der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die 5mm Aluwinkel selbst gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen der Wägezelle (bei meiner 22mm), den Distanzplatten (oben 2mm, unten 3mmm, benötigt man, damit die Wägezelle auslenken kann), und der Innenhöhe des Aluwinkel (25mm bei einem 30x50x5mm Winkel). Bei mir ergeben also die 22+3+2mm := 27mm und somit mit dem 25mm des Winkels eine Begrenzung der Auslenkung auf 2mm.
+Die Anordnung der Winkel, der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die 5mm Aluwinkel selbst gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen. Meine Wägezelle hat eine Höhe von 22mm. Es werden dann oben und unten Distanzplatten benötigt, damit der Sensor auslenken kann. Hier benutze ich oben 2mm und unten 3mmm. Das ergibt dann eine Höhe von 27mm insgesamt. Meine Aluwinkel haben eine Innenhöhe von 25mm. Somit is die Auslenkung auf 2mm begrenzt.
 
 Vielleicht findet der eine oder andere die Anordnung der Winkel seltsam. Ich erreiche damit zum einen nach außen (links) eine möglichst geschlossen Form zu bilden und zum anderen nach innen (rechts) offen zu sein für das Kabel, das aus der Wägezelle kommt und mit der ADC-Platine verbunden werden muss.
 
