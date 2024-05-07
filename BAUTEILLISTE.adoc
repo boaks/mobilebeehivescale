@@ -1,10 +1,10 @@
-// Mobile-Bienenstock-Waage, Version 2.0, Oktober 2023
+// Mobile-Bienenstock-Waage, Version 2.0, Mai 2024
 
 :imagesdir: pictures
 
-= Mobile-Bienenstock-Waage, Bauteilliste, Herbst 2023
+= Mobile-Bienenstock-Waage, Bauteilliste, Frühling 2024
 Achim Kraus <achim.kraus@cloudcoap.net>
-v0.1, 2023-10-18
+v0.3, 2024-05-07
 
 == Bauteilliste, Waage 
 
@@ -40,30 +40,6 @@ a|link:https://www.reichelt.de/sensorleitung-m12-4-pol-ku-offenes-ende-2-m-lut-1
 a|link:https://www.amazon.de/dp/B07HBP1167[Wägezelle, amazon.de]
 |9,99 Euro (für 10 Stück, es werden nur 4 benötigt.)
 
-|Aluwinkel 30x50x5mm, 2x50cm und 2x49cm
-a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
-|30 Euro (zzgl. Versand ca. 14 Euro je Bestellung)
-
-|Aluwinkel 25x25x2mm, 4x44cm
-a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
-|9 Euro (zzgl. Versand)
-
-|Plattform Wägezelle CZL601 2x 100kg (alternativ, aufwendigere Waagenausführung)
-a|link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[Wägezelle, Tinkerforge, Temperaturkompenstaion schlecht]
-|14,00 Euro (2x)
-
-|Plattform Wägezelle E110A 2x 100kg (alternativ, aufwendigere Waagenausführung)
-a|link:https://www.vechta-waagen.com/shop/produkt/single-point-waegezelle-e110a/[Wägezelle, Vechta-Waagen, Temperaturkompenstaion]
-|24,00 Euro (2x)
-
-|Plattform Wägezelle E120A 2x 100kg (alternativ, aufwendigere Waagenausführung)
-a|link:https://www.vechta-waagen.com/shop/produkt/single-point-waegezelle-e120a/[Wägezelle, Vechta-Waagen, Test steht aus]
-|24,00 Euro (2x)
-
-|Plattform Wägezelle H40A 150kg (alternativ, aufwendigere Waagenausführung)
-a|link:https://www.bosche.eu/waagenkomponenten/waegezellen/plattform-waegezellen/plattform-waegezellen-h40a[Wägezelle, Bosche, Test steht aus]
-|67,00 Euro
-
 3+a|
 
 '''
@@ -77,7 +53,70 @@ Der mechanische Aufbau unterscheidet sich je nach Waagentype stark.
 
 Für den Aufbau mit den einfachen Personenwaagen Sensoren kann man sich Sensorhalter mit einem 3D-Drucker und link:halterung_fuer_waegezellen.stl[Halterung für Wägezellen] erstellen. Der Halter passt für die Sensoren in der Bestellliste und auch für link:https://www.kern-sohn.com/shop/de/produkte/messinstrumente/CK-50-Y4/[Kern CK 50-Y4]. Die Sensoren werden durch den Abstandshalter etwas von der Siebdruckplatten weg gehalten, was die Erwärmung durch Sonne über diese Platten verringert. Die Seite des Abstandshalters mit der Lücke ist für das Kabel vom `Kern CK 50-Y4` Sensor.
 
-Für den Aufbau mit 2 Plattform Wägezelle, z.B. link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[CZL601 100kg], werden die Aluwinkel benötigt. Man muss aber auf jeden Fall die maximale Belastung beachten, sonst gehen die Sensoren leicht kaputt (link:https://www.bosche.eu/media/pdf/03/f0/32/Hilfe-bei-der-Auswahl-von-Wa-gezellen-TIPP.pdf[Wägezellen Auswahl]). Der Preis liegt dann, je nach Sensor, pro Waage um 80 Euro und mehr höher.
+== Bauteilliste, Waage mit Plattform Wägezellen 
+
+[cols="3*"]
+|===
+|Bauteil|Bezugsquelle|Preis (Herbst 2023)
+
+|Gehäuse, ca 80x40x20mm (alternativ)
+a|link:https://www.digikey.de/de/products/detail/hammond-manufacturing/1551KFLBK/2094805[Gehäuse, digikey.de]
+|3,58 Euro
+
+|Aluwinkel 30x50x5mm, 2x39,6cm (unten)
+a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
+|12,35 Euro (zzgl. Versand ca. 14 Euro je Bestellung)
+
+|Aluwinkel 25x50x5mm, 2x41cm (oben)
+a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
+|12,14 Euro (zzgl. Versand)
+
+|Aluwinkel 20x20x3mm, 2x51cm
+a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
+|5,55 Euro (zzgl. Versand)
+
+|Aluwinkel 20x20x3mm, 2x49,6cm
+a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
+|5,40 Euro (zzgl. Versand)
+
+|Zylinderschrauben A4-80, M6 20mm, 12 Stück
+a|link:https://www.schraubenhandel24.de/schrauben/gewindeschrauben/zylinderschrauben/din-912/din-912-zylinderschrauben-isk-edelstahl-a4-80/din-912-zylinderschrauben-edelstahl-a4-80-m6x20-200st[z.B. Schraubenhandel24.de]
+|22,61 Euro (200 St, zzgl. Versand)
+
+|Federringe A4, M6, 12 Stück
+a|link:https://www.schraubenhandel24.de/scheiben/federringe/din-7980/din-7980-federringe-edelstahl-a4/ca-din-7980-a-4-federringe-fuer-zylinderschrauben-6-100st[z.B. Schraubenhandel24.de]
+|5,68 Euro (100 St, zzgl. Versand)
+
+|Einschlagmuttern A2, M6 9mm, 4 Stück
+a|link:https://www.schraubenluchs.de/Einschlagmuttern-Edelstahl-A2[z.B. Schraubenluchs]
+|1,08 Euro (zzgl. Versand)
+
+|Spanplattenschrauben A4, 3,5x9, 5mm, 12 Stück
+|Baumarkt
+|7 Euro (50 St)
+
+|Plattform Wägezelle CZL601 2x 100kg (alternativ)
+a|link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[Wägezelle, Tinkerforge, Temperaturkompenstation]
+|14,00 Euro (2x)
+
+|Plattform Wägezelle E120A 2x 100kg (alternativ)
+a|link:https://www.vechta-waagen.com/shop/produkt/single-point-waegezelle-e120a/[Wägezelle, Vechta-Waagen, Temperaturkompenstation]
+|24,00 Euro (2x)
+
+|Plattform Wägezelle H40A 150kg (alternativ)
+a|link:https://www.bosche.eu/waagenkomponenten/waegezellen/plattform-waegezellen/plattform-waegezellen-h40a[Wägezelle, Bosche, Test steht aus]
+|67,00 Euro
+
+3+a|
+
+'''
+
+|Mehrpreis je Waage
+|Plattform Wägezellen Ausführung
+a|*80 Euro*
+|===
+
+Für den Aufbau mit 2 Plattform Wägezelle, z.B. link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[CZL601 100kg], werden Aluwinkel benötigt. Man muss aber auf jeden Fall die maximale Belastung beachten, sonst gehen die Sensoren leicht kaputt (link:https://www.bosche.eu/media/pdf/03/f0/32/Hilfe-bei-der-Auswahl-von-Wa-gezellen-TIPP.pdf[Wägezellen Auswahl]). Der Preis liegt dann, je nach Sensor, pro Waage um 80 Euro und mehr höher.
 
 Mein Fokus liegt auf der Elektronik, daher führe ich weitere Bauarten hier nicht auf. Man findet diese aber leicht im Web.
  
@@ -101,9 +140,13 @@ a|link:https://www.circuitdojo.com/products/nrf9160-feather[LTE Antenne, www.cir
 a|Alternativ link:https://www.digikey.de/en/products/detail/unictron-technologies-corporation/H2B4MH1F2F0100/9921462[LTE Antenne, digikey.de]
 |5,10 Euro
 
-|Einbaustecker, 50cm, 12mm Stecker
-a|link:https://www.reichelt.de/einbausteckverbinder-m12-4-pol-stecker-schwarz-lut-1230-04-100-p347094.html[Einbaustecker, reichelt.de]
+|Einbaustecker Kunststoff, 50cm, 12mm Stecker
+a|link:https://www.reichelt.de/einbausteckverbinder-m12-4-pol-stecker-schwarz-lut-1230-04-100-p347094.html[Einbaustecker Kunststoff, reichelt.de]
 |4,70 Euro (2x ?)
+
+|Einbaustecker metall, 50cm, 12mm Stecker (alternativ)
+a|link:https://www.reichelt.de/einbausteckverbinder-m12-4-pol-stecker-0-5-m-lut-1230-t16cw04-p223037.html[Einbaustecker Metall, reichelt.de]
+|5,99 Euro (2x ?)
 
 |Platinenstecker/Stiftleiste 4pol.
 a|link:https://www.reichelt.de/jst-stiftleiste-gerade-1x4-polig-xh-jst-xh4p-st-p185075.html[Platinenstecker, reichelt.de]

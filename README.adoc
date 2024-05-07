@@ -1,10 +1,10 @@
-// Mobile-Bienenstock-Waage, Version 2.0, November 2023
+// Mobile-Bienenstock-Waage, Version 2.0, Mai 2024
 
 :imagesdir: pictures
 
 = Mobile-Bienenstock-Waage
 Achim Kraus <achim.kraus@cloudcoap.net>
-v0.2, 2023-11-16
+v0.3, 2024-05-07
 
 Willkommen auf meiner Bastelanleitung für eine Mobile-Bienenstock-Waage.
 
@@ -97,7 +97,16 @@ a|image::4_sendbox_oben.png[Sendbox-Platine von oben]
 a|image::5_sendbox_unten.png[Sendbox-Platine von unten]
 |===
 
-Die zwei Hauptkomponenten, die auf diese Platine müssen, sind die link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather] und das Batterienfach, hier 3x AA. Die Verkabelung der Batterei ist trivial und auch die für die link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather] ist relativ einfach. Sie besteht aus der Stromversorgung von der Batterie, der Stromversorgung und I2C Bus zu den ADC Platinen, einer RGB LED sowie einem Taster. Die Platine unterstützt bis zu zwei Waagen, jede an einem eigenen I2C Bus (das ist beim NAU7802 leider notwendig). Die beiden I2C sind auf zwei 4 pol. Platinenstecker gelegt. Der Taster und die RGB LED auf einen 10 pol. Pfostenstecker. Die Aussparung in der Platine braucht man, um diese in der Box an der RGB LED und dem Taster vorbei aus- und einbauen zu können. Die verwendete Box hat die Abmessungen 160x80x55mm und erfüllt IP66. Wenn man eine andere Box benutzen möchte, muss man aufpassen, dass die beiden I2C Einbaustecker, die RGB-LED und der Taster entsprechend montiert werden können.   
+Die zwei Hauptkomponenten, die auf diese Platine müssen, sind die link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather] und das Batterienfach, hier 3x AA. Die Verkabelung der Batterei ist trivial und auch die für die link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather] ist relativ einfach. Sie besteht aus der Stromversorgung von der Batterie, der Stromversorgung und I2C Bus zu den ADC Platinen, einer RGB LED sowie einem Taster. Die Platine unterstützt bis zu zwei Waagen, jede an einem eigenen I2C Bus (das ist beim NAU7802 leider notwendig). Die beiden I2C sind auf zwei 4 pol. Platinenstecker gelegt. Der Taster und die RGB LED auf einen 10 pol. Pfostenstecker. Die Aussparung in der Platine braucht man, um diese in der Box an der RGB LED und dem Taster vorbei aus- und einbauen zu können. Die verwendete Box hat die Abmessungen 160x80x55mm und erfüllt IP66. Wenn man eine andere Box benutzen möchte, muss man aufpassen, dass die beiden I2C Einbaustecker, die RGB-LED und der Taster entsprechend montiert werden können.
+
+Die Platine muss entsprechend von 160x100mm auf 132x72mm zurecht gesägt werden. Die Aussparung mit 45x20mm wird benötige, da die Platine u.Z. bei eingebnauter LED und den Taster noch ausgebaut werden muss. Die Bohrungen für die Schrauben haben einen Durchmesser von 4,5mm.
+
+[cols="1*"]
+|===
+a|.Bohrplan Platine 
+image::18_platine_bohrungen.svg[Bohrplan, 530, link="./Bohrplaene.pdf"]
+|===
+
 
 |===
 |Beschreibung|nRF9160 feather|Komponente
@@ -219,52 +228,30 @@ Die zwei externen I2C Busse direkt an der nRF9160 Feather anzuschließen ist auc
 
 == Die Waage
 
-[cols="3*"]
-|===
-a|image::7_waage_unten.png[Waage von unten] 
-a|image::8_verkabelung.png[Waage Verkabelung] 
-a|image::9_ADC_verkabelung.png[ADC Verkabelung]
-|===
-
-Die abgebildete Waage ist ein einfacher Aufbau mit 4x Halbbrücken Wägezellen für je 50Kg. Diese Wägezellen werden normalerweise für Personenwaagen benutzt.
-
-Diese Halbbrücken Wägezellen müssen zu einer link:https://de.wikipedia.org/wiki/Wheatstonesche_Messbr%C3%BCcke[Wheatstone-Brücke] verbunden werden. Dazu verbindet man jeweils die Schwarzen und Weißen Drähte. Über die Roten werden dann ``E+``/``E-``/``A+``/``A-`` des NAU7802 verbunden, siehe Abbildung oben. Wichtig ist, das jeweils die Sensoren für ``E+`` und ``E-`` so wie ``A+`` und ``A-`` gegenüber liegen. Liegen diese nebeneinander, dann funktioniert es nicht. Verwechselt man nur ``+`` und ``-`` dann sieht man das daran, dass bei Belastung der angezeigte Wert abnimmt. Dann einach eines der ``+`` und ``-`` Paare tauschen und dann funktioniert es.
-
-Aktuell ist die Waage ein Prototyp. Die Sensoren werden mit Kunststoffgehäusen aus dem 3D Drucker gehalten, die Kabel mit Klebebänder fixiert. Das wird sich noch ändern, wenn die Waagen sich mehr bewähren. Die ADC Platine muss auch in ein Gehäuse, sonst wird es bei Regen schnell kritisch.
-
-Diese einfachen Sensoren sind für Personenwaagen ausgelegt, bei Dauerbelastung im Freien kommt es vor, dass man öfter die Sensore als die Batterien tauschen muss. Besonders bei sehr schweren Bienenstöcken (>> 50kg) oder wenn mit Nageschäden (Mäuse) gerechnet werden muss, funktionieren diese Sensoren eher kurz und nicht über viele Monate oder gar Jahre. Auch die Abdichtung der einfachen Sensore gegen Regen hält nicht ewig. Die Sensorhalter aus dem 3D-Drucker wurden mit link:halterung_fuer_waegezellen.stl[Halterung für Wägezellen] erstellt. Die Sensoren werden durch den Abstandshalter etwas von der Siebdruckplatten weg gehalten, was die Erwärmung durch Sonneeinstrahlung über diese Platten verringert. Trotzdem muss man bauartbedingt mit größeren Abweichungen rechnen (\+/- 1kg), wenn die Waage in der Sonne steht. Berücksichtigt man dann eine stellenweise Erwärmung (50° in der Sonne aber 25° im Schatten), dann kann diese temperaturbedingt Abweichungen nicht kompensiert werden.
-
-Für mich hat diese Aufbau denoch seine Berechtigung. Er ist einfach und als erster Einstieg meiner Ansicht nach geeignet. Wer dann präzisere Waagen oder haltbarere Waagen möchte, kann den Aufbau der Waage später noch anpassen und die Sensoren ersetzen. Die ADC Platine, die Sendbox und die Platten der Waage bleiben die selben. Wenn man z.B. einen <<waagenaufbau-mit-2-plattform-wägezellen>> nimmt, dann bekommt man eine besser Genauigkeit und Haltbarkeit. Aber das hat auch seinen höheren Preis. Auf der Rückseite der NAU7802/Adafruit Platine ist übrigens angegeben, wie man die Farben der Leitungen eines Plattform Wägezelle jeweils anschließt. Das Bild oben rechts zeigt die Rückseite der NAU7802/Adafruit Platine. 
-
-Was ich beim Basteln als besondere Herausforderung empfunden habe ist das Kalibrieren. Der eigentlich Vorgang ist im nächsten Abschnitt erläutert. Das Problem ist, dass man ein 10 kg Gewicht für eine sogenannte 2-Punkt Kalibrierung benötigt. Punkt 1 ist dann 0 kg und Punkt 2 10 kg. Wenn das absolute Gewicht nicht so wichtig ist, kann man natürlich auch einfach etwas nehmen, was in etwa 10 kg hat. Durch Temperaturschwankungen und die Dauerbelastung ist das absolute Gewicht ohnehin eher sehr relativ (da liegt man schnell 1 kg daneben) aber der Verlauf über mehrere Tage hinweg ist gut sichtbar.  
-
-== Waagenaufbau mit 2 Plattform Wägezellen
-
+ifdef::env-github[]
 [cols="2*"]
 |===
-a|image::16_waage_2.png[Untere Platte mit Aluwinkel 5mm und Wägezellen] 
-a|image::17_waage_2.png[Untere Platte mit Aluwinkel 5mm und Wägezellen montiert] 
-
-a|image::18_waage_2.png[Obere Platte mit Aluwinkel 2mm] 
-a|image::19_waage_2.png[Zusammengesetzte Waage] 
+a|image::7_waegezelle_1.png[Einfache Wägezelle,link="SIMPLESCALE.adoc"] 
+a|image::8_waegezelle_2.png[Plattform Wägezelle,link="DOUBLESCALE.adoc"] 
 |===
+endif::[]
 
-Ein sehr ähnliche Bauform wird oft mit dem Name "Double" bezeichnet. 
-
-Die Waage besteht aus 2 Plattform Wägezellen, die der Waage ein besondere Stabilität und Unempfindlichkeit beim Aufsetzen von Lasten geben. Wichtig ist, dass die Wägezellen sehr schlüssig und stabil mit den Aluwinkeln (5mm) verschraubt werden, sonst bekommt man anstatt einer Waage eine Wippe. Die obere Platte wird mit kleineren Winkeln (2mm) gegen verrutschen gesichert. Hier muss man darauf achten, dass diese Haltewinkel (2mm) nur an den oberen Waagenwinkeln anstoßt, sonst verfälscht die Reibung das gemessene Gewicht. Daher sind zwei der Winkel 50cm und die anderen zwei mit 49cm etwas kürzer. Die kleineren Winkel (2mm) für die untere Platte schließen den Kasten ab. Wer das nicht benötigt, kann diese Winkel auch weg lassen.  
-
-Für die Schraubenköpfe, die die stabilen Aluwinkel mit der Wägezelle verbinden, muss man in die Platten jeweils Aussparungen bohren.  
-
-[cols="1*"]
+ifndef::env-github[]
+[cols="2*"]
 |===
-a|.Anordung der Winkel, Distanzplatten und Wägezelle 
-image::20_waage_2.svg[Anordnung, 200]
+a|image::7_waegezelle_1.png[Einfache Wägezelle,link="SIMPLESCALE.html"] 
+a|image::8_waegezelle_2.png[Plattform Wägezelle,link="DOUBLESCALE.html"] 
 |===
+endif::[]
 
-Die Anordnung der Winkel, der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die 5mm Aluwinkel selbst gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen. Meine Wägezelle hat eine Höhe von 22mm. Es werden dann oben und unten Distanzplatten benötigt, damit der Sensor auslenken kann. Hier benutze ich oben 2mm und unten 3mmm. Das ergibt dann eine Höhe von 27mm insgesamt. Meine Aluwinkel haben eine Innenhöhe von 25mm. Somit is die Auslenkung auf 2mm begrenzt.
+Waagen kann man auf unterschiedlichste Weisen bauen. Man findet dazu auf den entsprechenden Internetseiten viele Anregungen.
 
-Vielleicht findet der eine oder andere die Anordnung der Winkel seltsam. Ich erreiche damit zum einen nach außen (links) eine möglichst geschlossen Form zu bilden und zum anderen nach innen (rechts) offen zu sein für das Kabel, das aus der Wägezelle kommt und mit der ADC-Platine verbunden werden muss.
+Ich selber habe mich mit zwei Bauarten versucht:
 
+Links eine sehr link:SIMPLESCALE.adoc[einfache Waage] mit 4x Halbbrücken Wägezellen für je 50Kg. Diese Wägezellen werden normalerweise für Personenwaagen benutzt. Insgesamt ein kosten günstiger Einstieg, mit begrenzter Haltbarkeit und das Gewicht ist deutlich Temperaturabhängigkeit.
+
+Rechts eine link:DOUBLESCALE.adoc[aufwendigere Waage] mit 2x Plattform Wägezellen für je 100Kg. Der Aufbau ist aufwendiger und deutlich teurer, liefert dafür das genauere Gewicht, besonders im Bezug auf die Temperaturabhängigkeit der Wägezellen.
+  
 == Das Modem
 
 [cols="2*"]
@@ -279,7 +266,7 @@ Das Modem unterstützt auch andere Protokolle, z.B. `HTTP(S)` oder `MQTT(S)`. Je
 
 Man kann die Daten auch weiterleiten, das link:https://github.com/boaks/californium/tree/add_s3_proxy/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] leited diese z.B in einen `S3` Cloudservice weiter. Die aktuelle Web-Browser App liest die Daten dann dort aus und stellt diese als Chart dar.
 
-image::12_chart.png[Chart im Web-Browser]  
+image::12_chart_2.png[Chart im Web-Browser]  
 
 Man muss klar erwähnen, dass es auch bei LTE-M und NB-IoT Funklöcher gibt, also Orte, wo der Empfang schlecht ist oder kein Empfang möglich ist. Wenn man sich die Enttäuschung die Waage vergeblich aufzustellen sparen will, kann mit einem link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91[Thingy:91] und einem Android Smart Phone auch vorab testen, ob man Empfang hat und welche Signalstärke man bekommt. Dazu habe ich ebenfalls ein Programm entwickelt, den link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md[Cellular Explorer] mit dem man die Netzwerklandschaft erkunden kann.
  
@@ -343,6 +330,20 @@ a|image::15_sendbox_mit_waagen.png[Sendbox mit Waagen]
 
 Das erste Bild zeigt die leere Sendebox mit den 2 Kabeln für die ADCs/I2C und dem entsprechenden Einbaustecker für die 12mm Kabel. Das Flachbandkabel für die RGB-LED und den Taster sieht man ebenso. Im zweiten Bild sieht man, wie es aussieht, wenn die Platine, das Modem und die Sendbox zusammengebaut sind. Beim Battereienfach ist es besser eines mit Deckel zu nehmen. Den muss man dann noch schließen bevor man den Deckel der Box ebenfalls schließt. Das letzte Bild zeigt dann, wie zwei Waagen angeschloßen werden.
 
+Wenn man das 160x80x55mm Gehäuse aus der <<Bauteilliste>> nimmt, und auch die Stecker, den Taster und das LED Gehäuse, dann benötigt man 2x 16mm Bohrungen für die Stecker, 1x 16mm für den Taster und 1x 8mm für das LED Gehäuse.
+
+[cols="2*"]
+|===
+a|.Bohrplan Vorderseite LED und Taster 
+image::16_gehause_bohrungen.svg[Bohrplan, 350, link="./Bohrplaene.pdf"]
+
+a|.Bohrplan Rückseite für Stecker 
+image::17_gehause_bohrungen.svg[Bohrplan, 350, link="./Bohrplaene.pdf"]
+
+|===
+
+Die 16mm Bohrungen waren für mich die schwersten. Ich habe mit einem Kegelbohrer die besten Ergebnisse. Ich habe den bei 16mm mit einem Filzstift marktiert und dann mit der Ständerbohrmaschine gebohrt. Das letzte kleine bischen habe ich dann mit den Kegelbohrer von der anderen Seite mit Hand aufgebohrt. Damit passen dann die Dichtungen der Stecker und des Taster gut in das Loch.
+
 == Arbeitszeit
 
 Das hängt natürlich stark von der Bastel-Erfahrung ab. Ich denke, man sollte:
@@ -359,6 +360,16 @@ einplanen.
 Eine Liste mit Vorschlägen für die verwendeten Bauteilen und deren Bezugsquellen habe ich auch erstellt.
 Es gibt bei den einzelnen Bauteilen Alternativen und alternative Bezugsquellen.
 
+ifdef::env-github[]
 link:BAUTEILLISTE.adoc[Bauteilliste]
+endif::[]
+
+ifndef::env-github[]
+link:BAUTEILLISTE.html[Bauteilliste]
+endif::[]
+
+== Software System Overview (English)
+
+link:MobileBeehiveScale.pdf[Mobile-BeeHiveScale]
 
 

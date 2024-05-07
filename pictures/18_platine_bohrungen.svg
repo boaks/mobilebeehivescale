@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 160 100">
+
+<text x="20" y="6" font-size="4px">Sendbox Platine</text>
+
+<pattern id="schrafur" x="10" y="10" width="10" height="10" patternUnits="userSpaceOnUse" >
+      <path d="M0,0 l10,5 M0,5 l10,5 M0,10 l2,1 M10,0 l2,1" stroke="lightgrey" fill="none" stroke-linecap="round"/>
+</pattern>
+
+<rect stroke="black" fill="none" stroke-width="1" x="15" y="15" rx="1" ry="1" width="132" height="72" stroke-linejoin="round" />
+<rect stroke="black" fill="url(#schrafur)" stroke-width="1" x="27" y="15" rx="1" ry="1" width="45" height="20" stroke-linejoin="round" />
+
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="120" y1="22" x2="145" y2="22" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="17" y1="80" x2="145" y2="80" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="141.5" y1="17" x2="141.5" y2="85" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="20" y1="17" x2="20" y2="85" stroke-dasharray="3 3" />
+
+<circle stroke="black" fill="none" stroke-width="1" cx="20" cy="22" r="2"/>
+<circle stroke="black" fill="none" stroke-width="1" cx="20" cy="80" r="2"/>
+
+<circle stroke="black" fill="none" stroke-width="1" cx="141.5" cy="22" r="2"/>
+<circle stroke="black" fill="none" stroke-width="1" cx="141.5" cy="80" r="2"/>
+
+<text x="138" y="20" font-size="4px" text-anchor="end">4,5mm &#xD8;</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M15,10 l2,2 M15,10 l2,-2 M15,10 L147,10 l-2,2 M147,10 l-2,-2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="81" y="8" font-size="4px" text-anchor="middle">132mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M10,15 l2,2 M10,15 l-2,2 M10,15 L10,87 l2,-2 M10,87 l-2,-2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1" y="54" font-size="4px" >72mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M125,23 l1,1 M125,23 l-1,1 M125,23 L125,79 l1,-1 M125,79 l-1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="127" y="54" font-size="4px" >58mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M125,81 l1,1 M125,81 l-1,1 M125,81 L125,86 l1,-1 M125,86 l-1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="127" y="85" font-size="4px" >7mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M16,75 l1,1 M16,75 l1,-1 M16,75 L19,75 l-1,1 M19,75 l-1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="17" y="73" font-size="4px">5mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M21,75 l1,1 M21,75 l1,-1 M21,75 L140.5,75 l-1,1 M140.5,75 l-1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="77" y="73" font-size="4px">121,5mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M16,34 l1,1 M16,34 l1,-1 M16,34 L26,34 l-1,1 M26,34 l-1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="22" y="40" font-size="4px">12mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M28,30 l1,1 M28,30 l1,-1 M28,30 L71,30 l-1,1 M71,30 l-1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="40" y="28" font-size="4px" text-anchor="middle">45mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M67,16 l1,1 M67,16 l-1,1 M67,16 L67,34 l1,-1 M67,34 l-1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="65" y="25" font-size="4px" text-anchor="end">20mm</text>
+
+</svg>

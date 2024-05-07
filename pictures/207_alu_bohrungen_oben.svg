@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 420 70">
+
+<text x="20" y="8" font-size="6px" >Oberer starker Aluwinkel, 25x50x5mm, 410mm, 2x</text>
+
+<rect stroke="black" fill="gainsboro" stroke-width="1" x="5" y="15" width="410" height="50" stroke-linejoin="round" />
+<rect stroke="black" fill="silver" stroke-width="1" x="5" y="15" width="410" height="5" stroke-linejoin="round" />
+
+<line stroke="white" fill="none" stroke-width="1" x1="7" y1="37" x2="172" y2="37" stroke-dasharray="3 3" />
+<line stroke="white" fill="none" stroke-width="1" x1="7" y1="52" x2="172" y2="52" stroke-dasharray="3 3" />
+<line stroke="white" fill="none" stroke-width="1" x1="157" y1="23" x2="157" y2="62" stroke-dasharray="3 3" />
+
+<circle stroke="black" fill="white" stroke-width="1" cx="157" cy="37" r="3"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="157" cy="52" r="3"/>
+
+<text x="162" y="58" font-size="4px">6mm &#xD8;</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,27 l1,1 M6,27 l1,-1 M6,27 L156,27 l-1,1 M156,27 l-1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="81" y="33" font-size="4px" text-anchor="middle">152mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M165,21 l1,1 M165,21 l-1,1 M165,21 L165,36 l1,-1 M165,36 l-1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="167" y="30" font-size="4px" >17mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M165,38 l1,1 M165,38 l-1,1 M165,38 L165,51 l1,-1 M165,51 l-1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="167" y="45" font-size="4px" >15mm</text>
+
+</svg>

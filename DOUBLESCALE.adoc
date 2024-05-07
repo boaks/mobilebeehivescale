@@ -1,0 +1,80 @@
+// Mobile-Bienenstock-Waage, Version 2.0, Mai 2024
+
+:imagesdir: pictures
+
+= Mobile-Bienenstock-Waage
+Achim Kraus <achim.kraus@cloudcoap.net>
+v0.3, 2024-05-07
+
+== Waagenaufbau mit 2 Plattform Wägezellen
+
+[cols="3*"]
+|===
+a|.Untere Platte mit Aluwinkel 5mm und Wägezellen
+image::201_waage_unten.png[Untere Platte mit Aluwinkel 5mm und Wägezellen montiert, align=center] 
+a|.Schraubenköpfe
+image::202_waage_schraubenkoepfe.png[Schraubenkopf, align=center] image::20_waage.png[Schraubenkopf, align=center]
+.Verschraubung mit unterem Brett
+image::203_waage_verschraubung.png[Verschraubung, align=center] 
+a|.Obere Platte mit Bohrungen für Schraubenköpfe
+image::204_waage_oben.png[Obere Platte mit Aluwinkel 3mm, align=center] 
+
+3+a|.Zwei zusammengebaute Waagen
+image::205_waage_mit sendebox.png[Zwei zusammengesetzte Waage, align=center] 
+
+|===
+
+Ein sehr ähnliche Bauform wird oft mit dem Name "Double" bezeichnet. 
+
+Die Waage besteht aus 2 Plattform Wägezellen, die der Waage ein besondere Stabilität und Unempfindlichkeit beim Aufsetzen von Lasten geben. Wichtig ist, dass die Wägezellen sehr schlüssig und stabil mit den starken Aluwinkeln (5mm) verschraubt werden, sonst bekommt man anstatt einer Waage eine Wippe. Die obere Platte wird mit kleineren Aluwinkeln (3mm) gegen verrutschen gesichert. Hier muss man darauf achten, dass diese kleineren Aluwinkel (3mm) nur an den oberen starken Aluwinkeln (5mm) anstoßt. Wenn diese auch am unteren starken Aluwinkeln (5mm) anstossen, verfälscht die Reibung das gemessene Gewicht. Daher sind die oberen zwei starken Aluwinkel (5mm) 41cm lang und die unteren zwei mit 39,6cm etwas kürzer. Die kleineren Aluwinkel (3mm) für die untere Platte schließen den Kasten ab. Diese sind ebenfalls um 14mm kürzer als die oberen kleineren Aluwinkel (3mm).
+
+Für die Schraubenköpfe der M6 Schrauben, die die starken Aluwinkel (5mm) mit der Wägezelle verbinden, muss man in die Platten jeweils Aussparungen bohren (siehe oben, mittleres und rechtes Bild). Die unteren starken Aluwinkeln (5mm) verschraube ich ebenfalls mit den 6mm Schrauben und einer Einschlagmutter mit dem unteren Brett.
+
+Zwischen die starken Aluwinkeln (5mm) und den Plattform Wägezellen werden noch Distanzplatten benötigt, damit die Wägezelle auslenken kann.
+
+[cols="1*"]
+|===
+a|.Anordung der Winkel, Distanzplatten und Wägezelle 
+image::206_waage_winkel.svg[Anordnung, 200]
+|===
+
+Die Anordnung der starken Aluwinkel (5mm), der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die starken Aluwinkel (5mm) selbst gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen. Meine Wägezelle hat eine Höhe von 22mm. Es werden dann oben und unten Distanzplatten benötigt, damit der Sensor auslenken kann. Hier benutze ich oben 3mm und unten 2mmm. Das ergibt dann eine Höhe von 27mm insgesamt. Meine Aluwinkel haben eine Innenhöhe von 25mm. Somit is die Auslenkung auf 2mm begrenzt.
+
+Vielleicht findet der eine oder andere die Anordnung der Winkel seltsam. Ich erreiche damit zum einen nach außen (links) eine möglichst geschlossen Form zu bilden und zum anderen nach innen (rechts) offen zu sein für das Kabel, das aus der Wägezelle kommt und mit der ADC-Platine verbunden werden muss.
+
+Beim Zusammenschrauben muss man auf die richtige Reihenfolge achten, sonst verdeckt ein Aluwinkel die nächste Schraube. Man beginnt mit den unteren starken Aluwinkel (5mm), den 2mm Distanzplatten und den Plattform Wägezellen. Dann setzt man die zusammengeschraubte Kombination auf das untere Brett und schraubt diese ebenfalls fest. Danach setzt man den oberen starken Aluwinkel (5mm) auf und schraubt diese ebenfalls fest. Ist man damit fertig, dann kann man die kleineren Aluwinkeln (3mm) seitlich, oben und unten montieren. Ich nehme da Spanplattenschrauben 3,5x9,5mm.    
+
+== Bohrpläne
+
+[cols="1*"]
+|===
+a|.Bohrplan Oben, 6mm
+image::207_alu_bohrungen_oben.svg[Bohrplan starke Aluwinkel Oben, 615, link="./Bohrplaene.pdf"]
+
+a|.Bohrplan Unten, 6mm
+image::208_alu_bohrungen_unten.svg[Bohrplan starke Aluwinkel Unten, 594, link="./Bohrplaene.pdf"]
+
+a|.Bohrplan Oben, 3,5mm
+image::209_alu_bohrungen_oben.svg[Bohrplan Aluwinkel, 765, link="./Bohrplaene.pdf"]
+
+a|.Bohrplan Unten, 3,5mm
+image::210_alu_bohrungen_unten.svg[Bohrplan Aluwinkel, 744, link="./Bohrplaene.pdf"]
+
+a|.Bohrplan Bretter
+image::211_bretter_bohrungen.svg[Bohrplan Bretter, 825, link="./Bohrplaene.pdf"]
+
+|===
+
+== Bauteilliste
+
+Eine Liste mit Vorschlägen für die verwendeten Bauteilen und deren Bezugsquellen habe ich auch erstellt.
+Es gibt bei den einzelnen Bauteilen Alternativen und alternative Bezugsquellen.
+
+ifdef::env-github[]
+link:BAUTEILLISTE.adoc[Bauteilliste]
+endif::[]
+
+ifndef::env-github[]
+link:BAUTEILLISTE.html[Bauteilliste]
+endif::[]
+

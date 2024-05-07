@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 170 70">
+
+<text x="20" y="8" font-size="6px" >Gehäuse Rückseite</text>
+
+<rect stroke="black" fill="none" stroke-width="1" x="1" y="10" rx="1" ry="1" width="160" height="55" stroke-linejoin="round" />
+
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="4" y1="37" x2="100" y2="37" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="41" y1="18" x2="41" y2="59" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="71" y1="18" x2="71" y2="59" stroke-dasharray="3 3" />
+
+<circle stroke="black" fill="none" stroke-width="1" cx="41" cy="37" r="8"/>
+<circle stroke="black" fill="none" stroke-width="1" cx="71" cy="37" r="8"/>
+
+<text x="78" y="30" font-size="4px">16mm &#xD8;</text>
+<text x="34" y="30" font-size="4px" text-anchor="end">16mm &#xD8;</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M2,49 l2,2 M2,49 l2,-2 M2,49 L40,49 l-2,2 M40,49 l-2,-2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="21" y="54" font-size="4px" text-anchor="middle">40mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M42,49 l2,2 M42,49 l2,-2 M42,49 L70,49 l-2,2 M70,49 l-2,-2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="55" y="54" font-size="4px" text-anchor="middle">30mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M85,38 l2,2 M85,38 l-2,2 M85,38 L85,64 l2,-2 M85,64 l-2,-2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="88" y="54" font-size="4px" >28mm</text>
+
+</svg>
