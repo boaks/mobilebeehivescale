@@ -33,7 +33,7 @@ endif::[]
 ifndef::env-github[]
 link:DOUBLESCALE.html[Waagenaufbau mit 2 Plattform Wägezellen]
 endif::[]
-nimmt, dann bekommt man eine besser Genauigkeit und Haltbarkeit. Aber das hat auch seinen höheren Preis. Auf der Rückseite der NAU7802/Adafruit Platine ist übrigens angegeben, wie man die Farben der Leitungen eines Plattform Wägezelle jeweils anschließt. Das Bild oben rechts zeigt die Rückseite der NAU7802/Adafruit Platine. 
+nimmt, dann bekommt man eine besser Genauigkeit und Haltbarkeit. Aber das hat auch seinen höheren Preis. Auf der Rückseite der NAU7802/Adafruit Platine ist übrigens angegeben, wie man die Farben der Leitungen einer Plattform Wägezelle jeweils anschließt. Das Bild oben rechts zeigt die Rückseite der NAU7802/Adafruit Platine. 
 
 Was ich beim Basteln als besondere Herausforderung empfunden habe ist das Kalibrieren. Der eigentlich Vorgang ist im nächsten Abschnitt erläutert. Das Problem ist, dass man ein 10 kg Gewicht für eine sogenannte 2-Punkt Kalibrierung benötigt. Punkt 1 ist dann 0 kg und Punkt 2 10 kg. Wenn das absolute Gewicht nicht so wichtig ist, kann man natürlich auch einfach etwas nehmen, was in etwa 10 kg hat. Durch Temperaturschwankungen und die Dauerbelastung ist das absolute Gewicht ohnehin eher sehr relativ (da liegt man schnell 1 kg daneben) aber der Verlauf über mehrere Tage hinweg ist gut sichtbar.  
 

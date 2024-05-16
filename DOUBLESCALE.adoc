@@ -44,6 +44,24 @@ Vielleicht findet der eine oder andere die Anordnung der Winkel seltsam. Ich err
 
 Beim Zusammenschrauben muss man auf die richtige Reihenfolge achten, sonst verdeckt ein Aluwinkel die nächste Schraube. Man beginnt mit den unteren starken Aluwinkel (5mm), den 2mm Distanzplatten und den Plattform Wägezellen. Dann setzt man die zusammengeschraubte Kombination auf das untere Brett und schraubt diese ebenfalls fest. Danach setzt man den oberen starken Aluwinkel (5mm) auf und schraubt diese ebenfalls fest. Ist man damit fertig, dann kann man die kleineren Aluwinkeln (3mm) seitlich, oben und unten montieren. Ich nehme da Spanplattenschrauben 3,5x9,5mm.    
 
+== Anschlußplan
+
+[cols="2*"]
+|===
+a|.ADC Verkabelung 
+image::103_ADC_verkabelung.png[ADC Verkabelung]
+
+a|.Sensorkabel 
+image::212_sensor_kabel.png[Sensorkabel, 200]
+|===
+
+
+Wie bei der Beschreibung der link:./#der-i2c-adc-wandler-mit-eeprom[i2c ADC-Platine] schon erwähnt, müssen die Sensoren mit der ADC Platine verbunden werden. Auf der Rückseite der NAU7802/Adafruit Platine ist angegeben, wie man die Farben der Leitungen einer Plattform Wägezelle jeweils anschließt. Ich schliese beide Zellen parallel an, d.h. beide roten Leitungen an `E+/Red`, beide schwarzen an `E-/Black`, beide weißen an `A-/White` und beide grünen an `A+/Green`. Das erfordert etwas geschick. "Gelb" ist die Schirmleitung. Da kann man viel dazu im Web lesen. Wenn es passt, klemme ich die mit auf `E-/Black`. Ansonsten "isolieren" und schauen, ob es funktioniert.    
+
+Die Sendebox schaltet die Stromversorgung für die ADC-Platinen nicht ab. Der Ruhstrom dies ADC-Platinen ist sehr gering. Aktiviert werden die Sensoren dann über den internen Spannungsregler des NAU7802. Dieser liefert gemäß dem Datenblatt maximal 10mA. Für zwei Balkensensoren ist das leider zu wenig. Die brauchen je 6-8mA zusammen also mehr als 10mA. Aktuell betreibe ich solche Waagen außerhalb der Spezifikation des NAU7802. Bis jetzt funktioniert es.
+
+Alternativ braucht man einen externen Spanungsregler mit `ENable` Eingang, z.B. link:https://www.ti.com/lit/ds/symlink/lp2980-n.pdf[LP2980-N]. `E+` muss dann dort mit den `ENable` (On/OFF PIN 3) verbunden werden und `E+` der Sensoren mit dem Ausgang des Spannungsreglers. Man muss auch die Empfehlungen für zusätzlich Kondensatoren beachten, meist 1µF low ESR und 0,1µF Folienkondensator. Und man muss auch auf eine "low drop" Version achten. `Vcc` beträgt nur 3,3V und am Sensor sollte man 2,7-3,0V haben. Leider ist bei der Adafruit Version der Eingang für `REFP` nicht nutzbar, damit geht dann die ratiometrische Beschaltung des ADC-Boards verloren, wenn man den externen Spanungsregler über `E+` schalten möchte. Die ratiometrische Beschaltung sorgt sonst dafür, dass langsame Abweichungen in der analogen Spannung das Messergebnis nicht beeinflußen.
+ 
 == Bohrpläne
 
 [cols="1*"]

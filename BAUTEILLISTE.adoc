@@ -140,13 +140,17 @@ a|link:https://www.circuitdojo.com/products/nrf9160-feather[LTE Antenne, www.cir
 a|Alternativ link:https://www.digikey.de/en/products/detail/unictron-technologies-corporation/H2B4MH1F2F0100/9921462[LTE Antenne, digikey.de]
 |5,10 Euro
 
-|Einbaustecker Kunststoff, 50cm, 12mm Stecker
+|Einbaustecker Kunststoff, 50cm, 12mm
 a|link:https://www.reichelt.de/einbausteckverbinder-m12-4-pol-stecker-schwarz-lut-1230-04-100-p347094.html[Einbaustecker Kunststoff, reichelt.de]
 |4,70 Euro (2x ?)
 
-|Einbaustecker metall, 50cm, 12mm Stecker (alternativ)
+|Einbaustecker metall, 50cm, 12mm (alternativ)
 a|link:https://www.reichelt.de/einbausteckverbinder-m12-4-pol-stecker-0-5-m-lut-1230-t16cw04-p223037.html[Einbaustecker Metall, reichelt.de]
 |5,99 Euro (2x ?)
+
+|Schutzkappe für Einbaustecker, 12mm, (falls nur 1 Waage angeschlossen wird)
+a|link:https://www.reichelt.de/schutzkappe-m12-stecker-lut-cp0-p223055.html[Schutzkappe, reichelt.de]
+|0,60 Euro
 
 |Platinenstecker/Stiftleiste 4pol.
 a|link:https://www.reichelt.de/jst-stiftleiste-gerade-1x4-polig-xh-jst-xh4p-st-p185075.html[Platinenstecker, reichelt.de]
