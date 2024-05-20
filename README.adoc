@@ -372,4 +372,7 @@ endif::[]
 
 link:MobileBeehiveScale.pdf[Mobile-BeeHiveScale]
 
+== Links
+
+link:https://www.youtube.com/watch?v=06RcwLT99Rc[Vorstellung - Eclipse Edge og Things - (English)]
 
