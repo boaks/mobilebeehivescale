@@ -4,11 +4,11 @@
 
 = Mobile-Bienenstock-Waage
 Achim Kraus <achim.kraus@cloudcoap.net>
-v0.3, 2024-05-07
+v0.4, 2024-10-04
 
 Willkommen auf meiner Bastelanleitung für eine Mobile-Bienenstock-Waage.
 
-Ich bin einer der IoT-Enthusiasten, der gerne echte Dinge baut, die auch funktionieren. 2022 habe ich angefangen, einen link:https://github.com/boaks/zephyr-coaps-client[Modem-Client] zu implementieren, mit dem man zeigen kann was in link:https://cloudcoap.net[UDP] steckt. In Kombination mit link:https://github.com/boaks/californium/tree/add_s3_proxy/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] demonstriert dieses Beispiel, dass man auch von Batterie ein paar Monate jede Stunde Daten austauschen kann.   
+Ich bin einer der IoT-Enthusiasten, der gerne echte Dinge baut, die auch funktionieren. 2022 habe ich angefangen, einen link:https://github.com/boaks/zephyr-coaps-client[Modem-Client] zu implementieren, mit dem man zeigen kann was in link:https://cloudcoap.net[UDP] steckt. In Kombination mit link:https://github.com/eclipse-californium/californium/tree/main/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] demonstriert dieses Beispiel, dass man auch von Batterie ein paar Monate jede Stunde Daten austauschen kann.   
 
 Anfang 2023 habe ich dann basierend auf diesem Modem-Client meinen erste Bienenstock-Waage gebaut und bei einem befreundeten Imker in Betrieb genommen. Das Ergebnis des halbjährigen Testlaufs ist einfach: 
 
@@ -23,6 +23,12 @@ Das hat dann zur einer neuen Bauart der Elektronik geführt. Ich möchte gleich 
 Die neue Bauart berücksichtig beides zusammen und läuft nun seit ein Herbst 2023 auf meiner Terrasse und seit Frühjahr 2024 unter Bienenstöcke. Daher möchte ich hier dieses Ergebnis präsentieren, vielleicht hat ja der eine oder andere Interesse, diese Mobile-Bienenstock-Waage nachzubauen.
 
 Die Ausführung ist ein Kompromis. Manches beruht darauf, was man aus bestehende Komponeten machen kann. Man kann sich da auch alternative Ausführungen vorstellen, aber da bräuchte man dann andere Komponenten oder müßte die selber erstellen. Vielleicht kommt ja die eine oder andere Verbesserung mit der Zeit. 
+
+Links to open source projects:
+
+link:https://github.com/boaks/zephyr-coaps-client[Modem-Client - https://github.com/boaks/zephyr-coaps-client]
+
+link:https://github.com/eclipse-californium/californium/tree/main/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy - https://github.com/eclipse-californium/californium/tree/main/demo-apps/cf-s3-proxy-server]
 
 == Bausteine
 
@@ -99,7 +105,7 @@ a|image::5_sendbox_unten.png[Sendbox-Platine von unten]
 
 Die zwei Hauptkomponenten, die auf diese Platine müssen, sind die link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather] und das Batterienfach, hier 3x AA. Die Verkabelung der Batterei ist trivial und auch die für die link:https://www.jaredwolff.com/store/nrf9160-feather/[nRF9160 feather] ist relativ einfach. Sie besteht aus der Stromversorgung von der Batterie, der Stromversorgung und I2C Bus zu den ADC Platinen, einer RGB LED sowie einem Taster. Die Platine unterstützt bis zu zwei Waagen, jede an einem eigenen I2C Bus (das ist beim NAU7802 leider notwendig). Die beiden I2C sind auf zwei 4 pol. Platinenstecker gelegt. Der Taster und die RGB LED auf einen 10 pol. Pfostenstecker. Die Aussparung in der Platine braucht man, um diese in der Box an der RGB LED und dem Taster vorbei aus- und einbauen zu können. Die verwendete Box hat die Abmessungen 160x80x55mm und erfüllt IP66. Wenn man eine andere Box benutzen möchte, muss man aufpassen, dass die beiden I2C Einbaustecker, die RGB-LED und der Taster entsprechend montiert werden können.
 
-Die Platine muss entsprechend von 160x100mm auf 132x72mm zurecht gesägt werden. Die Aussparung mit 45x20mm wird benötige, da die Platine u.Z. bei eingebnauter LED und den Taster noch ausgebaut werden muss. Die Bohrungen für die Schrauben haben einen Durchmesser von 4,5mm.
+Die Platine muss entsprechend von 160x100mm auf 132x72mm zurecht gesägt werden. Die Aussparung mit 45x20mm wird benötige, da die Platine u.U. bei eingebauter LED und den Taster noch ausgebaut werden muss. Die Bohrungen für die Schrauben haben einen Durchmesser von 4,5mm. Bei den Schrauben muss man auch besonders auf die Länge aufpassen. Bei den Blechschrauben mit Durchmesser 4,2mm ist die Länge 9,5 gängig. Leider sind bei meinem Gehäuse die Bohrungen nur 6mm tief. 2mm für die Platine, dann steht die Schraube 1,5mm über ... das führt zu leicht dazu, dass es ein kleines Loch am Gehäuseboden gibt.
 
 [cols="1*"]
 |===
@@ -264,7 +270,7 @@ Wie eingangs schon erwähnt, die Besonderheit dieses link:https://www.nordicsemi
 
 Das Modem unterstützt auch andere Protokolle, z.B. `HTTP(S)` oder `MQTT(S)`. Je nach Sende-Strategie benötigen diese deutlich mehr Energie oder übertragen die Daten sehr viel seltener (z.B. 1x Täglich nicht 1x Stündlich). Ich benutze diese daher nicht. Wer selber programmieren kann, kann das aber sehr gerne ausprobieren. 
 
-Man kann die Daten auch weiterleiten, das link:https://github.com/boaks/californium/tree/add_s3_proxy/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] leited diese z.B in einen `S3` Cloudservice weiter. Die aktuelle Web-Browser App liest die Daten dann dort aus und stellt diese als Chart dar.
+Man kann die Daten auch weiterleiten, das link:https://github.com/eclipse-californium/californium/tree/main/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] leited diese z.B in einen `S3` Cloudservice weiter. Die aktuelle Web-Browser App liest die Daten dann dort aus und stellt diese als Chart dar.
 
 image::12_chart_2.png[Chart im Web-Browser]  
 
