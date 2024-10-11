@@ -6,6 +6,13 @@
 Achim Kraus <achim.kraus@cloudcoap.net>
 v0.4, 2024-10-04
 
+[cols="1*"]
+|===
+a|.Bienenstöcke mit Waage 
+image::beehives.jpg[Bienenstöcke mit Waage]
+|===
+
+
 Willkommen auf meiner Bastelanleitung für eine Mobile-Bienenstock-Waage.
 
 Ich bin einer der IoT-Enthusiasten, der gerne echte Dinge baut, die auch funktionieren. 2022 habe ich angefangen, einen link:https://github.com/boaks/zephyr-coaps-client[Modem-Client] zu implementieren, mit dem man zeigen kann was in link:https://cloudcoap.net[UDP] steckt. In Kombination mit link:https://github.com/eclipse-californium/californium/tree/main/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] demonstriert dieses Beispiel, dass man auch von Batterie ein paar Monate jede Stunde Daten austauschen kann.   
