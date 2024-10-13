@@ -31,7 +31,7 @@ Die neue Bauart berücksichtig beides zusammen und läuft nun seit ein Herbst 20
 
 Die Ausführung ist ein Kompromis. Manches beruht darauf, was man aus bestehende Komponeten machen kann. Man kann sich da auch alternative Ausführungen vorstellen, aber da bräuchte man dann andere Komponenten oder müßte die selber erstellen. Vielleicht kommt ja die eine oder andere Verbesserung mit der Zeit. 
 
-Links to open source projects:
+Links zu den Open Source Projekten:
 
 link:https://github.com/boaks/zephyr-coaps-client[Modem-Client - https://github.com/boaks/zephyr-coaps-client]
 
