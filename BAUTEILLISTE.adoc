@@ -169,7 +169,7 @@ a|link:https://www.reichelt.de/industriegehaeuse-160-x-80-x-55-mm-ip66-lichtgrau
 |9,20 Euro
 
 |Laborkarte 3-Loch-Lötinseln
-a|link:https://www.reichelt.de/laborkarte-cem3-rm-2-54-mm-3-loch-loetinseln-re-310-s1-p105479.html[Gehäuse, reichelt.de]
+a|link:https://www.reichelt.de/laborkarte-cem3-rm-2-54-mm-3-loch-loetinseln-re-310-s1-p105479.html[Laborkarte, reichelt.de]
 |6,50 Euro
 
 |Batteriehalter 3xAA mit Deckel
