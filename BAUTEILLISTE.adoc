@@ -63,7 +63,7 @@ Für den Aufbau mit den einfachen Personenwaagen Sensoren kann man sich Sensorha
 a|link:https://www.digikey.de/de/products/detail/hammond-manufacturing/1551KFLBK/2094805[Gehäuse, digikey.de]
 |3,40 Euro
 
-|Aluwinkel 50x30x5mm, 2x39,6cm (unten)
+|Aluwinkel 50x30x5mm, 2x40,0cm (unten)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
 |12,35 Euro (zzgl. Versand ca. 14 Euro je Bestellung)
 
