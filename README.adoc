@@ -1,10 +1,10 @@
-// Mobile-Bienenstock-Waage, Version 2.0, Mai 2024
+// Mobile-Bienenstock-Waage, Version 2.1, Februar 2025
 
 :imagesdir: pictures
 
 = Mobile-Bienenstock-Waage
 Achim Kraus <achim.kraus@cloudcoap.net>
-v0.4, 2024-10-04
+v0.5, 2025-02-16
 
 [cols="1*"]
 |===
@@ -27,7 +27,7 @@ Das hat dann zur einer neuen Bauart der Elektronik geführt. Ich möchte gleich 
 * ADC wandert aus der Sendebox unter die Waage. Kurze Kabel zu den Dehnmesstreifen sind wichtig für eine geringere Temperaturabhängigkeit.
 * Kalibrierungsdaten müssen ebenfalls in die Waage. Sonst ist es sehr fehleranfällig, wenn die Waagen umziehen und vertauscht werden. Neu Kalibrieren ist auch einfacher, da man das dann mit jeder Sendbox durchführen kann und nicht die nehmen muss, mit der man dann die Waage im Feld wirklich betreibt.
 
-Die neue Bauart berücksichtig beides zusammen und läuft nun seit ein Herbst 2023 auf meiner Terrasse und seit Frühjahr 2024 unter Bienenstöcke. Daher möchte ich hier dieses Ergebnis präsentieren, vielleicht hat ja der eine oder andere Interesse, diese Mobile-Bienenstock-Waage nachzubauen.
+Die neue Bauart berücksichtigte beides zusammen und läuft nun seit ein Herbst 2023 auf meiner Terrasse und seit Frühjahr 2024 unter Bienenstöcke. Daher möchte ich hier dieses Ergebnis präsentieren, vielleicht hat ja der eine oder andere Interesse, diese Mobile-Bienenstock-Waage nachzubauen. Leider ist aber das Bauen der 2-Kanal-Sendebox doch aufwendig. Seit Winter 2024 gibt es ein neues Gerät von Nordic, das link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X[Thingy:91X], welches nun über einen Qwiic (I2C) Port verfügt. Damit kann man den Aufbau drastisch vereinfachen: man steckt den ADC NAU7802 direkt an das Thingy:91X, kein Löten mehr. Verglichen mit der 2-Kanalbox (200 Euro), sind die Kosten mit 130 Euro etwas höher, man braucht ja 2. Wer sich dafür interessiert, liest am besten bei <<Waage mit Thingy:91X + NAU7802>> weiter. 
 
 Die Ausführung ist ein Kompromis. Manches beruht darauf, was man aus bestehende Komponeten machen kann. Man kann sich da auch alternative Ausführungen vorstellen, aber da bräuchte man dann andere Komponenten oder müßte die selber erstellen. Vielleicht kommt ja die eine oder andere Verbesserung mit der Zeit. 
 
@@ -293,7 +293,7 @@ Die Bedienung und Anzeige ist relativ einfach.
 2+a|*Normalbetrieb*
 
 |Taster kurz drücken und loslassen ( < 5s)
-|Gewichte der Waagen ermitteln und senden. +
+|Gewichte mit der Waagen ermitteln und senden. +
 Die LED wird blau und dann hellblau. Sobald sie grün wird hat das Modem Empfang. Blinkt es danach rot, trat ein Fehler auf. Blinkt es lila sucht das Modem ein Funknetzwerk. 
 
 |Taster lang drücken ( > 5s)
@@ -380,6 +380,57 @@ endif::[]
 ifndef::env-github[]
 link:BAUTEILLISTE.html[Bauteilliste]
 endif::[]
+
+== Waage mit Thingy:91X + NAU7802
+
+[cols="3*"]
+|===
+2+a|image::19_waage_thingy91x.png[Thingy:91X Waage] 
+a|image::20_sendebox_thingy91x.png[Thingy:91X Sendebox] 
+|===
+
+Wenn man ein neues link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X[Thingy:91X] nimmt, dann kann man den link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[NAU7802 von Adafruit] direct an das Thingy:91X anschließen. Die Bedienung läuft dann über link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#enable-bluetooth-low-energy-on-a-thingy91[Bluetooth LE] und man braucht eine link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#smartphone-app[SmartPhone App]. Das ist aber nur für das Kalibrieren notwendig, oder wenn man testen möchte, ob die Sendebox an eimen Aufstellungsort Empfang hat.
+
+Damit man sich die Verkabelung einspart, wandert die Sendebox mit ADC nun in die Waage. Daher muss man hier die link:DOUBLESCALE.adoc[aufwendigere Waage] mit 2x Plattform Wägezellen nehmen. Zumindest meine Imker setzen aber ohnehin nur die ein, da die Badezimmersensoren einfach auch nur etwas für das Badezimmer sind. Der Aufbau muss leicht modifiziert werden, damit man 5mm mehr Bauhöhe bekommt. Dazu werden die 2mm und 3mm Distanzplatten durch 2x 5mm Distanzplatten ersetzt. Und der unter starke 5x30x40mm Winkel wird durch einen 5x35x35mm Winkel ersetzt. Es hat sich beim Betrieb mit den dünneren Distanzplatten bei mir eine Anfälligkeit gegen Verschmutzung gezeigt. Mal sehen, ob die 5mm hier auch abhilfe schaffen. Die alten Waagen ware auch oft mit "überarbeiteten Alu Winkeln" gebaut, weil ich immer mal wiede was geändert oder falsch gemacht habe. Die neuen sind da klarer und bieten daher auch weniger Lücken für Schmutz. Im Herbst wird man sehen, ob sich das gelohnt hat.
+
+[cols="1*"]
+|===
+a|.Anordung der Winkel, Distanzplatten und Wägezelle 
+image::301_waage_winkel.svg[Anordnung, 200]
+|===
+
+Die Bedienungkommandos (über Bluetooth LE Konsole/App):
+
+|===
+|Kommando|Funktion 
+
+2+a|*Normalbetrieb*
+
+|send
+|Gewichte mit der Waage ermitteln und senden.
+
+|scale
+|Gewichte mit der Waage ermitteln und anzeigen. 
+
+2+a|*Kalibrierbetrieb*
+
+|scalecal
+|aktuelle Kalibrierung anzeigen.
+
+|help scalecal
+|Hilfe für Kalibrierung anzeigen.
+
+|scalecal zero
+|Gewichte mit der Waage ermitteln und als 0-Punkt speichern. 
+
+|scalecal ref
+|Gewichte mit der Waage ermitteln und als 10-kg-Punkt speichern. 
+
+|scalecal <m := Gewicht in Gramm>
+|Alternative zu "scalecal ref", wenn man kein 10-kg Gewicht hat. Gewichte mit der Waage ermitteln und als <m>-g-Punkt speichern. Z.B. "scaleref 1000", wenn man mit einem 1 kg Gewicht kalibiriert (1000 g). Man sollte aber eher mit größeren Gewichten Kalibrieren, sonst wird der Fehler, wenn man 50 kg Hoing hat ziemlich groß.   
+
+|===
+
 
 == Software System Overview (English)
 
