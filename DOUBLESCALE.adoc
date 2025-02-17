@@ -66,16 +66,16 @@ Alternativ braucht man einen externen Spanungsregler mit `ENable` Eingang, z.B. 
 
 [cols="1*"]
 |===
-a|.Bohrplan Oben, 6mm
+a|.Bohrplan Oben, 6mm Bohrungen
 image::207_alu_bohrungen_oben.svg[Bohrplan starke Aluwinkel Oben, 615, link="./Bohrplaene.pdf"]
 
-a|.Bohrplan Unten, 6mm
+a|.Bohrplan Unten, 6mm Bohrungen
 image::208_alu_bohrungen_unten.svg[Bohrplan starke Aluwinkel Unten, 594, link="./Bohrplaene.pdf"]
 
-a|.Bohrplan Oben, 3,5mm
+a|.Bohrplan Oben, 3,5mm Bohrungen
 image::209_alu_bohrungen_oben.svg[Bohrplan Aluwinkel, 765, link="./Bohrplaene.pdf"]
 
-a|.Bohrplan Unten, 3,5mm
+a|.Bohrplan Unten, 3,5mm Bohrungen
 image::210_alu_bohrungen_unten.svg[Bohrplan Aluwinkel, 744, link="./Bohrplaene.pdf"]
 
 a|.Bohrplan Bretter
