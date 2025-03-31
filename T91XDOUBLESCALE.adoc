@@ -10,20 +10,29 @@ v0.5, 2024-05-07
 
 [cols="3*"]
 |===
+a|.Thingy:91X Waage (keine Kabel mehr!)
+image::301_waage_thingy91x.png[Bienenstock auf Thingy:91X-Waage (keine Kabel mehr), align=center] 
+a|.Solar-Lader (2x 1 Woche pro Jahr)
+image::302_solarlader.png[Solar-Lader (2x 1 Woche pro Jahr), align=center]
+a|.Sendebox Thingy:91X
+image::303_sendebox_thingy91x.png[Sendebox mit Thingy:91X, align=center]
+
 a|.Untere Platte mit Aluwinkel 5mm, Wägezellen und Thingy:91X
-image::301_waage_thingy91x_unten.png[Untere Platte mit Aluwinkel 5mm und Wägezellen montiert und Thingy:91X, align=center] 
+image::304_waage_thingy91x_unten.png[Untere Platte mit Aluwinkel 5mm und Wägezellen montiert und Thingy:91X, align=center] 
 a|.Schraubenköpfe
 image::202_waage_schraubenkoepfe.png[Schraubenkopf, align=center] image::20_waage.png[Schraubenkopf, align=center]
 .Verschraubung mit unterem Brett
 image::203_waage_verschraubung.png[Verschraubung, align=center] 
 a|.Obere Platte mit Bohrungen für Schraubenköpfe
-image::302_waage_thingy91x_oben.png[Obere Platte mit Aluwinkel 3mm, align=center] 
+image::305_waage_thingy91x_oben.png[Obere Platte mit Aluwinkel 3mm, align=center] 
 
 |===
 
 Die neuste Version (2025) der Mobilen-Bienestock-Waage nutzt nun ein link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X[Thingy:91X] und einen deutlich vereinfachten Aufbau der Elektronik. Man schliest den link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[ADC NAU7802 von Adafruit] direct an das Thingy:91X und beides wandert in die Waage. Damit entfallt einiges an Verkabelung. Die Bedienung läuft dann über link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#enable-bluetooth-low-energy-on-a-thingy91[Bluetooth LE] und man braucht eine link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#smartphone-app[SmartPhone App]. Das ist aber nur für das Kalibrieren notwendig, oder wenn man testen möchte, ob die Sendebox an eimen Aufstellungsort Empfang hat.
 
 Die Waage ist mit 2x Plattform Wägezellen aufgebaut und entspricht dem vorherigen Model für eine link:DOUBLESCALE.adoc[aufwendigere Waage]. Man kann nur 1 Waage pro Thingy:91X anschließen. Der Aufbau ist leicht modifiziert, damit man 5mm mehr Bauhöhe bekommt. Dazu werden die 2mm und 3mm Distanzplatten durch 2x 5mm Distanzplatten ersetzt. Und der unter starke 5x30x40mm Winkel wird durch einen 5x35x35mm Winkel ersetzt. Es hat sich beim Betrieb mit den dünneren Distanzplatten bei mir eine Anfälligkeit gegen Verschmutzung gezeigt. Mal sehen, ob die 5mm hier auch Abhilfe schaffen. Die alten Waagen ware auch oft mit "überarbeiteten Alu Winkeln" gebaut, weil ich immer mal wiede was geändert oder falsch gemacht habe. Die neuen sind da klarer und bieten daher auch weniger Lücken für Schmutz. Im Herbst wird man sehen, ob sich das gelohnt hat.
+
+Wenn man im Frühling die Waage als Indikator für Pollensuchende Bienen einsetzen möchte, dann ist die Temperaturabhängigkeit relevant. Man hat da zwischen kalten Nächten und sonnigen Tagen schnell 20-30°C Unterschied. Daher benutze ich nun 2x50kg anstatt 2x100kg Sensoren, da ist die Temperaturdrift ebenfalls nur halb so groß.
 
 Der Aufbau mit 2 Plattform Wägezellen gibt der Waage ein besondere Stabilität und Unempfindlichkeit beim Aufsetzen von Lasten. Wichtig ist, dass die Wägezellen sehr schlüssig und stabil mit den starken Aluwinkeln (5mm) verschraubt werden, sonst bekommt man anstatt einer Waage eine Wippe. Die obere Platte wird mit kleineren Aluwinkeln (3mm) gegen verrutschen gesichert. Hier muss man darauf achten, dass diese kleineren Aluwinkel (3mm) nur an den oberen starken Aluwinkeln (5mm) anstoßt. Wenn diese auch am unteren starken Aluwinkeln (5mm) anstossen, verfälscht die Reibung das gemessene Gewicht. Daher sind die oberen zwei starken Aluwinkel (5mm) 41cm lang und die unteren zwei mit 40,0cm etwas kürzer. Die kleineren Aluwinkel (3mm) für die untere Platte schließen den Kasten ab. Diese sind um 14mm kürzer als die oberen kleineren Aluwinkel (3mm).
 
@@ -34,7 +43,7 @@ Zwischen die starken Aluwinkeln (5mm) und den Plattform Wägezellen werden noch 
 [cols="1*"]
 |===
 a|.Anordung der Winkel, Distanzplatten und Wägezelle 
-image::303_waage_winkel.svg[Anordnung, 200]
+image::306_waage_winkel.svg[Anordnung, 200]
 |===
 
 Die Anordnung der starken Aluwinkel (5mm), der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die starken Aluwinkel (5mm) selbst gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen. Meine Wägezelle hat eine Höhe von 22mm. Es werden dann oben und unten Distanzplatten benötigt, damit der Sensor auslenken kann. Hier benutze ich jeweils 5mm. Das ergibt dann eine Höhe von 32mm insgesamt. Meine Aluwinkel haben eine Innenhöhe von 30mm. Somit is die Auslenkung auf 2mm begrenzt.
@@ -94,6 +103,10 @@ a|link:https://www.digikey.de/en/products/detail/nordic-semiconductor-asa/THINGY
 a|link:https://www.digikey.de/en/products/detail/adafruit-industries-llc/4538/16584123[Adafruit NAU7802, digikey.de]
 |6,78 Euro
 
+|Adafruit BQ25185 Solar charger
+a|link:https://www.digikey.de/en/products/detail/adafruit-industries-llc/6091/25805553[Adafruit BQ25185, digikey.de]
+|6,41 Euro
+
 |Adafruit Qwiic Kabel  
 a|link:https://www.digikey.de/en/products/detail/adafruit-industries-llc/4210/10230021[Adafruit Qwiic Kabel, digikey.de]
 |1,08 Euro
@@ -118,7 +131,7 @@ a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
 |6,14 Euro (zzgl. Versand)
 
-|Aluflachstange 30x5mm, 4x30mm (Distanzplatten)
+|Aluflachstange 30x5mm, für 4 Distanzplatten a 30mm Länge
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
 |2,62 Euro (zzgl. Versand)
 
@@ -138,9 +151,13 @@ a|link:https://www.schraubenluchs.de/Einschlagmuttern-Edelstahl-A2[z.B. Schraube
 |Baumarkt
 |7 Euro (50 St)
 
-|Plattform Wägezelle E120A 2x 100kg (alternativ)
+|Plattform Wägezelle E120A 2x 50kg
 a|link:https://www.vechta-waagen.com/shop/produkt/single-point-waegezelle-e120a/[Wägezelle, Vechta-Waagen, Temperaturkompenstation]
 |24,00 Euro (2x)
+
+|Plattform Wägezelle CLZ601 2x 50kg (alternativ)
+a|link:https://www.tinkerforge.com/de/shop/load-cell-50kg-czl601.html[Wägezelle, Tinkerforge, Temperaturkompenstation]
+|12,99 Euro (2x)
 
 |Siebdruckplatten 45x55cm
 |Baumarkt
@@ -156,3 +173,4 @@ a|*260 Euro*
 
 |===
 
+(Anmerkung: leider gibt es einige Artikel nur in größeren Packungen und manches nur mit deutlichen Versandkosten. 260 Euro passen nicht, wenn man die Waage einzeln baut.) 
