@@ -275,9 +275,13 @@ a|link:https://www.schraubenluchs.de/Einschlagmuttern-Edelstahl-A2[z.B. Schraube
 |Baumarkt
 |7 Euro (50 St)
 
-|Plattform Wägezelle E120A 2x 100kg (alternativ)
+|Plattform Wägezelle E120A 2x 100kg
 a|link:https://www.vechta-waagen.com/shop/produkt/single-point-waegezelle-e120a/[Wägezelle, Vechta-Waagen, Temperaturkompenstation]
 |24,00 Euro (2x)
+
+|Plattform Wägezelle CZL601 2x 100kg (alternativ)
+a|link:https://www.tinkerforge.com/de/shop/load-cell-100kg-czl601.html[Wägezelle, Tinkerforge, Temperaturkompenstation]
+|14,00 Euro (2x)
 
 |Siebdruckplatten 45x55cm
 |Baumarkt

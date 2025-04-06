@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 53">
+
+<text x="10" y="8" font-size="6px" >4 Stück Distanzplatten</text>
+<text x="10" y="14" font-size="6px" >30x30x6mm, 2x 6mm Bohrungen</text>
+
+<rect stroke="black" fill="gainsboro" stroke-width="1" x="5" y="20" width="30" height="30" stroke-linejoin="round" />
+
+<line stroke="grey" fill="none" stroke-width="1" x1="7" y1="27.5" x2="34" y2="27.5" stroke-dasharray="3 3" />
+<line stroke="grey" fill="none" stroke-width="1" x1="7" y1="42.5" x2="34" y2="42.5" stroke-dasharray="3 3" />
+<line stroke="grey" fill="none" stroke-width="1" x1="20" y1="22" x2="20" y2="47" stroke-dasharray="3 3" />
+
+<circle stroke="black" fill="white" stroke-width="1" cx="20" cy="27.5" r="3"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="20" cy="42.5" r="3"/>
+
+<text x="24" y="25" font-size="4px">&#xD8; 6mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,33 l1,1 m0,-2 l-1,1 l13,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="7" y="38" font-size="4px">15mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M31,28.5 l1,1 m-2,0 l1,-1 l0,13 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="37" y="37" font-size="4px" >15mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M31,43.5 l1,1 m-2,0 l1,-1 l0,5.5 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="37" y="48" font-size="4px" >7,5mm</text>
+
+</svg>

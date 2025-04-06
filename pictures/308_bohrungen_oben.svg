@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 420 70">
+
+<text x="20" y="8" font-size="6px" >2 Stück oberer starker Winkel, 25x50x4mm, 408mm, 2x 6mm Bohrungen</text>
+
+<rect stroke="black" fill="gainsboro" stroke-width="1" x="5" y="15" width="408" height="50" stroke-linejoin="round" />
+<rect stroke="black" fill="silver" stroke-width="1" x="5" y="15" width="408" height="4" stroke-linejoin="round" />
+
+<line stroke="grey" fill="none" stroke-width="1" x1="80" y1="38" x2="172" y2="38" stroke-dasharray="3 3" />
+<line stroke="grey" fill="none" stroke-width="1" x1="80" y1="53" x2="172" y2="53" stroke-dasharray="3 3" />
+<line stroke="grey" fill="none" stroke-width="1" x1="156" y1="23" x2="156" y2="62" stroke-dasharray="3 3" />
+
+<circle stroke="black" fill="white" stroke-width="1" cx="156" cy="38" r="3"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="156" cy="53" r="3"/>
+
+<text x="138" y="47" font-size="4px">6mm &#xD8;</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,27 l1,1 m0,-2 l-1,1 l149,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="81" y="33" font-size="4px" text-anchor="middle">151mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M164,16 l1,1 m-2,0 l1,-1 l0,21 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="166" y="28" font-size="4px" >23mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M164,39 l1,1 m-2,0 l1,-1 l0,13 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="166" y="48" font-size="4px" >15mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M164,54 l1,1 m-2,0 l1,-1 l0,10 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="166" y="60" font-size="4px" >12mm</text>
+
+</svg>

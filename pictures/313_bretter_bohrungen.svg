@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 560 470">
+
+<symbol id="drill8mm"> 
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="0" y1="20" x2="40" y2="20" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="20" y1="0" x2="20" y2="40" stroke-dasharray="3 3" />
+<circle stroke="black" fill="white" stroke-width="1" cx="20" cy="20" r="4"/>
+</symbol>
+
+<symbol id="drills14mm"> 
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="0" y1="20" x2="55" y2="20" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="20" y1="0" x2="20" y2="40" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="35" y1="0" x2="35" y2="40" stroke-dasharray="3 3" />
+<circle stroke="black" fill="white" stroke-width="1" cx="20" cy="20" r="7"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="35" cy="20" r="7"/>
+</symbol>
+
+<text x="20" y="8" font-size="8px" >2 Stück, Brett 550x450x15mm</text>
+
+<rect stroke="black" fill="none" stroke-width="1" x="5" y="15" width="550" height="450" stroke-linejoin="round" />
+
+<use href="#drill8mm" x="38" y="48" />
+<use href="#drill8mm" x="38" y="392" />
+<use href="#drill8mm" x="482" y="48" />
+<use href="#drill8mm" x="482" y="392" />
+
+<text x="65" y="78" font-size="4px">8mm &#xD8; Einschlagmuttern (nur unteres Brett!)</text>
+
+<use href="#drills14mm" x="33" y="273" />
+
+<use href="#drills14mm" x="472" y="167" />
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,77 l1,1 m0,-2 l-1,1 l51,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="33" y="82" font-size="4px" text-anchor="middle">53mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M67,16 l1,1 m-2,0 l1,-1 l0,51 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="69" y="41" font-size="4px">53mm</text>
+
+<text x="77" y="286" font-size="4px">14mm &#xD8; Senkloch, 10mm tief</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,282 l1,1 m0,-2 l-1,1 l46,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="26" y="278" font-size="4px" text-anchor="middle">48mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,305 l1,1 m0,-2 l-1,1 l61,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="28" y="312" font-size="4px" text-anchor="middle">63mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M80,294 l1,1 m-2,0 l1,-1 l0,170 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="83" y="388" font-size="4px">172mm</text>
+
+</svg>
