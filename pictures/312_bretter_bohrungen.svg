@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 560 470">
+
+<text x="20" y="8" font-size="8px" >2 Stück, Brett 550x450x15mm</text>
+
+<rect stroke="black" fill="none" stroke-width="1" x="5" y="15" width="550" height="450" stroke-linejoin="round" />
+
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="37" y1="67.5" x2="77" y2="67.5" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="57.5" y1="47" x2="57.5" y2="87" stroke-dasharray="3 3" />
+
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="38" y1="293" x2="93" y2="293" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="55" y1="273" x2="55" y2="313" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="70" y1="273" x2="70" y2="313" stroke-dasharray="3 3" />
+
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="37" y1="412.5" x2="77" y2="412.5" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="57.5" y1="393" x2="57.5" y2="433" stroke-dasharray="3 3" />
+
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="483" y1="67.5" x2="523" y2="67.5" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="502.5" y1="47" x2="502.5" y2="87" stroke-dasharray="3 3" />
+
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="467" y1="187" x2="522" y2="187" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="490" y1="167" x2="490" y2="207" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="505" y1="167" x2="505" y2="207" stroke-dasharray="3 3" />
+
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="483" y1="412.5" x2="523" y2="412.5" stroke-dasharray="3 3" />
+<line stroke="lightgrey" fill="none" stroke-width="1" x1="502.5" y1="393" x2="502.5" y2="433" stroke-dasharray="3 3" />
+
+<circle stroke="black" fill="white" stroke-width="1" cx="57.5" cy="67.5" r="4"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="55" cy="293" r="7"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="70" cy="293" r="7"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="57.5" cy="412.5" r="4"/>
+
+<circle stroke="black" fill="white" stroke-width="1" cx="502.5" cy="67.5" r="4"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="505" cy="187" r="7"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="490" cy="187" r="7"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="502.5" cy="412.5" r="4"/>
+
+<text x="65" y="78" font-size="4px">8mm &#xD8; (nur unten!)</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,75 l1,1 m0,-2 l-1,1 l50,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="33" y="82" font-size="4px" text-anchor="middle">52,5mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M65,16 l1,1 m-2,0 l1,-1 l0,50 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="69" y="41" font-size="4px">52,5mm</text>
+
+<text x="77" y="286" font-size="4px">14mm &#xD8;</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,282 l1,1 m0,-2 l-1,1 l48,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="26" y="278" font-size="4px" text-anchor="middle">50mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,305 l1,1 m0,-2 l-1,1 l63,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="28" y="312" font-size="4px" text-anchor="middle">65mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M80,294 l1,1 m-2,0 l1,-1 l0,170 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="83" y="388" font-size="4px">172mm</text>
+
+</svg>

@@ -30,7 +30,7 @@ image::305_waage_thingy91x_oben.png[Obere Platte mit Aluwinkel 3mm, align=center
 
 Die neuste Version (2025) der Mobilen-Bienestock-Waage nutzt nun ein link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X[Thingy:91X] und einen deutlich vereinfachten Aufbau der Elektronik. Man schliest den link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[ADC NAU7802 von Adafruit] direct an das Thingy:91X und beides wandert in die Waage. Damit entfallt einiges an Verkabelung. Die Bedienung läuft dann über link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#enable-bluetooth-low-energy-on-a-thingy91[Bluetooth LE] und man braucht eine link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#smartphone-app[SmartPhone App]. Das ist aber nur für das Kalibrieren notwendig, oder wenn man testen möchte, ob die Sendebox an eimen Aufstellungsort Empfang hat.
 
-Die Waage ist mit 2x Plattform Wägezellen aufgebaut und entspricht dem vorherigen Model für eine link:DOUBLESCALE.adoc[aufwendigere Waage]. Man kann nur 1 Waage pro Thingy:91X anschließen. Der Aufbau ist leicht modifiziert, damit man 5mm mehr Bauhöhe bekommt. Dazu werden die 2mm und 3mm Distanzplatten durch 2x 5mm Distanzplatten ersetzt. Und der unter starke 5x30x40mm Winkel wird durch einen 5x35x35mm Winkel ersetzt. Es hat sich beim Betrieb mit den dünneren Distanzplatten bei mir eine Anfälligkeit gegen Verschmutzung gezeigt. Mal sehen, ob die 5mm hier auch Abhilfe schaffen. Die alten Waagen ware auch oft mit "überarbeiteten Alu Winkeln" gebaut, weil ich immer mal wiede was geändert oder falsch gemacht habe. Die neuen sind da klarer und bieten daher auch weniger Lücken für Schmutz. Im Herbst wird man sehen, ob sich das gelohnt hat.
+Die Waage ist mit 2x Plattform Wägezellen aufgebaut und entspricht dem vorherigen Model für eine link:DOUBLESCALE.adoc[aufwendigere Waage]. Man kann nur 1 Waage pro Thingy:91X anschließen. Der Aufbau ist leicht modifiziert, damit man 5mm mehr Bauhöhe bekommt. Dazu werden die 2mm und 3mm Distanzplatten durch 2x 5mm Distanzplatten ersetzt. Und der unter starke 5x30x50mm Winkel wird durch einen 5x35x40mm Winkel ersetzt. Es hat sich beim Betrieb mit den dünneren Distanzplatten bei mir eine Anfälligkeit gegen Verschmutzung gezeigt. Mal sehen, ob die 5mm hier auch Abhilfe schaffen. Die alten Waagen ware auch oft mit "überarbeiteten Alu Winkeln" gebaut, weil ich immer mal wiede was geändert oder falsch gemacht habe. Die neuen sind da klarer und bieten daher auch weniger Lücken für Schmutz. Im Herbst wird man sehen, ob sich das gelohnt hat.
 
 Wenn man im Frühling die Waage als Indikator für Pollensuchende Bienen einsetzen möchte, dann ist die Temperaturabhängigkeit relevant. Man hat da zwischen kalten Nächten und sonnigen Tagen schnell 20-30°C Unterschied. Daher benutze ich nun 2x50kg anstatt 2x100kg Sensoren, da ist die Temperaturdrift ebenfalls nur halb so groß.
 
@@ -68,24 +68,29 @@ Von der link:./#der-i2c-adc-wandler-mit-eeprom[i2c ADC-Platine] wird nur der lin
 
 Die Thingy:91X Sendebox schaltet die Stromversorgung für die ADC-Platinen im Unterschied zu der 2 Kanal-Sendbox ab. Aktiviert werden die Sensoren dann über den internen Spannungsregler des NAU7802. Dieser liefert gemäß dem Datenblatt maximal 10mA. Für zwei Balkensensoren ist das leider zu wenig. Die brauchen je 6-8mA zusammen also mehr als 10mA. Aktuell betreibe ich solche Waagen außerhalb der Spezifikation des NAU7802. Bis jetzt funktioniert es.
  
-== Bohrpläne (müssen noch an die geänderten Winkel angepasst werden)
+== Bohrpläne
+
+Die Lage der Bohrungen bei den starken Winkeln ergibt sich, wenn der ein Winkelschenkel liegt und der andere noch ober zeigt. 
 
 [cols="1*"]
 |===
-a|.Bohrplan Oben, 6mm Bohrungen
-image::207_alu_bohrungen_oben.svg[Bohrplan starke Aluwinkel Oben, 615, link="./Bohrplaene.pdf"]
+a|.oberer starker Winkel, 2x 6mm Bohrungen
+image::307_bohrungen_oben.svg[Bohrplan starker Winkel Oben, 612, link="./BohrplaeneV3.pdf"]
 
-a|.Bohrplan Unten, 6mm Bohrungen
-image::208_alu_bohrungen_unten.svg[Bohrplan starke Aluwinkel Unten, 594, link="./Bohrplaene.pdf"]
+a|.unterer starker Winkel, 4x 6mm Bohrungen
+image::308_bohrungen_unten.svg[Bohrplan starker Winkel Unten, 597, link="./BohrplaeneV3.pdf"]
 
-a|.Bohrplan Oben, 3,5mm Bohrungen
-image::209_alu_bohrungen_oben.svg[Bohrplan Aluwinkel, 765, link="./Bohrplaene.pdf"]
+a|.oberer Winkel, 3x 3,5mm Bohrungen
+image::309_bohrungen_oben.svg[Bohrplan Winkel, 750, link="./BohrplaeneV3.pdf"]
 
-a|.Bohrplan Unten, 3,5mm Bohrungen
-image::210_alu_bohrungen_unten.svg[Bohrplan Aluwinkel, 744, link="./Bohrplaene.pdf"]
+a|.unterer Winkel, 3x 3,5mm Bohrungen (und 1x 11mm)
+image::310_bohrungen_unten.svg[Bohrplan Aluwinkel, 727, link="./BohrplaeneV3.pdf"]
 
-a|.Bohrplan Bretter
-image::211_bretter_bohrungen.svg[Bohrplan Bretter, 825, link="./Bohrplaene.pdf"]
+a|.Distanzplatten, 2x 6mm Bohrunge
+image::311_distanz_platten.svg[Bohrplan Distanzplatten, 120, link="./BohrplaeneV3.pdf"]
+
+a|.Bretter
+image::312_bretter_bohrungen.svg[Bohrplan Bretter, 825, link="./BohrplaeneV3.pdf"]
 
 |===
 
@@ -115,23 +120,43 @@ a|link:https://www.digikey.de/en/products/detail/adafruit-industries-llc/4210/10
 a|link:https://www.amazon.de/dp/B0747RGBFF?ref=ppx_yo2ov_dt_b_fed_asin_title[Gehäuse 115x85x35mm, amazon.de]
 |8,99 Euro
 
-|Aluwinkel 35x35x5mm, 2x40,0cm (unten)
+|Aluwinkel 25x50x5mm, 2x40,8cm (oben)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
-|10,78 Euro (zzgl. Versand ca. 14 Euro je Bestellung)
+|11,16 Euro (zzgl. Versand ca. 14 Euro je Bestellung)
 
-|Aluwinkel 25x50x5mm, 2x41cm (oben)
+|Aluwinkel 35x35x5mm, 2x39,8cm (unten)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
-|11,16 Euro (zzgl. Versand)
+|10,78 Euro (zzgl. Versand)
 
-|Aluwinkel 20x20x3mm, 2x51cm
+|Aluwinkel 20x20x3mm, 2x50cm (oben)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
 |5,07 Euro (zzgl. Versand)
 
-|Aluwinkel 25x25x3mm, 2x49,6cm
+|Aluwinkel 25x25x3mm, 2x48,5cm (unten)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
 |6,14 Euro (zzgl. Versand)
 
 |Aluflachstange 30x5mm, für 4 Distanzplatten a 30mm Länge
+a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
+|2,62 Euro (zzgl. Versand)
+
+|Edelstahlwinkel 25x50x4mm, 2x40,8cm (oben, alternativ)
+|
+|???
+
+|Edelstahlwinkel 35x40x4mm, 2x39,8cm (unten, alternativ)
+|
+|???
+
+|Edelstahlwinkel 20x20x2mm, 2x50cm (oben, alternativ)
+|
+|???
+
+|Edelstahlwinkel 25x25x2mm, 2x48,5cm (unten, alternativ)
+|
+|???
+
+|Aluflachstange 30x6mm, für 4 Distanzplatten a 30mm Länge
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
 |2,62 Euro (zzgl. Versand)
 
@@ -155,7 +180,7 @@ a|link:https://www.schraubenluchs.de/Einschlagmuttern-Edelstahl-A2[z.B. Schraube
 a|link:https://www.vechta-waagen.com/shop/produkt/single-point-waegezelle-e120a/[Wägezelle, Vechta-Waagen, Temperaturkompenstation]
 |24,00 Euro (2x)
 
-|Plattform Wägezelle CLZ601 2x 50kg (alternativ)
+|Plattform Wägezelle CZL601 2x 50kg (alternativ)
 a|link:https://www.tinkerforge.com/de/shop/load-cell-50kg-czl601.html[Wägezelle, Tinkerforge, Temperaturkompenstation]
 |12,99 Euro (2x)
 

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 410 70">
+
+<text x="20" y="8" font-size="6px" >2 Stück unterer starker Winkel, 35x40x4mm, 398mm, 4x 6mm Bohrungen</text>
+
+<rect stroke="black" fill="gainsboro" stroke-width="1" x="5" y="15" width="398" height="40" stroke-linejoin="round" />
+<rect stroke="black" fill="silver" stroke-width="1" x="5" y="15" width="398" height="4" stroke-linejoin="round" />
+
+<text x="132" y="42" font-size="4px">6mm &#xD8;</text>
+
+<line stroke="grey" fill="none" stroke-width="1" x1="70" y1="32.5" x2="169" y2="32.5" stroke-dasharray="3 3" />
+<line stroke="grey" fill="none" stroke-width="1" x1="122" y1="47.5" x2="169" y2="47.5" stroke-dasharray="3 3" />
+<line stroke="grey" fill="none" stroke-width="1" x1="151" y1="23" x2="151" y2="54" stroke-dasharray="3 3" />
+
+<circle stroke="black" fill="white" stroke-width="1" cx="151" cy="32.5" r="3"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="151" cy="47.5" r="3"/>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,23 l1,1 m0,-2 l-1,1 l144,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="78" y="28" font-size="4px" text-anchor="middle">146mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M159,33.5 l1,1 m-2,0 l1,-1 l0,13 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="161" y="41" font-size="4px" >15mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M159,48.5 l1,1 m-2,0 l1,-1 l0,5.5 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="161" y="53" font-size="4px" >7,5mm</text>
+
+<line stroke="grey" fill="none" stroke-width="1" x1="31.5" y1="27" x2="31.5" y2="52" stroke-dasharray="3 3" />
+<line stroke="grey" fill="none" stroke-width="1" x1="10" y1="35" x2="52" y2="35" stroke-dasharray="3 3" />
+
+<line stroke="grey" fill="none" stroke-width="1" x1="376.5" y1="23" x2="376.5" y2="52" stroke-dasharray="3 3" />
+<line stroke="grey" fill="none" stroke-width="1" x1="351" y1="35" x2="400" y2="35" stroke-dasharray="3 3" />
+
+<circle stroke="black" fill="white" stroke-width="1" cx="31.5" cy="35" r="3"/>
+<circle stroke="black" fill="white" stroke-width="1" cx="376.5" cy="35" r="3"/>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M6,42 l1,1 m0,-2 l-1,1 l24.5,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="18" y="48" font-size="4px" text-anchor="middle">26,5mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M40,36 l1,1 m-2,0 l1,-1 l0,18 l1,-1 m-2,0 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="40" y="47" font-size="4px">20mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M377.5,27 l1,1 m0,-2 l-1,1 l24.5,0 l-1,1 m0,-2 l1,1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="391" y="33" font-size="4px" text-anchor="middle">26,5mm</text>
+
+<path stroke="grey" fill="none" stroke-width="1" d="M386,36 l1,1 m-2,0 l1,-1 l0,18 l1,-1 m-2,0 l1,-1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="388" y="47" font-size="4px">20mm</text>
+
+</svg>
