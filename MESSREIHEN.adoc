@@ -22,25 +22,50 @@ Der erste Faktor, die Abweichung bei Dauerbelastung, wird `Creep` genannt. Die T
 
 |CZL601 100kg|0,019|0,019|0,016
 
-|E120A 100kg|0,015|0,017|0,016
+|Vechta E120A 100kg|0,015|0,017|0,016
 
-|E30A 200kg|0,016|0,018|0,018
+|Vechta E30A 200kg|0,016|0,018|0,018
+
+|Mavin NA1 50kg|0,02|0,03|0,02
 |===
 
 `%F.S` steht dabei für "Full-Scale" also Vollausschlag. z.B. bei 100kg und 0,05% ergibt das 50g.
 
-Gemäß dem Datenblättern sind die Plattform Wägezelle besser und geeignet und liegen dicht beieinander.
+Gemäß dem Datenblättern sind die Plattform Wägezelle besser und geeignet und liegen dicht beieinander. Die Plattform Wägezelle haben meistens bereits eine Temperatur-Kompensation und sind deshalb deutlich weniger Empfindlich gegenüber Temperaturschwankungen.
+
 Das spiegelt letztlich den Anwendungsfall und die Kostenoptimierung wieder. Wenn eine Personenwaage kurz vor dem Wiegen auf 0 gestellt wird, dann fallen Creep und die 0-Punktverschiebeung nicht ins "Gewicht". Bei einer Bienenstockwaage bedeutet dies dann, dass man das Gewicht mit dem des Vortages bei in etwas selber Temperatur vergleichen kann und so eine Entwicklung ablesen kann. Für mehr braucht es dann eben die besser geeigneten Plattformsensoren.
 
-Außer diesen Faktoren spielt auch noch die Erregerspannung eine Rolle. Die Ausgangsspannung, mit der man dann das Gewicht bestimmen kann, hängt eben von dieser Erregerspannung ab. Deshalb ist es gannz wichtig, dass diese Erregerspannung auch die Referenzspannung des ADC ist, sonst bekommt man hier schnell Fehler. Bleibt, dass man mit einer höheren Erregerspannung im Allgemeinen eine genauere Auflösung bekommt.
+Wenn man die Sensoren auswählt, muss man sich auch zwischen der maximal zulässigen Last und der Temperaturabweichung entscheiden, 50kg Sensor hat nur die halbe Temperaturabweichung als die 100kg Variante. 
+
+Außer diesen Faktoren spielt auch noch die Erregerspannung eine Rolle. Die Ausgangsspannung, mit der man dann das Gewicht bestimmen kann, hängt eben von dieser Erregerspannung ab. Deshalb ist es gannz wichtig, dass diese Erregerspannung auch die Referenzspannung des ADC ist, sonst bekommt man hier schnell Fehler. Bleibt, dass man mit einer höheren Erregerspannung im Allgemeinen eine höhere Auflösung bekommen würde. Aber für eine Waage die mit Batterien betrieben wird, muss man da Kompromisse eingehen. 
+
+Meine `Mobile-Bienenstock-Waage` benutzt eine Systemspannung von 3,3V. Als analoge Erregerspannung leite ich davon 2,7V ab, indem ich den ADC (NAU7802) entsprechend konfiguriere.
 
 ## ADC
 
-Auch die Präzision des ADC hängt von einigen Faktoren ab. Die gängigen ADC für Waagen bieten meist eine Auflösung von bis zu 24 Bit an. Wenn man aber die Referenzspannung und den gewählten Verstärkungsfaktor hinzunimmt, dann geht diese Auflösung rasch runter. Bei dem benutzten NAU7802 kann man das der Tabelle 1.5.2 auf Seite 10 des Datenblatt entnehmen. Bei 3,3V und Verstärkungsfaktor (gain) 64 bleiben 17 Bit. Aussagen zur Temperaturstabilität konnte ich nicht finden. Der NAU7802 verfügt aber über eigene Temperatursensoren und ermöglich somit ein etwaige Kompensation.
+Auch die Präzision des ADC hängt von einigen Faktoren ab. Die gängigen ADC für Waagen bieten meist eine Auflösung von bis zu 24 Bit an. Wenn man aber die Referenzspannung und den gewählten Verstärkungsfaktor hinzunimmt, dann geht diese Auflösung rasch runter. Bei dem benutzten NAU7802 kann man das der Tabelle 1.5.2 auf Seite 10 des Datenblatt entnehmen. Bei 3,3V und Verstärkungsfaktor (gain) 64 bleiben 17 Bit.
+
+Der NAU7802 weißt eine geringe Temperaturabhängigkeit auf, die im Verhältnis zu der der Sensoren in der Praxis aber vernachlässigbar erscheint. Was man aber vor jeder Messung machen sollte ist den 0-Punkt kalibirieren. Dazu hat der NAU7802 eine interne Kalibrierungsfunktion und alternativ die Möglichkeit, die Analogeingänge intern zu verbinden. Ich nutze den 2. Ansatz, da man da selber filtern kann, wann die Werte stabil genung sind. 
 
 ## Messreihen
 
-Vor ein paar Monaten hatte ich den Plan, hier diverse Messreichen aufzuführen. Aber zumindest bei meinen Tests stellte sich raus, dass man sich da ganz schön einfach selber täuschen kann. Siehe meine Beiträge in link:https://community.hiveeyes.org/t/diskussion-zum-nuvoton-nau7802-24bit-2ch-adc/3237/25[Hiveeyes - Diskussion zum Nuvoton NAU7802 24bit 2ch ADC].
+Zu Begin hatte ich den Plan, hier diverse Messreichen aufzuführen. Aber zumindest bei meinen Tests stellte sich raus, dass man sich da ganz schön einfach selber täuschen kann. Siehe meine Beiträge in link:https://community.hiveeyes.org/t/diskussion-zum-nuvoton-nau7802-24bit-2ch-adc/3237/25[Hiveeyes - Diskussion zum Nuvoton NAU7802 24bit 2ch ADC].
 
-Ich plane inzwischen auch keine Temperatur-Kompensation mehr. Bei den Waagen (2xE120A 100kg pro Waage), die ich zu Tests auf meinem Rasen vor dem Haus betreibe, schwankt das gemeldet Gewicht mehr in Abhängigkeit vom Regen, als von der Temperatur. Wenn sich im Sommer eine Trockenperiode zeigt, dann möchte ich eine Messreihe erstellen, damit man die Temperaturabweichung bei ca. 48 kg Belastung ermitteln kann. 
+Es gibt auch Messreihen von anderen, z.B. link:https://community.hiveeyes.org/t/strain-gauge-load-cell-tests-in-a-diy-climate-chamber/1642/20[Hiveeyes,Strain gauge load cell tests in a DIY climate chamber] oder link:https://beelogger.de/sensoren/waegezellen_hx711/stockwaage-temperaturkompensation/[beelogger - Temperaturkompensation].
+
+Beides spiegelt meine Erfahrungen mit systematischeren Messungen diese Frühjahr (2025) wieder. Bei manchen Sensoren sieht man einen linearen Zusammenhang mit der Temperatur, und eine verbesserte Kompensation ist dann möglich. Bei anderen Sensoren ist das nicht linear. Bis jetzt scheint es für mich auch so zu sein, dass die Varianz zwischen den Sensoren eines Herstellers groß ist, und ich keinen Hersteller gefunden habe, der da eine geringere Varianz oder generell eine geringere Tempeaturabweichung hat.
+
+Messungen mit 8 facher Verstärkung:
+ 
+[cols="3*"]
+|===
+a|.100 kg (Widerstände)
+image::401_chart_100kg.png[100kg (Widerstände)] 
+a|.0 kg (2x50 kg Wägezellen)
+image::402_chart_0kg.png[0kg (2x50 kg Wägezellen)]
+a|.10 kg (2x50 kg Wägezellen)
+image::403_chart_10kg.png[10kg (2x50 kg Wägezellen)]
+|===
+
+
 
