@@ -59,13 +59,47 @@ Messungen mit 8 facher Verstärkung:
  
 [cols="3*"]
 |===
-a|.100 kg (Widerstände)
+a|.100kg (Widerstände)
 image::401_chart_100kg.png[100kg (Widerstände)] 
-a|.0 kg (2x50 kg Wägezellen)
-image::402_chart_0kg.png[0kg (2x50 kg Wägezellen)]
-a|.10 kg (2x50 kg Wägezellen)
-image::403_chart_10kg.png[10kg (2x50 kg Wägezellen)]
+a|.0kg (2x50kg Wägezellen)
+image::402_chart_0kg.png[0kg (2x50kg Wägezellen)]
+a|.10kg (2x50kg Wägezellen)
+image::403_chart_10kg.png[10kg (2x50kg Wägezellen)]
 |===
 
 
+Messungen mit 32 facher Verstärkung, unterschiedliche Sensoren:
+ 
+[cols="3*"]
+|===
+a|.2x50kg Wägezellen
+image::404_chart_2x50kg.png[2x50kg Wägezellen] 
+a|.2x100 kg Wägezellen
+image::405_chart_2x100kg.png[2x100kg Wägezellen]
+a|.2x100 kg Wägezellen (anderer Hersteller)
+image::406_chart_2x100kg.png[2x100kg Wägezellen)]
+|===
+
+## Mein Fazit:
+
+2x50kg lieferte bei meinen Test die geringste Temperaturabweichung, die Unterschiede zwischen den Wägezellen (CZL601, Vechta E120A, Mavin NA1) sind gering.
+ 
+Die 2x100kg haben ein höhere Abweichung und bei meinen Tests gab es da dann sehr deutlich "Ausreißer" bei den Wägezellen (CZL601, Vechta E120A). Das Diagramm ganz rechts zeigt zusätzlich mit der "kg B" Kurve an, was eine temperatur-abhängige Kompensation bringen kann. Einschränkend muss erwähnt werden, dass die Temperatur nicht die vom Sensor sondern von der Sendebox ist. Die Kompensationsdaten (Gewichtsabweichung pro °C) muss für jede Waage ermittelt werden.    
+
+Abweichungen bei 30° Temperaturdifferenz:
+
+[cols="3*"]
+|===
+|Wägezelle|Last <20kg|Last >40kg
+
+|2x50kg|70g|130g
+
+|2x100kg|120g|-
+
+|2x100kg|740g|-
+
+|2x100kg (komp.)|240g|-
+|===
+
+Daher erscheint mir die Wahl mit 2x50kg die Beste zu sein. 
 
