@@ -29,7 +29,7 @@ image::305_waage_thingy91x_oben.png[Obere Platte mit Aluwinkel 3mm, align=center
 
 Die neuste Version (2025) der Mobilen-Bienestock-Waage nutzt nun ein link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X[Thingy:91X] und einen deutlich vereinfachten Aufbau der Elektronik. Man schliest den link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[ADC NAU7802 von Adafruit] direct an das Thingy:91X und beides wandert in die Waage. Damit entfallt einiges an Verkabelung. Die Bedienung läuft dann über link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#enable-bluetooth-low-energy-on-a-thingy91[Bluetooth LE] und man braucht eine link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#smartphone-app[SmartPhone App]. Das ist aber nur für das Kalibrieren notwendig, oder wenn man testen möchte, ob die Sendebox an eimen Aufstellungsort Empfang hat.
 
-Die Waage ist mit 2x Plattform Wägezellen aufgebaut und entspricht dem vorherigen Model für eine link:DOUBLESCALE.adoc[aufwendigere Waage]. Man kann nur 1 Waage pro Thingy:91X anschließen. Der Aufbau ist leicht modifiziert, damit man 5mm mehr Bauhöhe bekommt. Dazu werden die 2mm und 3mm Distanzplatten durch 2x 5mm Distanzplatten ersetzt. Und der unter starke 5x30x50mm Winkel wird durch einen 5x35x40mm Winkel ersetzt. Es hat sich beim Betrieb mit den dünneren Distanzplatten bei mir eine Anfälligkeit gegen Verschmutzung gezeigt. Mal sehen, ob die 5mm hier auch Abhilfe schaffen. Die alten Waagen ware auch oft mit "überarbeiteten Alu Winkeln" gebaut, weil ich immer mal wiede was geändert oder falsch gemacht habe. Die neuen sind da klarer und bieten daher auch weniger Lücken für Schmutz. Im Herbst wird man sehen, ob sich das gelohnt hat.
+Die Waage ist mit 2x Plattform Wägezellen aufgebaut und entspricht dem vorherigen Model für eine link:DOUBLESCALE.adoc[aufwendigere Waage]. Man kann nur 1 Waage pro Thingy:91X anschließen. Der Aufbau ist leicht modifiziert, damit man 5mm mehr Bauhöhe bekommt. Dazu werden die 2mm und 3mm Distanzplatten durch 2x 5mm Distanzplatten ersetzt. Und der unter starke 5x30x50mm Winkel wird durch einen 5x35x35mm Winkel ersetzt. Es hat sich beim Betrieb mit den dünneren Distanzplatten bei mir eine Anfälligkeit gegen Verschmutzung gezeigt. Mal sehen, ob die 5mm hier auch Abhilfe schaffen. Die alten Waagen waren auch oft mit "überarbeiteten Alu Winkeln" gebaut, weil ich immer mal wieder was geändert oder falsch gemacht habe. Die neuen sind da klarer und bieten daher auch weniger Lücken für Schmutz. Im Herbst wird man sehen, ob sich das gelohnt hat.
 
 Wenn man im Frühling die Waage als Indikator für Pollensuchende Bienen einsetzen möchte, dann ist die Temperaturabhängigkeit relevant. Man hat da zwischen kalten Nächten und sonnigen Tagen schnell 20-30°C Unterschied. Daher benutze ich nun 2x50kg anstatt 2x100kg Sensoren, da ist die Temperaturdrift ebenfalls nur halb so groß.
 
@@ -76,22 +76,22 @@ Die Lage der Bohrungen bei den starken Winkeln ergibt sich, wenn der ein Winkels
 [cols="1*"]
 |===
 a|.oberer starker Winkel, 2x 6mm Bohrungen
-image::308_bohrungen_oben.svg[Bohrplan starker Winkel Oben, 612, link="./BohrplaeneV3.pdf"]
+image::309_bohrungen_oben.svg[Bohrplan starker Winkel Oben, 612, link="./BohrplaeneV3.pdf"]
 
 a|.unterer starker Winkel, 4x 6mm Bohrungen
-image::309_bohrungen_unten.svg[Bohrplan starker Winkel Unten, 597, link="./BohrplaeneV3.pdf"]
+image::310_bohrungen_unten.svg[Bohrplan starker Winkel Unten, 597, link="./BohrplaeneV3.pdf"]
 
 a|.oberer Winkel, 3x 3,5mm Bohrungen
-image::310_bohrungen_oben.svg[Bohrplan Winkel, 750, link="./BohrplaeneV3.pdf"]
+image::311_bohrungen_oben.svg[Bohrplan Winkel, 750, link="./BohrplaeneV3.pdf"]
 
 a|.unterer Winkel, 3x 3,5mm Bohrungen (und 1x 11mm)
-image::311_bohrungen_unten.svg[Bohrplan Aluwinkel, 727, link="./BohrplaeneV3.pdf"]
+image::312_bohrungen_unten.svg[Bohrplan Aluwinkel, 727, link="./BohrplaeneV3.pdf"]
 
 a|.Distanzplatten, 2x 6mm Bohrunge
-image::312_distanz_platten.svg[Bohrplan Distanzplatten, 120, link="./BohrplaeneV3.pdf"]
+image::313_distanz_platten.svg[Bohrplan Distanzplatten, 120, link="./BohrplaeneV3.pdf"]
 
 a|.Bretter
-image::313_bretter_bohrungen.svg[Bohrplan Bretter, 825, link="./BohrplaeneV3.pdf"]
+image::314_bretter_bohrungen.svg[Bohrplan Bretter, 825, link="./BohrplaeneV3.pdf"]
 |===
 
 == Bauteilliste
@@ -264,7 +264,7 @@ a|*40 Euro*
 [cols="1*"]
 |===
 a|.Anordung der Winkel, Distanzplatten und Wägezelle (Edelstahl)
-image::314_waage_winkel.svg[Anordnung, 150]
+image::315_waage_winkel.svg[Anordnung, 150]
 |===
 
 Die starken Edelstahlwinkel sind mit 4mm 1mm dünner, daher muss eine der Distanzplatten 1mm mehr habe und hat so 6mm. 
