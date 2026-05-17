@@ -1,10 +1,10 @@
-// Mobile-Bienenstock-Waage, Version 2.1, Februar 2025
+// Mobile-Bienenstock-Waage, Version 2.2, Mai 2026
 
 :imagesdir: pictures
 
 = Mobile-Bienenstock-Waage
 Achim Kraus <achim.kraus@cloudcoap.net>
-v0.5, 2025-02-16
+v0.6, 2026-05-17
 
 [cols="1*"]
 |===
@@ -15,30 +15,37 @@ image::beehives.jpg[Bienenstöcke mit Waage]
 
 == Willkommen auf meiner Bastelanleitung für eine Mobile-Bienenstock-Waage.
 
-Ich bin einer der IoT-Enthusiasten, der gerne echte Dinge baut, die auch funktionieren. 2022 habe ich angefangen, einen link:https://github.com/boaks/zephyr-coaps-client[Modem-Client] zu implementieren, mit dem man zeigen kann was in link:https://cloudcoap.net[UDP] steckt. In Kombination mit link:https://github.com/eclipse-californium/californium/tree/main/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] demonstriert dieses Beispiel, dass man auch von Batterie ein paar Monate jede Stunde Daten austauschen kann.   
+Ich bin einer der IoT-Enthusiasten, der gerne echte, funktionierende Dinge baut. 2022 habe ich angefangen, einen link:https://github.com/boaks/zephyr-coaps-client[Modem-Client] zu implementieren, mit dem man zeigen kann was in link:https://cloudcoap.net[UDP] steckt. In Kombination mit link:https://github.com/eclipse-californium/californium/tree/main/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] demonstriert dieses Beispiel, dass man auch von Batterie ein paar Monate jede Stunde Daten austauschen kann.   
 
 Anfang 2023 habe ich dann basierend auf diesem Modem-Client meinen erste Bienenstock-Waage gebaut und bei einem befreundeten Imker in Betrieb genommen. Das Ergebnis des halbjährigen Testlaufs ist einfach: 
 
 * mobiler Datenaustausch funktioniert von Batterie sehr gut
 * die Waage selber hat aber viel Verbesserungspotential
 
-Das hat dann zur einer neuen Bauart der Elektronik geführt. Die daraus entstandenen Waagen in link:README-2024.adoc[2024] zeigten dann schon, dass einiges besser ist, aber auch noch weitere Verbesserungen gut wären. Daher habe ich dann Anfang 2025 die Waagen erneut verbessert und nach mehreren Monaten testen gibt es nun auch zu diesem Model sehr positive Erfahrungen. Ich möchte trotzdem gleich hier einräumen, dass es genauere Waagen gibt. Mein Schwerpunkt liegt auf dem mobilen Einsatz und dem Aufbau der Elektronik.
+Das hat dann zur einer neuen Bauart der Elektronik geführt. Die daraus entstandenen Waagen in link:README-2024.adoc[2024] zeigten dann schon, dass einiges besser ist, aber auch noch weitere Verbesserungen gut wären. Daher habe ich dann Anfang 2025 die Waagen erneut verbessert und nach mehreren Monaten testen gibt es nun auch zu diesem Model sehr positive Erfahrungen. Ich möchte trotzdem gleich hier einräumen, dass es genauere Waagen gibt. Mein Schwerpunkt liegt auf dem mobilen Einsatz und dem einfachen Aufbau der Elektronik.
 
 * ADC ist in die Waage. Kurze Kabel zu den Sensoren sind wichtig für eine geringere Temperaturabhängigkeit.
 * Es werden 2x50kg Sensoren verwendet, anstatt 2x100kg. Das hilft nochmal die Temperaturabhängigkeit zu halbieren.
 * Kalibrierungsdaten müssen ebenfalls in die Waage. Es hat sich auch gezeigt, dass es vorteilhaft ist, die Sendebox ebenfalls in die Waage zu integrieren. Das löst das "Kabelgewirr" auf und macht das Aufstellen und Umziehen der Bienenstöcke und Waagen einfacher.
-* Der Aufbau der Elektronik wurde stark vereinfacht. Es werden nun Modems verwendet, die über einen QWIIC Anschluß verfügen. So kann man den ADC NAU7802 direkt anschließen, ohne zu löten. Auch einen Solarladeregler kann man verhältnismässig einfach integrieren.
+* Der Aufbau der Elektronik wurde stark vereinfacht. Es werden nun Modems verwendet, die über einen QWIIC Anschluß verfügen. So kann man den ADC NAU7802 direkt anschließen. Auch einen Solarladeregler kann man verhältnismässig einfach integrieren.
 
 == Thingy:91X mit 2 Plattform Wägezellen
 
 [cols="3*"]
 |===
-a|.Thingy:91X Waage (keine Kabel mehr!)
-image::301_waage_thingy91x.png[Bienenstock auf Thingy:91X-Waage (keine Kabel mehr), align=center] 
+a|.2025 Waage (keine Kabel mehr!)
+image::301_waage_thingy91x.png[Bienenstock auf 2025 Waage (keine Kabel mehr), align=center] 
 a|.Solar-Lader (2x 1 Woche pro Jahr)
 image::302_solarlader.png[Solar-Lader (2x 1 Woche pro Jahr), align=center]
 a|.Sendebox Thingy:91X und ADC
 image::303_sendebox_thingy91x.png[Sendebox mit Thingy:91X und ADC, align=center]
+
+a|.2025 Waage, nRF9151-feather
+image::316_waage_feather.png[2025 Waage mit feather align=center] 
+a|.Sendbox mit nRF9151-feather
+image::317_sendbox_feather.png[Sendbox mit nRF9151-feather, align=center]
+a|.2025 Waagendeckel für Senkkopfschrauben
+image::318_waage_deckel.png[2025 Waagendeckel für Senkkopfschrauben, align=center]
 
 a|.Untere Platte mit Aluwinkel 5mm, Wägezellen und Thingy:91X
 image::304_waage_thingy91x_unten.png[Untere Platte mit Aluwinkel 5mm und Wägezellen montiert und Thingy:91X, align=center] 
@@ -52,11 +59,13 @@ image::305_waage_thingy91x_oben.png[Obere Platte mit Aluwinkel 3mm, align=center
 
 Die Version 2025 der Mobilen-Bienestock-Waage nutzt nun ein link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X[Thingy:91X]. Man schliest den link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[ADC NAU7802 von Adafruit] direkt an das Thingy:91X an und beides wandert in die Waage. Damit entfällt einiges an Verkabelung. Die Bedienung läuft über link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#enable-bluetooth-low-energy-on-a-thingy91[Bluetooth LE] und man braucht eine link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#smartphone-app[SmartPhone App]. Das ist aber nur für das Kalibrieren notwendig, oder wenn man testen möchte, ob die Sendebox an eimen Aufstellungsort Empfang hat.
 
-Alternativ gibt es auch noch zwei weitere unterstütze Modems mit QWIIC, die link:https://www.circuitdojo.com/products/nrf9151-feather[nRF9151 Feather] und das link:https://conexiotech.com/conexio-stratus-pro-nrf9151/[Conexio Stratus Pro nRF9151], das letztere kommt sogar schon mit einem integrierten Solarladeregler. Beide haben aber keine Bluetooth LE Modul, so dass man dann trotzdem einmalig ein link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X[Thingy:91X] für das Kalibrieren benötigt. Alternativ kann man auch ein USB Kabel verwenden.
+Alternativ gibt es auch noch zwei weitere unterstütze Modems mit QWIIC, die link:https://www.circuitdojo.com/products/nrf9151-feather[nRF9151 Feather] und das link:https://conexiotech.com/conexio-stratus-pro-nrf9151/[Conexio Stratus Pro nRF9151], das letztere kommt sogar schon mit einem integrierten Solarladeregler. Beide haben aber keine Bluetooth LE Modul, so dass man entweder ein USB Kabel oder einmalig ein link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X[Thingy:91X] für das Kalibrieren benötigt.
 
-Der Aufbau mit 2 Plattform Wägezellen gibt der Waage ein besondere Stabilität und Unempfindlichkeit beim Aufsetzen von Lasten. Wichtig ist, dass die Wägezellen sehr schlüssig und stabil mit den starken Aluwinkeln (5mm) verschraubt werden, sonst bekommt man anstatt einer Waage eine Wippe. Die obere Siebdruckplatte wird mit kleineren Aluwinkeln (3mm) gegen verrutschen gesichert. Hier muss man darauf achten, dass diese kleineren Aluwinkel (3mm) nur an den oberen starken Aluwinkeln (5mm) anstoßt. Wenn diese auch am unteren starken Aluwinkeln (5mm) anstossen, verfälscht die Reibung das gemessene Gewicht. Daher sind die oberen zwei starken Aluwinkel (5mm) 40,8cm lang und die unteren zwei mit 39,8cm 1cm kürzer. Die kleineren Aluwinkel (3mm) für die untere Siebdruckplatten schließen den Kasten ab. Diese sind um 16mm kürzer als die oberen kleineren Aluwinkel (3mm).
+Der Aufbau mit 2 Plattform Wägezellen gibt der Waage ein besondere Stabilität und Unempfindlichkeit beim Aufsetzen von Lasten. Wichtig ist, dass die Wägezellen sehr schlüssig und stabil mit den starken Aluwinkeln (4mm bzw. 5mm) verschraubt werden, sonst bekommt man anstatt einer Waage eine Wippe. Die obere Siebdruckplatte wird mit kleineren Aluwinkeln (3mm) gegen verrutschen gesichert. Hier muss man darauf achten, dass diese kleineren Aluwinkel (3mm) nur an den oberen starken Aluwinkeln (5mm) anstoßt. Wenn diese auch am unteren starken Aluwinkeln (4mm) anstossen, verfälscht die Reibung das gemessene Gewicht. Daher sind die oberen zwei starken Aluwinkel (5mm) 40,0cm lang und die unteren zwei mit 39,2cm 8mm kürzer. Die kleineren Aluwinkel (2mm) für die untere Siebdruckplatten schließen den Kasten ab. Diese sind um 16mm kürzer als die oberen kleineren Aluwinkel (3mm).
 
 Für die Schraubenköpfe der M6 Schrauben, die die starken Aluwinkel (5mm) mit der Wägezelle verbinden, muss man in die Siebdruckplatten jeweils Aussparungen bohren (siehe oben, mittleres und rechtes Bild). Die unteren starken Aluwinkeln (5mm) verschraube ich ebenfalls mit den 6mm Schrauben und einer Einschlagmutter mit der unteren Siebdruckplatte.
+
+Wann man Senkkopfschrauben M6 verwendet, muss man die starken Aluwinkel (4mm bzw. 5mm) entsprechend mit einem Senkkopfbohrer nachbohren. Dafür entfallen die Bohrungen für die Aussparungen in den Siebdruckplatten. Man kann dann auch die Einschlagmuttern durch entsprechende Senkkopfschrauben ersetzen. Es sollte nicht unerwähnt bleiben, dass die Senkkopfschrauben nicht die Stabilität der Zylinderschrauben haben.
 
 Zwischen die starken Aluwinkeln (5mm) und den Plattform Wägezellen werden noch Distanzplatten benötigt, damit die Wägezelle auslenken kann.
 
@@ -66,11 +75,13 @@ a|.Anordung der Winkel, Distanzplatten und Wägezelle (Alu)
 image::307_waage_winkel.svg[Anordnung, 150]
 |===
 
-Die Anordnung der starken Aluwinkel (5mm), der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die starken Aluwinkel (5mm) selbst gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen. Meine Wägezelle hat eine Höhe von 22mm. Es werden dann oben und unten Distanzplatten benötigt, damit der Sensor auslenken kann. Hier benutze ich jeweils 5mm. Das ergibt dann eine Höhe von 32mm insgesamt. Meine Aluwinkel haben eine Innenhöhe von 30mm. Somit is die Auslenkung auf 2mm begrenzt.
+Die Anordnung der starken Aluwinkel (4mm bzw. 5mm), der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die starken Aluwinkel (4mm) selbst gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen. Meine Wägezelle hat eine Höhe von 22mm. Es werden dann oben und unten Distanzplatten benötigt, damit der Sensor auslenken kann. Hier benutze ich jeweils 5mm und 6mm. Das ergibt dann eine Höhe von 32mm insgesamt. Meine Aluwinkel (4mm) haben eine Innenhöhe von 31mm. Somit ist die Auslenkung auf 2mm begrenzt.
 
 Vielleicht findet der eine oder andere die Anordnung der Winkel seltsam. Ich erreiche damit zum einen nach außen (links) eine möglichst geschlossen Form zu bilden und zum anderen nach innen (rechts) offen zu sein für das Kabel, das aus der Wägezelle kommt und mit der ADC-Platine verbunden werden muss.
 
-Beim Zusammenschrauben muss man auf die richtige Reihenfolge achten, sonst verdeckt ein Aluwinkel die nächste Schraube. Man beginnt mit den unteren starken Aluwinkel (5mm), den 5mm Distanzplatten und den Plattform Wägezellen. Dann setzt man die zusammengeschraubte Kombination auf die untere Siebdruckplatte und schraubt diese ebenfalls fest. Danach setzt man den oberen starken Aluwinkel (5mm) zusammen mit den 5mm Distanzplatten auf und schraubt diese ebenfalls fest. Ist man damit fertig, dann kann man die kleineren Aluwinkeln (3mm) seitlich, oben und unten montieren. Ich nehme da Spanplattenschrauben 3,5x9,5mm.
+Beim Zusammenschrauben muss man auf die richtige Reihenfolge achten, sonst verdeckt ein Aluwinkel die nächste Schraube. Man beginnt mit den unteren starken Aluwinkel (4mm), den 6mm Distanzplatten und den Plattform Wägezellen. Dann setzt man die zusammengeschraubte Kombination auf die untere Siebdruckplatte und schraubt diese ebenfalls fest. Danach setzt man den oberen starken Aluwinkel (5mm) zusammen mit den 5mm Distanzplatten auf und schraubt diese ebenfalls fest. Ist man damit fertig, dann kann man die kleineren Aluwinkeln (2mm) seitlich, oben und unten montieren. Ich nehme da Spanplattenschrauben 3,5x9,5mm bzw. 3,5x13mm.
+
+Da Aluwinkel und Edelstahlschrauben verwendet werden, gibt es bei Nässe Korrosion. Um diese zu reduzieren benutze ich eine Isolierband zwischen den Aluwinkeln und den Siebdruckplatten.   
 
 == Anschlußplan
 
@@ -113,7 +124,7 @@ image::311_bohrungen_oben.svg[Bohrplan Winkel, 750, link="./BohrplaeneV3.pdf"]
 a|.unterer Winkel, 3x 3,5mm Bohrungen (und 1x 11mm)
 image::312_bohrungen_unten.svg[Bohrplan Aluwinkel, 727, link="./BohrplaeneV3.pdf"]
 
-a|.Distanzplatten, 2x 6mm Bohrunge
+a|.Distanzplatten, 2x 6mm Bohrungen
 image::313_distanz_platten.svg[Bohrplan Distanzplatten, 120, link="./BohrplaeneV3.pdf"]
 
 a|.Bretter
@@ -122,137 +133,219 @@ image::314_bretter_bohrungen.svg[Bohrplan Bretter, 825, link="./BohrplaeneV3.pdf
 
 == Bauteilliste
 
-[cols="3*"]
+[cols="4*"]
 |===
-|Bauteil|Bezugsquelle|Preis (Herbst 2025)
+|Bauteil|Bezugsquelle|Preis (Sommer 2026)|Variante
 
 |Thingy:91X, Nordic, LTE-M/NB-IoT nRF9151 modem  
 a|link:https://www.digikey.de/en/products/detail/nordic-semiconductor-asa/THINGY91X/25650019[Thingy:91X, digikey.de]
 |112,77 Euro
+|Sendbox Thingy
+
+|nRF9151-Feather,Circuit Dojo, LTE-M/NB-IoT nRF9151 modem  
+a|link:https://www.digikey.de/de/products/detail/circuit-dojo/PASSY-NRF9151-FEATHER/26580618[nRF9151-Feather, digikey.de]
+|69,78 Euro
+|Sendbox Feather
+
+|Akku LiPo 2000 mAh  
+a|link:https://eckstein-shop.de/LiPo-Akku-Lithium-Ion-Polymer-Batterie-37V-2000mAh-mit-JST-PHR-2-Stecker-LP103450[eckstein-shop]
+|7,95 Euro (zzgl. Versand)
+|Sendbox Feather
+
+|LTE Antenne  
+a|link:https://www.digikey.de/de/products/detail/unictron-technologies-corporation/H2B4MH1F2F0100/9921462[nRF9151-Feather, digikey.de]
+|4,42 Euro
+|Sendbox Feather
 
 |Adafruit NAU7802 24-BIT ADC, I2C
 a|link:https://www.digikey.de/en/products/detail/adafruit-industries-llc/4538/16584123[Adafruit NAU7802, digikey.de]
 |6,07 Euro
+|Alle
 
 |Adafruit Qwiic Kabel  
 a|link:https://www.digikey.de/en/products/detail/adafruit-industries-llc/4210/10230021[Adafruit Qwiic Kabel, digikey.de]
 |0,96 Euro
+|Alle
 
 |Gehäuse 115x85x35mm  
-a|link:https://www.amazon.de/dp/B0747RGBFF?ref=ppx_yo2ov_dt_b_fed_asin_title[Gehäuse 115x85x35mm, amazon.de]
+a|link:https://www.amazon.de/dp/B0747RGBFF?ref=ppx_yo2ov_dt_b_fed_asin_title[Gehäuse 115x85x35mm, Amazon]
 |8,99 Euro
+|Alle
 
-|Gummitüllen, T-förmige, 6mm Außen x 4mm Innen x 9mm H, 2 Stück    
-a|link:https://www.amazon.de/dp/B0D9K1ZNH4?ref=ppx_yo2ov_dt_b_fed_asin_title[Gummitüllen 6x4x9mm, amazon.de]
+|Gummitüllen, T-förmige, 6mm Außen x 4mm Innen x 9mm H, 3 Stück    
+a|link:https://www.amazon.de/dp/B0D9K1ZNH4?ref=ppx_yo2ov_dt_b_fed_asin_title[Gummitüllen 6x4x9mm, Amazon]
 |7,29 Euro (24 Stück)
+|Alle
 
-|Aluwinkel 25x50x5mm, 2x40,8cm (oben)
+|Aluwinkel 25x50x5mm, 2x40cm (oben)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
-|9,72 Euro (zzgl. Versand ca. 14 Euro je Bestellung)
+|12,28 Euro (zzgl. Versand ca. 14 Euro je Bestellung)
+|Alle
 
-|Aluwinkel 35x35x5mm, 2x39,8cm (unten)
+|Aluwinkel 35x35x4mm, 2x39,2cm (unten)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
-|9,42 Euro (zzgl. Versand)
+|9,71 Euro (zzgl. Versand)
+|Alle
 
 |Aluwinkel 20x20x3mm, 2x50cm (oben)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
-|4,36 Euro (zzgl. Versand)
+|5,61 Euro (zzgl. Versand)
+|Alle
 
-|Aluwinkel 25x25x3mm, 2x48,4cm (unten)
+|Aluwinkel 20x20x3mm, 2x40cm (oben)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
-|5,26 Euro (zzgl. Versand)
+|4,74 Euro (zzgl. Versand)
+|Alle
 
-|Aluflachstange 30x5mm, für 4 Distanzplatten a 30mm Länge
+|Aluwinkel 25x25x2mm, 2x48,4cm (unten)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
-|3,76 Euro (zzgl. Versand)
+|4,90 Euro (zzgl. Versand)
+|Alle
+
+|Aluflachstange 30x5mm, für 2 Distanzplatten a 30mm Länge
+a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
+|4,28 Euro (zzgl. Versand)
+|Alle
+
+|Aluflachstange 30x6mm, für 2 Distanzplatten a 30mm Länge
+a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
+|4,57 Euro (zzgl. Versand)
+|Alle
 
 |Zylinderschrauben A4-80, M6 20mm, 12 Stück
-a|link:https://www.schraubenhandel24.de/schrauben/gewindeschrauben/zylinderschrauben/din-912/din-912-zylinderschrauben-isk-edelstahl-a4-80/din-912-zylinderschrauben-edelstahl-a4-80-m6x20-200st[z.B. Schraubenhandel24.de]
+a|link:https://www.schraubenhandel24.de/schrauben/gewindeschrauben/zylinderschrauben/din-912/din-912-zylinderschrauben-isk-edelstahl-a4-80/din-912-zylinderschrauben-edelstahl-a4-80-m6x20-200st[z.B. Schraubenhandel24]
 |22,61 Euro (200 St, zzgl. Versand)
+|Zylinderschrauben
 
 |Federringe A4, M6, 12 Stück
-a|link:https://www.schraubenhandel24.de/scheiben/federringe/din-7980/din-7980-federringe-edelstahl-a4/ca-din-7980-a-4-federringe-fuer-zylinderschrauben-6-100st[z.B. Schraubenhandel24.de]
+a|link:https://www.schraubenhandel24.de/scheiben/federringe/din-7980/din-7980-federringe-edelstahl-a4/ca-din-7980-a-4-federringe-fuer-zylinderschrauben-6-100st[z.B. Schraubenhandel24]
 |5,68 Euro (100 St, zzgl. Versand)
+|Zylinderschrauben
 
 |Einschlagmuttern A2, M6 9mm, 4 Stück
 a|link:https://www.schraubenluchs.de/Einschlagmuttern-Edelstahl-A2[z.B. Schraubenluchs]
-|1,08 Euro (zzgl. Versand)
+|1,60 Euro (zzgl. Versand)
+|Zylinderschrauben
 
-|Spanplattenschrauben A4, 3,5x9, 5mm, 12 Stück
+|Senkkopfschrauben A2, M6 25mm, 12 Stück
+a|link:https://www.schraubenluchs.de/200-Stueck-Senkschrauben-ISO-10642-Edelstahl-A2-M-6x25[z.B. Schraubenluchs]
+|6,66 Euro (200 St, zzgl. Versand)
+|Senkkopfschrauben
+
+|Muttern A2, M6, 4 Stück
+a|link:https://www.schraubenluchs.de/200-Stueck-Sechskantmuttern-DIN-934-A2-M6[z.B. Schraubenluchs]
+|2,75 Euro (200 St, zzgl. Versand)
+|Senkkopfschrauben
+
+|Spanplattenschrauben A4, 3,5x13mm, 18 Stück, 
+a|link:https://www.schraubenluchs.de/1000-Stueck-Blechschrauben-DIN-7981-A4-35-x-13[z.B. Schraubenluchs]
+|13,11 Euro (1000 St, zzgl. Versand)
+|Alle
+
+|Spanplattenschrauben A4, 3,5x9,5mm, 18 Stück (alternativ)
 |Baumarkt
 |7 Euro (50 St)
+|Alle
 
 |Plattform Wägezelle E120A 2x 50kg
-a|link:https://www.vechta-waagen.com/shop/produkt/single-point-waegezelle-e120a/[Wägezelle, Vechta-Waagen, Temperaturkompenstation]
+a|link:https://www.vechta-waagen.com/Single-Point-Waegezelle-E120A-50-kg/VE10080[Wägezelle, Vechta-Waagen, Temperaturkompenstation]
 |24,00 Euro (2x, zzgl. Versand)
+|Alle
 
 |Plattform Wägezelle CZL601 2x 50kg (alternativ)
 a|link:https://www.tinkerforge.com/de/shop/load-cell-50kg-czl601.html[Wägezelle, Tinkerforge, Temperaturkompenstation]
 |12,99 Euro (2x, zzgl. Versand)
+|Alle
 
 |Siebdruckplatten 45x55cm
 |Baumarkt
 |17 Euro (2x)
+|Alle
 
-3+a|
+|Isolierband für Aluwinkel (20mm, 25mm, 35mm)
+a|link:https://www.amazon.de/dp/B0D7MGP8JT[Isolierband, Amazon]
+|9,75 Euro, 12,95 Euro, 14 Euro (10m, zzgl. Versand)
+|Alle
+
+4+a|
 
 '''
 
 |Gesamtsumme
 |
 a|*260 Euro*
+|
 |===
 
 (Anmerkung: leider gibt es einige Artikel nur in größeren Packungen und manches nur mit deutlichen Versandkosten. 260 Euro passen nicht, wenn man die Waage einzeln baut.) 
 
 == Bauteilliste Solarlader
 
-[cols="3*"]
+[cols="4*"]
 |===
-|Bauteil|Bezugsquelle|Preis (Herbst 2025)
+|Bauteil|Bezugsquelle|Preis (Sommer 2026)|Variante
 
 |Adafruit BQ25185 Solar charger
 a|link:https://www.digikey.de/en/products/detail/adafruit-industries-llc/6091/25805553[Adafruit BQ25185, digikey.de]
 |7,10 Euro
+|Alle
 
 |Li-Ion Akku ICR18650 3.7V 2200mAh mit JST-PHR-2
-a|link:https://eckstein-shop.de/PKNERGY-Lithium-Ion-Battery-ICR-18650-37V-2200mAh-LiPo-Li-Ion-with-JST-PH-Connector[eckstein-shop.de]
+a|link:https://eckstein-shop.de/PKNERGY-Lithium-Ion-Battery-ICR-18650-37V-2200mAh-LiPo-Li-Ion-with-JST-PH-Connector[eckstein-shop]
 |9,48 Euro
+|Sendbox Thingy
 
 |Hohlstecker Buchse
 a|link:https://www.amazon.de/dp/B0CMK6XML6[Amazon, 10er Pack]
 |6,99 Euro
+|Alle
 
-|Micro JST 1.0 SH 3Pin Stecker
+|Anschlußklemme, 2 pol, 2,54 mm 
+a|link:https://www.digikey.de/de/products/detail/gct/TBC05-02-1-G-G/26409376[digikey.de]
+|0,79 Euro
+|Alle
+
+|Micro JST 1.0 SH 3Pin Stecker (nur für Thingy:91X)
 a|link:https://www.amazon.de/dp/B0BNCG27CX[Amazon, 5er Pack]
 |6,98 Euro
+|Sendbox Thingy
 
-|Stiftleiste 2pol. abgewinkelt
-a|link:https://www.reichelt.de/de/de/shop/produkt/jst_-_stiftleiste_90_1x2-polig_-_xh-185079[Platinenstecker, reichelt.de]
-|0,23
+|JST Kontakte für Buchse (nur für Thingy:91X), 2x
+a|link:https://www.reichelt.de/de/de/shop/produkt/jst_-_crimpkontakt_buchse_-_xh-185091[Platinenstecker, reichelt]
+|0,20 
+|Sendbox Thingy
 
-|Buchsengehäuse 2pol.
-a|link:https://www.reichelt.de/de/de/shop/produkt/jst_-_buchsengehaeuse_1x2-polig_-_xh-185085[Buchse, reichelt.de]
+|Buchsengehäuse 2pol. (1x für Thingy:91X, 2x für andere Module)
+a|link:https://www.reichelt.de/de/de/shop/produkt/jst_-_buchsengehaeuse_1x2-polig_-_xh-185085[Buchse, reichelt]
 |0,06
+|Alle
 
-|JST Kontakte für Buchse
-a|link:https://www.reichelt.de/de/de/shop/produkt/jst_-_crimpkontakt_buchse_-_xh-185091[Platinenstecker, reichelt.de]
-|0,10 (2x)
+|JST Kabel (für andere Module)
+a|link:https://www.digikey.de/de/products/detail/jst-sales-america-inc/ASPHSPH24K51/6009457[Kabel, digikey.de]
+|0,30 (2x)
+|Sendbox Feather
 
-|Solarpanel (abgesetzt), 6V 1.2W
-a|link:https://www.amazon.de/ZONADAH-Hangable-Ladeger%C3%A4t-Projekte-Ladewerkzeuge/dp/B09CM1RJHY[(abgesetzt), amazon.de]
+|Solarpanel (abgesetzt, Kunststoff), 6V 1.2W
+a|link:https://www.amazon.de/ZONADAH-Hangable-Ladeger%C3%A4t-Projekte-Ladewerkzeuge/dp/B09CM1RJHY[(abgesetzt, Kunststoff), amazon.de]
 |6,99 Euro
+|Alle
 
-3+a|
+|Solarpanel (abgesetzt, ALU), 5V 1.0W (alternativ)
+a|link:https://www.solarversand.de/1-wp-solarmodul-mit-halterung-und-erspiess/[(abgesetzt, ALU), solarversand]
+|9,95 Euro
+|Alle
+
+4+a|
 
 '''
 
 |Gesamtsumme
 |
-a|*25 Euro*
+a|*30 Euro*
+|
 |===
 
-Auch der Solarladeregler kommt mit einer "Power LED",  die weg muss. Hier kommt man um den Lötkolben nicht rum
+Auch der Solarladeregler kommt mit einer "Power LED", die weg muss. Hier kommt man um den Lötkolben nicht rum
 
 == Werkzeugliste
 
@@ -265,27 +358,27 @@ Auch der Solarladeregler kommt mit einer "Power LED",  die weg muss. Hier kommt 
 |
 
 |Spiralbohrer 3,5mm
-a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/geschliffene-bohrer/[www.werkzeuge-bohrer.de]
+a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/geschliffene-bohrer/[werkzeuge-bohrer]
 |0,31 Euro
 
 |Spiralbohrer 6mm
-a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/geschliffene-bohrer/[www.werkzeuge-bohrer.de]
+a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/geschliffene-bohrer/[werkzeuge-bohrer]
 |0,83 Euro
 
 |Spiralbohrer 8mm
-a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/geschliffene-bohrer/[www.werkzeuge-bohrer.de]
+a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/geschliffene-bohrer/[werkzeuge-bohrer]
 |1,34 Euro
 
 |Forstnerbohrer 14mm
-a|link:https://www.werkzeuge-bohrer.de/bohren-in-holz/Forstner/Forstnerbohrer-10-mm-shop.html[www.werkzeuge-bohrer.de]
+a|link:https://www.werkzeuge-bohrer.de/bohren-in-holz/Forstner/Forstnerbohrer-10-mm-shop.html[werkzeuge-bohrer]
 |3,55 Euro
 
 |Schaftbohrer 11mm/10mm (Solarladebuchse)
-a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/Bohrer-reduzierter-Schaft/HSS-Bohrer-aehnlich-DIN-338-Typ-NR-Schaft-10-mm.html/[www.werkzeuge-bohrer.de]
+a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/Bohrer-reduzierter-Schaft/HSS-Bohrer-aehnlich-DIN-338-Typ-NR-Schaft-10-mm.html/[werkzeuge-bohrer]
 |8,36 Euro
 
 |Versandkosten
-a|link:https://www.werkzeuge-bohrer.de/[www.werkzeuge-bohrer.de]
+a|link:https://www.werkzeuge-bohrer.de/[werkzeuge-bohrer]
 |3,99 Euro
 
 3+a|
