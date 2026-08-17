@@ -44,11 +44,11 @@ a|.Sendebox Thingy:91X und ADC
 image::303_sendebox_thingy91x.png[Sendebox mit Thingy:91X und ADC, align=center]
 
 a|.2025 Waage, nRF9151-feather
-image::316_waage_feather.png[2025 Waage mit feather align=center] 
+image::317_waage_feather.png[2025 Waage mit feather align=center] 
 a|.Sendbox mit nRF9151-feather
-image::317_sendbox_feather.png[Sendbox mit nRF9151-feather, align=center]
+image::318_sendbox_feather.png[Sendbox mit nRF9151-feather, align=center]
 a|.2025 Waagendeckel für Senkkopfschrauben
-image::318_waage_deckel.png[2025 Waagendeckel für Senkkopfschrauben, align=center]
+image::319_waage_deckel.png[2025 Waagendeckel für Senkkopfschrauben, align=center]
 
 a|.Untere Platte mit Aluwinkel 5mm, Wägezellen und Thingy:91X
 image::304_waage_thingy91x_unten.png[Untere Platte mit Aluwinkel 5mm und Wägezellen montiert und Thingy:91X, align=center] 
@@ -73,7 +73,7 @@ Zwischen die starken Aluwinkeln (4mm) und den Plattform Wägezellen werden noch 
 [cols="1*"]
 |===
 a|.Anordung der Winkel, Distanzplatten und Wägezelle (Alu) 
-image::315_waage_winkel.svg[Anordnung, 150]
+image::316_waage_winkel.svg[Anordnung, 150]
 |===
 
 Die Anordnung der starken Aluwinkel (4mm), der Wägezelle und der Distanzplatten dazwischen habe ich so gewählt, dass der "Aufsetzschutz" (Überlastungsschutz für die Wägezelle), durch die starken Aluwinkel (4mm) selbst gegeben ist. Wichtig sind dabei das Zusammenspiel der Abmessungen. Meine Wägezelle hat eine Höhe von 22mm. Es werden dann oben und unten Distanzplatten benötigt, damit der Sensor auslenken kann. Hier benutze ich jeweils 8mm. Das ergibt dann eine Höhe von 38mm insgesamt. Meine Aluwinkel (4mm) haben eine Innenhöhe von 36mm. Somit ist die Auslenkung auf 2mm begrenzt.
@@ -119,17 +119,20 @@ image::309_bohrungen_oben.svg[Bohrplan starker Winkel Oben, 612, link="./Bohrpla
 a|.unterer starker Winkel, 4x 6mm Bohrungen
 image::310_bohrungen_unten.svg[Bohrplan starker Winkel Unten, 597, link="./BohrplaeneV3.pdf"]
 
-a|.oberer Winkel, 3x 3,5mm Bohrungen
+a|.oberer Winkel lang, 3x 3,5mm Bohrungen
 image::311_bohrungen_oben.svg[Bohrplan Winkel, 750, link="./BohrplaeneV3.pdf"]
 
+a|.oberer Winkel kurz, 3x 3,5mm Bohrungen
+image::312_bohrungen_oben.svg[Bohrplan Winkel, 600, link="./BohrplaeneV3.pdf"]
+
 a|.unterer Winkel, 3x 3,5mm Bohrungen (und 1x 11mm)
-image::312_bohrungen_unten.svg[Bohrplan Aluwinkel, 727, link="./BohrplaeneV3.pdf"]
+image::313_bohrungen_unten.svg[Bohrplan Aluwinkel, 727, link="./BohrplaeneV3.pdf"]
 
 a|.Distanzplatten, 2x 6mm Bohrungen
-image::313_distanz_platten.svg[Bohrplan Distanzplatten, 120, link="./BohrplaeneV3.pdf"]
+image::314_distanz_platten.svg[Bohrplan Distanzplatten, 120, link="./BohrplaeneV3.pdf"]
 
 a|.Bretter
-image::314_bretter_bohrungen.svg[Bohrplan Bretter, 825, link="./BohrplaeneV3.pdf"]
+image::315_bretter_bohrungen.svg[Bohrplan Bretter, 825, link="./BohrplaeneV3.pdf"]
 |===
 
 == Bauteilliste
