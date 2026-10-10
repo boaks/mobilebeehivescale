@@ -1,32 +1,34 @@
-// Mobile-Bienenstock-Waage, Version 2.2, Mai 2026
+// Mobile-Bienenstock-Waage, Version 2.2, Oktober 2026
 
 :imagesdir: pictures
 
 = Mobile-Bienenstock-Waage
 Achim Kraus <achim.kraus@cloudcoap.net>
-v0.6, 2026-05-17
+v0.6, 2026-10-10
 
-[cols="1*"]
+[cols="2*"]
 |===
-a|.Bienenstöcke mit Waage 
-image::beehives.jpg[Bienenstöcke mit Waage]
+a|.Bienenstöcke mit Waagen 
+image::beehives.jpg[Bienenstöcke mit Waagen]
+a|.Diagram mit Gewichtsverlauf 
+image::chart_new.png[Diagram mit Gewichtsverlauf, 250]
 |===
 
 
 == Willkommen auf meiner Bastelanleitung für eine Mobile-Bienenstock-Waage.
 
-Ich bin einer der IoT-Enthusiasten, der gerne echte und funktionierende Dinge baut. 2022 habe ich angefangen, einen link:https://github.com/boaks/zephyr-coaps-client[Modem-Client] zu implementieren, mit dem man zeigen kann was in link:https://cloudcoap.net[UDP] steckt. In Kombination mit link:https://github.com/eclipse-californium/californium/tree/main/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] demonstriert dieses Beispiel, dass man auch von Batterie ein paar Monate/ein Jahr jede Stunde Daten austauschen kann.   
+Ich bin einer der IoT-Enthusiasten, der gerne echte und funktionierende Dinge baut. 2022 habe ich angefangen, einen link:https://github.com/boaks/zephyr-coaps-client[Modem-Client] zu implementieren, mit dem man zeigen kann was in link:https://cloudcoap.net[UDP] steckt. In Kombination mit link:https://github.com/eclipse-californium/californium/tree/main/demo-apps/cf-s3-proxy-server[Eclipse/Californium - CoAP-S3-Proxy] demonstriert dieses Beispiel, dass man auch von Batterie ein paar Monate/ein Jahr jede Stunde Daten senden kann.
 
-Anfang 2023 habe ich dann basierend auf diesem Modem-Client meinen erste Bienenstock-Waage gebaut und bei einem befreundeten Imker in Betrieb genommen. Das Ergebnis eines halbjährigen Testlaufs ist einfach: 
+Anfang 2023 habe ich dann basierend auf diesem Modem-Client meine ersten Bienenstock-Waagen gebaut und bei einem befreundeten Imker in Betrieb genommen. Das Ergebnis eines halbjährigen Testlaufs ist einfach:
 
 * mobiler Datenaustausch funktioniert von Batterie sehr gut
 * die Waage selber hat aber viel Verbesserungspotential
 
-Das hat dann zur einer neuen Bauart der Elektronik geführt. Die daraus entstandenen Waagen in link:README-2024.adoc[2024] zeigten dann schon, dass einiges besser ist, aber auch noch weitere Verbesserungen gut wären. Daher habe ich dann Anfang 2025 die Waagen erneut überarbeitet und nach mehreren Monaten testen gibt es nun auch zu diesem Model sehr positive Erfahrungen. Ich möchte trotzdem gleich hier einräumen, dass es genauere Waagen gibt. Mein Schwerpunkt liegt auf dem mobilen Einsatz und dem einfachen Aufbau der Elektronik.
+Das hat dann zur einer neuen Bauart der Elektronik geführt. Die daraus entstandenen Waagen in link:README-2024.adoc[2024] zeigten dann schon, dass einiges besser ist, aber auch noch weitere Verbesserungen gut wären. Daher habe ich dann Anfang 2025 die Waagen erneut überarbeitet und nach mehreren Monaten testen gibt es nun auch zu diesem Model sehr positive Rückmeldungen. In 2026 habe ich dann weitere Testimker gewinnen können, inzwischen sind 9 Waagen im imkerlichen Einsatz. Ich möchte trotzdem gleich hier einräumen, dass es genauere Waagen gibt. Mein Schwerpunkt liegt auf dem mobilen Einsatz und dem einfachen Aufbau der Waage und Elektronik.
 
 * Es ist für die Handhabung einfacher, wenn die Steuerung/Sendbox direkt in der Waage ist. Dadurch
 * gibt es kein "Kabelgewirr" (unpraktisch und teuer),
-* kann man die Waagen einfacher mit den Bienenstücken umziehen, 
+* kann man die Waagen einfacher mit den Bienenstöcken umziehen, 
 * bleiben die Kalibrierdaten in der Steuerung bei der Waage, zu der sie gehören.
 * die verbleibenden Kabel in der Waage zu den Sensoren sind kurz, das wirkt sich positiv auf die Temperaturabweichung aus.
 * Es werden 2x50kg Sensoren verwendet, anstatt 2x100kg. Das hilft nochmal die Temperaturabhängigkeit zu halbieren.
@@ -40,15 +42,8 @@ a|.2025 Waage (keine Kabel mehr!)
 image::301_waage_thingy91x.png[Bienenstock auf 2025 Waage (keine Kabel mehr), align=center] 
 a|.Solar-Lader (2x 1 Woche pro Jahr)
 image::302_solarlader.png[Solar-Lader (2x 1 Woche pro Jahr), align=center]
-a|.Sendebox Thingy:91X und ADC
-image::303_sendebox_thingy91x.png[Sendebox mit Thingy:91X und ADC, align=center]
-
-a|.2025 Waage, nRF9151-feather
-image::317_waage_feather.png[2025 Waage mit feather align=center] 
 a|.Sendbox mit nRF9151-feather
-image::318_sendbox_feather.png[Sendbox mit nRF9151-feather, align=center]
-a|.2025 Waagendeckel für Senkkopfschrauben
-image::319_waage_deckel.png[2025 Waagendeckel für Senkkopfschrauben, align=center]
+image::318_sendbox_feather.png[Sendbox mit nRF9151-feather mit Solarladeregler, align=center]
 
 a|.Untere Platte mit Aluwinkel 5mm, Wägezellen und Thingy:91X
 image::304_waage_thingy91x_unten.png[Untere Platte mit Aluwinkel 5mm und Wägezellen montiert und Thingy:91X, align=center] 
@@ -56,13 +51,14 @@ a|.Schraubenköpfe
 image::202_waage_schraubenkoepfe.png[Schraubenkopf, align=center]
 .Verschraubung mit unterem Brett
 image::203_waage_verschraubung.png[Verschraubung, align=center] 
-a|.Obere Platte mit Bohrungen für Schraubenköpfe
-image::305_waage_thingy91x_oben.png[Obere Platte mit Aluwinkel 3mm, align=center] 
+a|.2025 Waagendeckel mit Bohrungen für Schraubenköpfe
+image::319_waage_deckel.png[2025 Waagendeckel für Senkkopfschrauben, align=center]
+
 |===
 
-Die Version 2025 der Mobilen-Bienestock-Waage nutzt nun ein link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X[Thingy:91X]. Man schliest den link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[ADC NAU7802 von Adafruit] direkt an das Thingy:91X an und beides wandert in die Waage. Damit entfällt einiges an Verkabelung. Die Bedienung läuft über link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#enable-bluetooth-low-energy-on-a-thingy91[Bluetooth LE] und man braucht eine link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#smartphone-app[SmartPhone App]. Das ist aber nur für das Kalibrieren notwendig, oder wenn man testen möchte, ob die Sendebox an eimen Aufstellungsort Empfang hat.
+Die Version 2025 der Mobilen-Bienestock-Waage nutzt nun eine link:https://www.circuitdojo.com/products/nrf9151-feather[nRF9151 Feather]. Man schliest den link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[ADC NAU7802 von Adafruit] direkt an die nRF9151 Feather an und beides wandert in die Waage. Damit entfällt einiges an Verkabelung. Die Kalibrierung läuft über die USB-Serielle Schnittstelle, man braucht dazu ein USB-C Kabel und ein Notebook oder Android Gerät (siehe link:https://github.com/boaks/zephyr-coaps-client/blob/main/docu/CELLULAREXPLORER.md#smartphone-app[SmartPhone App]).
 
-Alternativ gibt es auch noch zwei weitere unterstütze Modems mit QWIIC, die link:https://www.circuitdojo.com/products/nrf9151-feather[nRF9151 Feather] und das link:https://conexiotech.com/conexio-stratus-pro-nrf9151/[Conexio Stratus Pro nRF9151], das letztere kommt sogar schon mit einem integrierten Solarladeregler. Beide haben aber keine Bluetooth LE Modul, so dass man ein USB Kabel für das Kalibrieren benötigt.
+Alternativ gibt es auch noch zwei weitere unterstütze Modems mit QWIIC, das link:https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X[Thingy:91X] und das link:https://conexiotech.com/conexio-stratus-pro-nrf9151/[Conexio Stratus Pro nRF9151], das letztere kommt sogar schon mit einem integrierten Solarladeregler.
 
 Der Aufbau mit 2 Plattform Wägezellen gibt der Waage ein besondere Stabilität und Unempfindlichkeit beim Aufsetzen von Lasten. Wichtig ist, dass die Wägezellen sehr schlüssig und stabil mit den starken Aluwinkeln (4mm) verschraubt werden, sonst bekommt man anstatt einer Waage eine Wippe. Die obere Siebdruckplatte wird mit kleineren Aluwinkeln (3mm) gegen verrutschen gesichert. Hier muss man darauf achten, dass diese kleineren Aluwinkel (3mm) nur an den oberen starken Aluwinkeln (4mm) anstoßt. Wenn diese auch am unteren starken Aluwinkeln (4mm) anstossen, verfälscht die Reibung das gemessene Gewicht. Daher sind die oberen zwei starken Aluwinkel (4mm) 40,0cm lang und die unteren zwei mit 39,0cm 10mm kürzer. Die kleineren Aluwinkel (2mm) für die untere Siebdruckplatten schließen den Kasten ab. Diese sind um 16mm kürzer als die oberen kleineren Aluwinkel (3mm).
 
@@ -80,7 +76,7 @@ Die Anordnung der starken Aluwinkel (4mm), der Wägezelle und der Distanzplatten
 
 Vielleicht findet der eine oder andere die Anordnung der Winkel seltsam. Ich erreiche damit zum einen nach außen (links) eine möglichst geschlossen Form zu bilden und zum anderen nach innen (rechts) offen zu sein für das Kabel, das aus der Wägezelle kommt und mit der ADC-Platine verbunden werden muss.
 
-Das Zusammenschrauben ist einfach. Man beginnt mit den unteren starken Aluwinkel (4mm), den 8mm Distanzplatten und den Plattform Wägezellen und schraubt diese mit den Zylinderkopfschrauben und Federring fest. Die Wägezelle hat ein Richtung, die durch einen Pfeil angezeigt wird. Wenn man die Schraubenlöcher der Wägezelle benutzt, an der auch das Kabel aus der Wägezelle kommt, dann passt das. Dann schraubt man den oberen starken Aluwinkel (4mm) ebenfalls mit den 8mm Distanzplatten ebenfalls mit Zylinderkopfschrauben fest. Danach setzt man die Kombination auf die untere Siebdruckplatte und verschraubt diese mit den Senkkopfschrauben und Muttern. Ist man damit fertig, dann kann man die dünneren Aluwinkeln (2mm) seitlich ebenfalls auf der unteren Siebdruckplatte montieren. Ich nehme da Spanplattenschrauben 3,5x13mm. Zum Schluß dann noch die 4 schwächeren Aluwinkeln (3mm), oben montieren, ebenfalls mit Spanplattenschrauben.
+Das Zusammenschrauben ist verhältnismässig einfach. Man beginnt mit den unteren starken Aluwinkel (4mm), den 8mm Distanzplatten und den Plattform Wägezellen und schraubt diese mit den Zylinderkopfschrauben und Federring fest. Die Wägezelle hat ein Richtung, die durch einen Pfeil angezeigt wird. Wenn man die Schraubenlöcher der Wägezelle benutzt, an der auch das Kabel aus der Wägezelle kommt, dann passt das. Dann schraubt man den oberen starken Aluwinkel (4mm) ebenfalls mit den 8mm Distanzplatten ebenfalls mit Zylinderkopfschrauben fest. Danach setzt man die Kombination auf die untere Siebdruckplatte und verschraubt diese mit den Senkkopfschrauben und Muttern. Ist man damit fertig, dann kann man die dünneren Aluwinkeln (2mm) seitlich ebenfalls auf der unteren Siebdruckplatte montieren. Ich nehme da Spanplattenschrauben 3,5x13mm. Zum Schluß dann noch die 4 schwächeren Aluwinkeln (3mm), oben montieren, ebenfalls mit Spanplattenschrauben.
 
 Da Aluwinkel und Edelstahlschrauben verwendet werden, gibt es bei Nässe Korrosion. Um diese zu reduzieren benutze ich eine Isolierband zwischen den Aluwinkeln und den Siebdruckplatten.   
 
@@ -101,7 +97,7 @@ image::309_adc_led.png[ADC ohne Power LED, 150]
 |===
 
 
-Der link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[ADC NAU7802 von Adafruit] wird direkt mit einem QWIIC Kabel mit dem Thingy:91X verbunden. Auf der Rückseite der NAU7802/Adafruit Platine ist angegeben, wie man die Farben der Leitungen einer Plattform Wägezelle jeweils anschließt. Ich schliese beide Zellen parallel an, d.h. beide roten Leitungen an `E+/Red`, beide schwarzen an `E-/Black`, beide weißen an `A-/White` und beide grünen an `A+/Green`. Das erfordert etwas geschick. "Gelb" ist die Schirmleitung. Da kann man viel dazu im Web lesen. Wenn es passt, klemme ich die mit auf `E-/Black`. Ansonsten "isolieren" und schauen, ob es funktioniert.    
+Der link:https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic[ADC NAU7802 von Adafruit] wird direkt mit einem QWIIC Kabel mit dem Thingy:91X verbunden. Auf der Rückseite der NAU7802/Adafruit Platine ist angegeben, wie man die Farben der Leitungen einer Plattform Wägezelle jeweils anschließt. Ich schliese beide Zellen parallel an, d.h. beide roten Leitungen an `E+/Red`, beide schwarzen an `E-/Black`, beide weißen an `A-/White` und beide grünen an `A+/Green`. Das erfordert etwas geschick. "Gelb" ist die Schirmleitung. Da kann man viel dazu im Web lesen. Wenn es passt, klemme ich die mit auf `E-/Black`. Wenn der Solarladeregeler verwendet wird, dann kann man die 2 Gelben dort auf eine zusätzlich Schraubklemme auf `GND` anschließen. Ansonsten "isolieren" und schauen, ob es funktioniert.    
 
 Die Thingy:91X Sendebox schaltet die Stromversorgung für die ADC-Platinen ab. Aktiviert werden die Sensoren dann über den internen Spannungsregler des NAU7802. Dieser liefert gemäß dem Datenblatt maximal 10mA. Für zwei Balkensensoren ist das leider zu wenig. Die brauchen je 6-8mA zusammen also mehr als 10mA. Aktuell betreibe ich solche Waagen außerhalb der Spezifikation des NAU7802. Bis jetzt funktioniert es.
 
@@ -109,7 +105,9 @@ Leider, leider, sind diese ADC Module aus dem Bastel/Hobby-Bereich nicht ganz f�
  
 == Bohrpläne
 
-Die Lage der Bohrungen bei den starken Winkeln ergibt sich, wenn der ein Winkelschenkel liegt und der andere noch ober zeigt. 
+Die Lage der Bohrungen bei den Winkeln ergibt sich, wenn der ein Winkelschenkel liegt und der andere noch oben zeigt. Bei den 6mm Bohrungen für die Wägezellen muss man präzise arbeiten. Sonst kann es leicht passieren, dass sich nach dem Zusammenbau der Winkel mit den Wägezellen auf einer Seite der Abstand der Enden zu gering ist (geplant 5mm, benötigtes Minimum 3mm). Daher sind für diese Bohrungen die Abstände zu den Enden in den Plänen von unterschiedlichen Seiten angegeben. Zusammengebaut sind es die Abstände von der selben Seite und dann gleichen sich kleinere Messfehler eher aus und addieren sich nicht.
+
+Bei den Siebdruckplatten ist es auch besser, nicht von allen Seiten von den Rändern zu messen, sonst machen sich die Toleranzen vom Holzzuschnitt bemerkbar. Ich bohre inzwischen zuerst die unteren starken Aluwinkel und benutze die dann als Schablone für die durchgehenden Befestigungsschrauben. Für die 14mm Senklochbohrungen werden größere Toleranzen angenommen, da ist es dann nicht so wichtig.  
 
 [cols="1*"]
 |===
@@ -206,9 +204,9 @@ a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/
 |4,33 Euro (zzgl. Versand)
 |Alle
 
-|Aluwinkel 30x25x2mm, 2x48,4cm (unten)
+|Aluwinkel 30x20x2mm, 2x48,4cm (unten)
 a|link:https://www.aluminium-online-shop.de/produkt-kategorie/aluminium-profile/winkel[z.B. Aluminium-Online-Shop]
-|8,33 Euro (zzgl. Versand)
+|4,96 Euro (zzgl. Versand)
 |Alle
 
 |Aluflachstange 30x8mm, für 4 Distanzplatten a 40mm Länge
@@ -241,19 +239,24 @@ a|link:https://www.schraubenluchs.de/1000-Stueck-Blechschrauben-DIN-7981-A4-35-x
 |13,11 Euro (1000 St, zzgl. Versand)
 |Alle
 
-|Spanplattenschrauben A4, 3,5x9,5mm, 18 Stück (alternativ)
-|Baumarkt
-|7 Euro (50 St)
+|Plattform Wägezelle Mavin NA1 2x 50kg
+a|link:https://www.maritex.eu/en/product/mavin-na1-50kg-0.5m-wire-ip66-rohs-load-cells-btens-n1-050[Wägezelle, maritex.eu, gute Temperaturkompenstation]
+|24,48 Euro (2x, zzgl. Versand)
 |Alle
 
-|Plattform Wägezelle E120A 2x 50kg
+|Plattform Wägezelle E120A 2x 50kg (alternativ)
 a|link:https://www.vechta-waagen.com/Single-Point-Waegezelle-E120A-50-kg/VE10080[Wägezelle, Vechta-Waagen, Temperaturkompenstation]
 |24,00 Euro (2x, zzgl. Versand)
 |Alle
 
 |Plattform Wägezelle CZL601 2x 50kg (alternativ, nicht mehr zu empfehlen)
-a|link:https://www.tinkerforge.com/de/shop/load-cell-50kg-czl601.html[Wägezelle, Tinkerforge, Temperaturkompenstation]
+a|link:https://www.tinkerforge.com/de/shop/load-cell-50kg-czl601.html[Wägezelle, Tinkerforge, inzwischen schlechte Temperaturkompenstation]
 |12,99 Euro (2x, zzgl. Versand)
+|Alle
+
+|Plattform Wägezelle Zemic L6D 2x 50kg (alternativ)
+a|link:https://www.essmann-shop.com/single-point-waegezelle-zemic-l6d-c3-50kg-0.4b/11250499[Wägezelle, Essmann, gute Temperaturkompenstation]
+|67,35 Euro (2x, zzgl. Versand)
 |Alle
 
 |Siebdruckplatten 45x55cm
@@ -276,7 +279,24 @@ a|*260 Euro*
 |
 |===
 
-(Anmerkung: leider gibt es einige Artikel nur in größeren Packungen und manches nur mit deutlichen Versandkosten. 260 Euro passen nicht, wenn man die Waage einzeln baut.) 
+Anmerkungen: 
+
+* Leider gibt es einige Artikel nur in größeren Packungen und manches nur mit deutlichen Versandkosten. 260 Euro passen nicht, wenn man die Waage einzeln baut.
+
+* Wägezellen sind leider problematisch. Die Temperaturabweichungen bei meinen Tests waren sehr unterschiedlich. Leider ändern sich die Erfahrungen auch mit der Zeit. Die CZL601 war mal mein Favorit. Inzwischen haben die gelieferten Sensoren aber eine ca. 3fache Temperaturabweichung. Mit der Mavin NA1 habe ich gute Erfahrungen gemacht. Ich habe die mehrfach bei Ali-Express bekommen ... bis der Händler dann nicht mehr nach Europa liefern wollte. Andere Ali-Express Händler verlangen höhere Preise. Besonders muss man da auf die zusätzlichen Versand- und Zollkosten achten. Bin gespannt, wie es mit dem polnischen Händler läuft. Die Zemic L6D ist leider zu teuer. Man bekommt die bei Ali-Express auch günstiger, aber auch da muss man dann auf Versand- und Zollkosten achten.
+
+Inzwischen kann man einen Teil der Aluwinkel gegen Aufpreis auch fertig gebohrt bekommen.
+
+[cols="3*"]
+|===
+|Bauteil|Bezugsquelle|Preis (Sommer 2026)
+
+|Aluwinkel 40x40x4mm, 2x39cm (unten, 4 Bohrungen 6mm)
+a|link:https://www.profilzuschnitt24.de/winkelprofil-alu-40x40x4mm.html[Profilzuschnitt24]
+|20,36 Euro (zzgl. Versand)
+
+|===
+
 
 == Bauteilliste Solarlader
 
@@ -364,10 +384,6 @@ a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/geschliffene-b
 a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/geschliffene-bohrer/[werkzeuge-bohrer]
 |0,83 Euro
 
-|Spiralbohrer 8mm
-a|link:https://www.werkzeuge-bohrer.de/bohren-in-metall-und-stahl/geschliffene-bohrer/[werkzeuge-bohrer]
-|1,34 Euro
-
 |Forstnerbohrer 14mm
 a|link:https://www.werkzeuge-bohrer.de/bohren-in-holz/Forstner/Forstnerbohrer-10-mm-shop.html[werkzeuge-bohrer]
 |3,55 Euro
@@ -386,7 +402,7 @@ a|link:https://www.werkzeuge-bohrer.de/[werkzeuge-bohrer]
 
 |Gesamtsumme
 |
-a|*18,37 Euro*
+a|*17,03 Euro*
 |===
 
 == Arbeitszeit
@@ -399,10 +415,14 @@ Das hängt natürlich stark von der Bastel-Erfahrung ab. Ich denke, man sollte:
 * 1 Nachmittag für Fehlersuche :-)
 
 einplanen.
- 
+
+== Anleitung Web-Applikation
+
+link:https://raw.githubusercontent.com/boaks/mobilebeehivescale/main/cloudcoap-waage-v5.pdf[Cloudcoap Web-Applikation]
+
 == Software System Overview (English)
 
-link:MobileBeehiveScale.pdf[Mobile-BeeHiveScale]
+link:https://raw.githubusercontent.com/boaks/mobilebeehivescale/main/MobileBeehiveScale.pdf[Mobile-BeeHiveScale]
 
 == Links
 
